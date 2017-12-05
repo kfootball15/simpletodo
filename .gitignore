@@ -1,5 +1,7 @@
 node_modules/
+server/playground
 server/env
+server/logs
 platforms
 bower_components
 .DS_Store
