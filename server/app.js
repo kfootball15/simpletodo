@@ -1,40 +1,10 @@
-// const fs = require('fs');
-// const _ = require('lodash');
-// const yargs = require('yargs');
 
-// const notes = require('./app/notes');
-
-// var argv = yargs.argv
-// var command = argv._[0];
-
-// // var jsonObject = jsonify.jsonify(argv.obj);
-// // var jsObject = jsonParser.jparse(jsonObject);
-
-
-// if(command === "add"){
-// 	var note = notes.addNote(argv.title, argv.body);
-// 	var message = note ? `Your note, "${note.title}", was successfully created.` : "ERROR: This note is a duplicate"
-// 	console.log(message);
-// } else if (command === "list"){
-// 	var allNotes = notes.getAll();
-// 	var message = allNotes.length ? `We Have received all of your notes: ${allNotes}` : 'You have not yet created any notes'
-// 	console.log(message);
-// } else if (command === "read"){
-// 	var fetchedNote = notes.getNote(argv.title);
-// 	var message = fetchedNote ? `Your note, ${fetchedNote.title}, has been received.` : `A note with the title "${argv.title}" does not exist.`
-// 	console.log(message);
-// } else if (command === "remove"){
-// 	var deletedNote = notes.removeNote(argv.title);
-// 	var message = deletedNote ? `Your note, "${deletedNote.title}", has been successfully deleted` : `A note with the title "${argv.title}" does not exist`
-// 	console.log(message)
-// } else {
-// 	console.log("Command not recognized");
-// }
 
 const express = require('express');
 const hbs = require('hbs');
 const fs = require('fs');
 
+const PORT = process.env.PORT || 3000; // Process.env is just an object that will store all of our environment variables. Since we are using Heroku, Heroku will need to set this for us, we cannot set it manually. For our local testing purposes, we can set it to 3000
 const app = express() //init our express app
 
 hbs.registerPartials(__dirname + '/views/partials')
@@ -81,7 +51,7 @@ app.get('/about', (req,res,next)=>{
 	})
 })
 
-app.listen(3000,()=>{
-	console.log("Server listening on Port 3000")
+app.listen(PORT ,()=>{
+	console.log(`server listening on Port ${PORT}`)
 }) 	//Bind our application to a port on our machine
 	// app will listen to requests until you cancel the server process in the terminal
