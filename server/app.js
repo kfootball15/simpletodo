@@ -7,8 +7,9 @@ const fs = require('fs');
 const PORT = process.env.PORT || 3000; // Process.env is just an object that will store all of our environment variables. Since we are using Heroku, Heroku will need to set this for us, we cannot set it manually. For our local testing purposes, we can set it to 3000
 const app = express() //init our express app
 
-hbs.registerPartials(__dirname + '/../views/partials');
+hbs.registerPartials(__dirname + '/views/partials');
 app.set('view engine', 'hbs')
+app.set('views', __dirname + '/views');
 
 //HBS Helper Methods:
 hbs.registerHelper('getCurrentYear', ()=>{
