@@ -2,6 +2,9 @@ node_modules/
 server/playground
 server/env
 server/logs
+js/todolist.json
+js/todolists.json
+js/testData.json
 platforms
 bower_components
 .DS_Store

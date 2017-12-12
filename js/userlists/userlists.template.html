@@ -1,0 +1,28 @@
+<div>
+  <p>HELLO WORLD</p>
+  <div>
+    {{$ctrl.userName}}
+  </div>  
+  <div>
+    {{$ctrl.todolist.title}}
+  </div>
+</div>
+
+<div>
+  <h1>{{$ctrl.todolist.todolistTitle}}</h1>
+  <p>by {{$ctrl.user.name}}</p>
+
+	<div ng-repeat="todolist in $ctrl.todolists">
+		<div ng-repeat="todoitem in todolist.items">
+		    <input type="checkbox" style="display:inline-block;">
+		    <h2 style="display:inline-block;">{{todoitem.item}}</h2>
+		    <p>{{todoitem.description}}</p>
+		    <div ng-if="todoitem.list">
+		        <h3>{{todoitem.list.title}}</h3>
+		        <ol>
+		        	<li ng-repeat="item in todoitem.list.items">{{item}}</li>
+		        </ol>
+		    </div>
+		</div>
+	</div>
+</div>

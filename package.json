@@ -4,15 +4,20 @@
   "description": "Portfolio Project",
   "main": "server/app.js",
   "scripts": {
-    "test": "npm test",
-    "start": "node ./server/app.js"
+    "test": "mocha",
+    "start": "nodemon ./server/app.js --ignore 'server/logs/*.json'"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@uirouter/angularjs": "^1.0.11",
+    "chalk": "^2.3.0",
     "express": "^4.16.2",
     "hbs": "^4.0.1",
     "lodash": "^4.17.4",
     "yargs": "^10.0.3"
+  },
+  "devDependencies": {
+    "mocha": "^4.0.1"
   }
 }

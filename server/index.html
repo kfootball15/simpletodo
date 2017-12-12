@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="simpleToDoApp">
+  <head>
+    <meta charset="utf-8">
+    <title>My HTML File</title>
+    <!-- <base href="/"> -->
+
+    <link rel="stylesheet" href="bower_components/bootstrap.css" />
+    <!-- Angular App -->
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+
+    <!-- App Modules -->
+    <script src="/js/app.js"></script>
+    <!-- Services -->
+    <script src="/js/services/todolistService.js"></script>
+    <!-- Controllers -->
+    <script src="/js/main/main.controller.js"></script>
+    <!-- Components -->
+    <script src="/js/home/home.component.js"></script>
+    <script src="/js/headerNav/headerNav.component.js"></script>
+    <script src="/js/userlists/userlists.component.js"></script>
+    <script src="/js/todolist/todolist.component.js"></script>
+    <script src="/js/todolistItem/todolistItem.component.js"></script>
+  </head>
+  <body ng-controller="mainController as main">
+
+    <!-- <div>{{welcomeMessage}}</div> -->
+    
+    <header-nav></header-nav>
+    
+    <ui-view></ui-view>
+
+    <!-- <footer-nav></footer-nav> -->
+
+
+
+  </body>
+</html>
