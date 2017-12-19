@@ -3,21 +3,19 @@
 	id="createUserForm" 
 	name="createUserForm"
 	ng-submit="$ctrl.createUser($ctrl.user)"
+	style="display:inline-block"
 	>
 
-	<div>{{$ctrl.test}}</div>
-	<label> User Name:
-		<input 
-			type="text" 
-			ng-model="$ctrl.user.username"
-			name="username"
-			required
-			>
-	</label>
-
-	<div> Your User Name: {{$ctrl.user}} </div>
+	<input 
+		type="text" 
+		ng-model="$ctrl.user.username"
+		name="username"
+		placeholder="Enter a username" 
+		required
+		>
+		
 	<span class="error" ng-show="createUserForm.input.$error.required">
       You must enter something!</span>
-  	<input type="submit" id="submit" value="Submit" />
+  	<input type="submit" id="submit" value="Go!" />
 
 </form>

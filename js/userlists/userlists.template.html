@@ -10,7 +10,7 @@
 
 <div>
   <h1>{{$ctrl.todolist.todolistTitle}}</h1>
-  <p>by {{$ctrl.user.name}}</p>
+  <p>by {{$ctrl.currentUser.username}}</p>
 
 	<div ng-repeat="todolist in $ctrl.todolists">
 		<div ng-repeat="todoitem in todolist.items">
