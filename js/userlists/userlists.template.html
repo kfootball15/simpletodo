@@ -9,11 +9,13 @@
 </div>
 
 <div>
-  <h1>{{$ctrl.todolist.todolistTitle}}</h1>
+  <h1>{{$ctrl.todolist.title}}</h1>
   <p>by {{$ctrl.currentUser.username}}</p>
 
 	<div ng-repeat="todolist in $ctrl.todolists">
-		<div ng-repeat="todoitem in todolist.items">
+		    <input type="checkbox" style="display:inline-block;">
+		    <button style="display:inline-block">{{todolist.title}}</button>
+		<!-- <div ng-repeat="todoitem in todolist.items">
 		    <input type="checkbox" style="display:inline-block;">
 		    <h2 style="display:inline-block;">{{todoitem.item}}</h2>
 		    <p>{{todoitem.description}}</p>
@@ -23,6 +25,11 @@
 		        	<li ng-repeat="item in todoitem.list.items">{{item}}</li>
 		        </ol>
 		    </div>
-		</div>
+		</div> -->
+	</div>
+	<div>
+		<h1>Create a new To Do List:</h1>
+		<p>{{$ctrl.prodUrl}}<create-todolist user="$ctrl.currentUser"></create-todolist></p>
+		
 	</div>
 </div>

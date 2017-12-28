@@ -1,15 +1,14 @@
 simpleToDoApp.component('userlists', {
 	templateUrl: '/js/userlists/userlists.template.html',
-	controller: function userlistsController($stateParams, userService, todolistService) {
+	controller: function userlistsController($stateParams, userService, todolistService, PROD_URL) {
 	    
-	    this.$onInit = function () {
-	    	console.log(this.currentUser.username) //We can only use our bindings inside of our controllers $onInit
+	    this.$onInit = function () { //We can only use our bindings inside of our controllers $onInit  
+	    	this.prodUrl = PROD_URL;
+		    todolistService.getTodolists(this.currentUser._id)
+		    .then((populatedUser)=>{
+		    	this.todolists = populatedUser.todolists;
+		    })
 	    }
-
-	    // todolistService.getTodolists()
-	    // .then((data)=>{
-	    // 	this.todolists = data;
-	    // })
 
 	},
 	bindings:{

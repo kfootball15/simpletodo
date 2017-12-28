@@ -8,11 +8,11 @@ var schema = new mongoose.Schema({
     email: {
         type: String,
         unique: true
-    }
-    // todolists: [{
-    //     type: mongoose.Schema.Types.ObjectId,
-    //     ref: 'Todolist'
-    // }] //This is a reference to todolist model, and will be an array of todolists
+    },
+    todolists: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Todolist'
+    }]
 });
 
 // Example pre hook

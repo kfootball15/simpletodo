@@ -1,6 +1,7 @@
 var simpleToDoApp = angular.module('simpleToDoApp', ['ui.router']);
 
-simpleToDoApp.config(function($stateProvider){
+simpleToDoApp
+.config(function($locationProvider, $stateProvider){
 	// Application States
 	$stateProvider
 	.state('home', {
@@ -50,10 +51,7 @@ simpleToDoApp.config(function($stateProvider){
 	 //    }
 	})
 
+	// This, along with <base href="/"> in our index.html, removes the angular !# url prefix
+	$locationProvider.html5Mode(true);
 })
-
-// simpleToDoApp.run(function($uiRouter) {
-//   var StateTree = window['ui-router-visualizer'].StateTree;
-//   var el = StateTree.create($uiRouter, null, { height: 100, width: 300 });
-//   el.className = 'statevis';
-// });
+.constant('PROD_URL', 'www.s2do.me/')

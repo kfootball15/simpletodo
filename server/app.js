@@ -38,10 +38,10 @@ app.use('/bower_components',  express.static(path.join(__dirname, '..', 'bower_c
 app.use('/js',  express.static(path.join(__dirname, '..', 'js')));
 
 // Api Routes
-app.use('/api', require('./routes'));
+app.use('/api', require('./api'));
 
 // Send Index File
-app.get('/', function (req, res) {
+app.get('/*', function (req, res) {
 	res
 		.status(200)
 		.sendFile(app.get('indexHTMLPath'));
