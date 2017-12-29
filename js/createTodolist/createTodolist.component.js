@@ -21,7 +21,7 @@ simpleToDoApp.component('createTodolist', {
 	    	todolistService.createTodolist(todolist)
 		    .then((todolist)=>{
 		    	// You could also use this opportunity to update the currentUsers todolist with the new todolist, BUT since we are rerouting our user anyway there is no need
-		    	$state.go('todolist', {userId: this.user._id, todolistId:todolist._id})
+		    	$state.go('todolist', {userId: this.user._id, todolistId: todolist._id})
 		    })
 	    }
 	},

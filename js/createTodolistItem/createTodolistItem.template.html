@@ -1,0 +1,35 @@
+<div>TODO LIST ITEM COMPONENT</div>
+<form
+	id="createTodolistItemForm" 
+	name="createTodolistItemForm"
+	ng-submit="$ctrl.createTodolistItem($ctrl.todolistItem)"
+	style="display:inline-block"
+	>
+
+	<input 
+		type="text" 
+		ng-model="$ctrl.todolistItem.item"
+		name="item"
+		placeholder="Item Name" 
+		required
+		>
+	<input 
+		type="text" 
+		ng-model="$ctrl.todolistItem.description"
+		name="description"
+		placeholder="Description" 
+		required
+		>
+<!-- 	<input 
+		type="text" 
+		ng-model="$ctrl.todolistItem.list"
+		name="list"
+		placeholder="List" 
+		required
+		> -->
+		
+	<span class="error" ng-show="createUserForm.input.$error.required">
+      You must enter something!</span>
+  	<input type="submit" id="submit" value="Create!" />
+
+</form>

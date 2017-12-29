@@ -21,22 +21,26 @@ simpleToDoApp
 					return user
 				})
 				.catch(function(err){
-					console.log("Heres where we fight!", err)
+					console.log("No User with that name!", err)
 				})
 			}
 		}
 	})
 	.state('todolist', {
 		url: '/:userId/:todolistId',
-		component: 'todolist'
-		// resolve: {
-	 //      loggedInUser: function (AuthService){
-	 //        return AuthService.getLoggedInUser()
-	 //      },
-	 //      allUsers: function(UserFactory) {
-	 //        return UserFactory.getAllUsers();
-	 //      }
-	 //    }
+		component: 'todolist',
+		resolve: {
+			currentUser: function ($stateParams, userService) {
+				//Resolve for the username entered into our URL paramters
+				return userService.getUser($stateParams.userId)
+				.then(function(user){
+					return user
+				})
+				.catch(function(err){
+					console.log("No User with that name:", err)
+				})
+			}
+		}
 	})
 	.state('todolistItem', {
 		url: '/:userId/:todolistId/:todolistItemId',

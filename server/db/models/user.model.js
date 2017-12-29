@@ -5,10 +5,6 @@ var schema = new mongoose.Schema({
     username: {
         type: String
     },
-    email: {
-        type: String,
-        unique: true
-    },
     todolists: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Todolist'

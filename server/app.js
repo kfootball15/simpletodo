@@ -1,4 +1,5 @@
 const express = require('express');
+const bodyParser = require('body-parser')
 const fs = require('fs');
 const path = require('path');
 const chalk = require('chalk');
@@ -9,6 +10,9 @@ const startDb = require('./db');
 
 // Configuration Variables are set here:
 require('./configure')(app)
+
+//lets us use req.body
+app.use(bodyParser.json());
 
 // Some Middleware where we can log some information from the user
 app.use((req, res, next)=>{

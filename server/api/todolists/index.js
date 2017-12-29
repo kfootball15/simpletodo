@@ -29,6 +29,17 @@ router.post('/:title/:ownerId', function(req, res, next) {
     .catch(next);
 });
 
+router.get('/:userId/:todolistId', function(req, res, next){
+	console.log("POST /api/userId/todolistId")
+	Todolist.findById(req.params.todolistId)
+	.populate('todos')
+	.exec()
+	.then(function(todolist){
+		res.status(200).send(todolist);
+	})
+	// res.sendFile(path.join(__dirname, '..', 'todolist.json'));
+})
+
 router.get('/:userId', function(req, res, next){
 	console.log("GET /" + req.params.userId)
 	//res.sendFile(path.join(__dirname, '..', 'todolists.json'));
@@ -42,10 +53,6 @@ router.get('/:userId', function(req, res, next){
 	.catch(next)
 })
 
-router.get('/:userId/:todolistId', function(req, res, next){
-	console.log("POST /api/userId/todolistId")
-	res.sendFile(path.join(__dirname, '..', 'todolist.json'));
-})
 
 // router.get('/:squareId', function(req, res, next){
 // 	Todolist.findById(req.params.squareId)

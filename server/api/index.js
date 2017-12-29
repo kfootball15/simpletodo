@@ -4,7 +4,7 @@ module.exports = router; //We MUST export our router so that it can be required 
 
 router.use('/users', require('./users/'))
 router.use('/todolists', require('./todolists/'));
-// router.use('/todos', require('./todos'));
+router.use('/todos', require('./todos'));
 
 // router.get('/:userId', function(req, res, next){
 // 	console.log("Got into: /api/userId")
