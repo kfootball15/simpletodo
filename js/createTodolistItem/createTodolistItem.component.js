@@ -3,17 +3,17 @@ simpleToDoApp.component('createTodolistItem', {
 	controller: function createTodolistItemController(todolistService, PROD_URL) {
 
 		this.$onInit = function () {
-			console.log(this.currentTodolistId)
 			this.todolistItem = {
-				owner: this.currentTodolistId
+				owner: this.currentTodolistId,
+				user: this.currentUser
 			}
+			console.log("Initial todolistitem", this.todolistItem);
 		}
 
 		this.createTodolistItem = (todolistItem) => {
-			console.log(todolistItem);
 			todolistService.createTodolistItem(todolistItem)
 			.then((todolistItem)=>{
-				//Push this newly created item into our user array? Somehow communicate this to parten controller (todolistController) on the userlists page
+				//Push this newly created item into our user array? Somehow communicate this to parent controller (todolistController) on the userlists page
 			})
 		}
 

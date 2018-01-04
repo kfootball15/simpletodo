@@ -5,16 +5,16 @@ simpleToDoApp.component('todolist', {
 		this.$onInit = function () { //We can only use our bindings inside of our controllers $onInit  
 	    	
 	    	this.currentUrl = PROD_URL + this.currentUser.username + '/';
-	    	this.todolistId = $stateParams.todolistId
+	    	
+	    	//Gets passed to the createTodoItem component
+	    	this.todolistTitle = $stateParams.todolistTitle;
 		   	
-		   	console.log("CurrentUser Todolists", this.currentUser)
-		   	todolistService.getTodolist(this.currentUser._id, $stateParams.todolistId)
-		    .then((data)=>{
-		    	this.todolist = data;
-		    })
-		    
+		   	todolistService.getTodolist(this.currentUser._id, $stateParams.todolistTitle)
+		    .then((todolist)=>{
+		    	console.log(todolist)
+		    	this.todolist = todolist;
+		    })   
 	    }
-
 	},
 	bindings: {
 		currentUser: '<' //Binds the currentUser to our component via the resolve method in app.js

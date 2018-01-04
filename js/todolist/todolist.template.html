@@ -1,7 +1,7 @@
 <div>
   <h1>{{$ctrl.todolist.title}}</h1>
-  <p>{{$ctrl.currentUrl}}<!-- <create-todolist-item user="$ctrl.currentUser"></create-todolist-item> --></p>
-  <div ng-repeat="todoitem in $ctrl.todolist.items">
+  <p>{{$ctrl.currentUrl}}</p>
+  <div ng-repeat="todoitem in $ctrl.todolist.todos">
     <input type="checkbox" style="display:inline-block;">
     <h2 style="display:inline-block;">{{todoitem.item}}</h2>
     <p>{{todoitem.description}}</p>
@@ -12,5 +12,5 @@
       </ol>
     </div>
   </div>
-  <create-todolist-item current-user="$ctrl.currentUser" current-todolist-id="$ctrl.todolistId"></create-todolist-item>
+  <create-todolist-item current-user="$ctrl.currentUser" current-todolist-id="$ctrl.todolistTitle"></create-todolist-item>
 </div>

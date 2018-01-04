@@ -11,27 +11,34 @@ function createTodo (todo) {
 	return Todo.create(todo)
 }
 
+function findTodolist (todolistTitle, todolistUserId) {
+	console.log("Find This Todolist by Title and Owner", todolistTitle)
+	return Todolist.findOne({title: todolistTitle, owner: todolistUserId})
+}
+
 router.get('/:todoId', function(req, res, next){
 	console.log("Got into: /api/userId/listId")
 	res.sendFile(path.join(__dirname, 'todolist.json'));
 })
 
-router.post('/:ownerId', function(req, res, next){
-	console.log("Got into: /api/userId/listId", req.params, req.body)
+router.post('/:ownerTitle/:userId', function(req, res, next){
+	console.log("Got into: /api/todos/userId/listId", req.params, req.body)
 	// res.sendFile(path.join(__dirname, 'todolist.json'));
-	createTodo(req.body)
+	findTodolist(req.params.ownerTitle, req.params.userId)
+	.then(function(foundTodolist){
+		if(foundTodolist){
+			req.body.owner = foundTodolist._id;
+			return createTodo(req.body);
+		}
+	})
 	.then(function(todo){
 		console.log("todo after create:", todo)
-		return Todolist.update({
-			_id: todo.owner
-		}),{
-    		$push: {
-    			'todolists': todo
-    		}
-    	}, function(err, info) {console.log("ERROR: ", err, info)}
+		return Todolist.update(	{ _id: todo.owner },
+								{ $push: { 'todos': todo } }, 
+								function(err, info) {console.log("ERROR: ", err, info)})
 	})
-	.then(function(updatedTodolist){
-
+	.catch(function(err){
+		console.log("ERROR:", err)
 	})
 })
 

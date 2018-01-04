@@ -12,9 +12,10 @@ simpleToDoApp.service('todolistService', function($http){
 		createTodolistItem (todolistItem) {
 			return $http({
 	            method: 'POST',
-	            url: '/api/todos/' + todolistItem.userId,
+	            url: '/api/todos/' + todolistItem.owner +'/'+ todolistItem.user._id,
 	            data: todolistItem
 	        }).then(function(response){
+	        	console.log("response", response)
 	            return response;
 	        })
 		},

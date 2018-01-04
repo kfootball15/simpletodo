@@ -27,7 +27,7 @@ simpleToDoApp
 		}
 	})
 	.state('todolist', {
-		url: '/:userId/:todolistId',
+		url: '/:userId/:todolistTitle',
 		component: 'todolist',
 		resolve: {
 			currentUser: function ($stateParams, userService) {
