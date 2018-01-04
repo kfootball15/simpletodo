@@ -7,41 +7,84 @@ module.exports = router;
 
 const path = require('path');
 
+function createUser (user) {
+	return User.create({
+		username: user.username,
+		email: user.username + "@gmail.com"
+	})
+}
 
 function createTodolist (todolist) {
 	return Todolist.create(todolist)
 }
 
-router.post('/:title/:ownerId', function(req, res, next) {
-	console.log("POST /" + req.params.title + "/" + req.params.ownerId);
+router.post('/:title/:owner', function(req, res, next) {
 
-    createTodolist(req.params)
+	var toSendTodolist;
+    //1. First we need to check if a todolist with this "username" already exists.
+    Todolist.find({title: req.params.title, owner: req.params.owner})
+    .then(function(todolistExists){
+        if(todolistExists[0]){
+            res.status(200).send(todolistExists[0]);
+        } else {
+            return createTodolist({ owner:req.params.owner, title: req.params.title})
+        }
+    })
     .then(function(newTodolist) {
-    	User.update({
-    		_id: req.params.ownerId
-    	},{
-    		$push: {
-    			'todolists': newTodolist
-    		}
-    	}, function(err, info) {console.log("ERROR: ", err, info)})
-        res.status(201).send(newTodolist);
+    	if(newTodolist){
+    		toSendTodolist = newTodolist;
+		    return User.update(	{ _id: req.params.owner },
+		    					{ $push: { 'todolists': newTodolist }}, 
+		    	                function(err, info) {console.log("ERROR Updating User: ", err, info)})
+    	}
+    })
+    .then(function(updatedUser){
+	    if(toSendTodolist) res.status(201).send(toSendTodolist);
     })
     .catch(next);
+
+
+    // var toSendTodolist;
+    // createTodolist({
+    // 	owner:req.params.owner,
+    // 	title: req.params.title})
+    // .then(function(newTodolist) {
+    // 	toSendTodolist = newTodolist;
+    	// return User.update({
+    	// 	_id: req.params.owner
+    	// },{
+    	// 	$push: {
+    	// 		'todolists': newTodolist
+    	// 	}
+    	// }, function(err, info) {console.log("ERROR Updating User: ", err, info)})
+        
+    // })
+    // .then(function(updatedUser){
+    // 	res.status(201).send(toSendTodolist);
+    // })
+    // .catch(next);
 });
 
-router.get('/:userId/:todolistId', function(req, res, next){
-	console.log("POST /api/userId/todolistId")
-	Todolist.findById(req.params.todolistId)
+router.get('/:userId/:todolistTitle', function(req, res, next){
+	console.log("title", req.params.todolistTitle, "owner", req.params.userId)
+	Todolist.find({title: req.params.todolistTitle, owner: req.params.userId})
 	.populate('todos')
 	.exec()
-	.then(function(todolist){
-		res.status(200).send(todolist);
+	.then(function(todolists){
+		console.log(todolists)
+		res.status(200).send(todolists);
 	})
-	// res.sendFile(path.join(__dirname, '..', 'todolist.json'));
+	// console.log(req.params)
+	// Todolist.find({title:req.params.todolistId, owner:req.params.userId})
+	// .populate('todos')
+	// .exec()
+	// .then(function(todolist){
+	// 	console.log("Get Todolist Singular:", todolist)
+	// 	res.status(200).send(todolist);
+	// })
 })
 
 router.get('/:userId', function(req, res, next){
-	console.log("GET /" + req.params.userId)
 	//res.sendFile(path.join(__dirname, '..', 'todolists.json'));
 	User.findById(req.params.userId)
 	.populate('todolists')

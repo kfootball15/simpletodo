@@ -11,12 +11,12 @@ simpleToDoApp
 	})
 	.state('userlists', {
 		cache: false,
-		url: '/:userId',
+		url: '/:username',
 		component: 'userlists',
 		resolve: {
 			currentUser: function ($stateParams, userService) {
 				//Resolve for the username entered into our URL paramters
-				return userService.getUser($stateParams.userId)
+				return userService.getUser($stateParams.username)
 				.then(function(user){
 					return user
 				})

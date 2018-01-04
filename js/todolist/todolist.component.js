@@ -8,7 +8,7 @@ simpleToDoApp.component('todolist', {
 	    	this.todolistId = $stateParams.todolistId
 		   	
 		   	console.log("CurrentUser Todolists", this.currentUser)
-		   	todolistService.getTodolist(this.currentUser.userId, $stateParams.todolistId)
+		   	todolistService.getTodolist(this.currentUser._id, $stateParams.todolistId)
 		    .then((data)=>{
 		    	this.todolist = data;
 		    })

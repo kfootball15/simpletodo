@@ -35,37 +35,19 @@ router.post('/:ownerId', function(req, res, next){
 	})
 })
 
-router.post('/:title/:ownerId', function(req, res, next) {
-	console.log("POST /" + req.params.title + "/" + req.params.ownerId);
+// router.post('/:title/:ownerId', function(req, res, next) {
+// 	console.log("POST /" + req.params.title + "/" + req.params.ownerId);
 
-    createTodolist(req.params)
-    .then(function(newTodolist) {
-    	User.update({
-    		_id: req.params.ownerId
-    	},{
-    		$push: {
-    			'todos': newTodolist
-    		}
-    	}, function(err, info) {console.log("ERROR: ", err, info)})
-        res.status(201).send(newTodolist);
-    })
-    .catch(next);
-});
-
-// router.get('/:squareId', function(req, res, next){
-// 	Todolist.findById(req.params.squareId)
-//     .populate('creator')
-// 	.then(function(square){
-// 		res.status(200).send(square);
-// 	})
-// 	.catch(next)
-// })
-
-
-// router.put('/:squareId', function(req, res, next){
-// 	Todolist.findByIdAndUpdate(req.params.squareId, {$set: {'finalImage': req.body.finalImage}}, {new: true})
-// 	.then(function(updatedSquare){
-// 		res.status(200).send(updatedSquare);
-// 	})
-// 	.catch(next);
-// })
+//     createTodolist(req.params)
+//     .then(function(newTodolist) {
+//     	User.update({
+//     		_id: req.params.ownerId
+//     	},{
+//     		$push: {
+//     			'todos': newTodolist
+//     		}
+//     	}, function(err, info) {console.log("ERROR: ", err, info)})
+//         res.status(201).send(newTodolist);
+//     })
+//     .catch(next);
+// });

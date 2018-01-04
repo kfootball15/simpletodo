@@ -6,11 +6,9 @@ simpleToDoApp.component('createUser', {
 	    	username: ""
 	    }
 	    this.createUser = (user) => {
-	    	console.log("angular:", user.username)
 	    	userService.createUser(user.username)
-		    .then((data)=>{
-		    	console.log("data:", data.username);
-		    	$state.go('userlists', {userId: data.username});
+		    .then((fetchedUser)=>{
+		    	$state.go('userlists', {username: fetchedUser.username});
 		    })
 	    }
 	}

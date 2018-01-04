@@ -14,22 +14,18 @@
 
 	<div ng-repeat="todolist in $ctrl.todolists">
 		    <input type="checkbox" style="display:inline-block;">
-		    <button style="display:inline-block">{{todolist.title}}</button>
-		<!-- <div ng-repeat="todoitem in todolist.items">
-		    <input type="checkbox" style="display:inline-block;">
-		    <h2 style="display:inline-block;">{{todoitem.item}}</h2>
-		    <p>{{todoitem.description}}</p>
-		    <div ng-if="todoitem.list">
-		        <h3>{{todoitem.list.title}}</h3>
-		        <ol>
-		        	<li ng-repeat="item in todoitem.list.items">{{item}}</li>
-		        </ol>
-		    </div>
-		</div> -->
+
+		    <!-- TODOLIST BUTTON -->
+		    <!-- Route to todolist -->
+		    <button ui-sref="todolist({userId: $ctrl.currentUser.username, todolistId: todolist.title})" style="display:inline-block">{{todolist.title}}</button>
+
+		    <!-- DELETE BUTTON -->
+		    <!-- TODO: Delete Function -->
+		    <input type="button" value="X" style="display:inline-block;">
 	</div>
 	<div>
 		<h1>Create a new To Do List:</h1>
-		<p>{{$ctrl.prodUrl}}<create-todolist user="$ctrl.currentUser"></create-todolist></p>
+		<p>{{$ctrl.prodUrl}}{{$ctrl.currentUser.username}}/<create-todolist user="$ctrl.currentUser"></create-todolist></p>
 		
 	</div>
 </div>
