@@ -14,9 +14,8 @@ simpleToDoApp.service('todolistService', function($http){
 	            method: 'POST',
 	            url: '/api/todos/' + todolistItem.owner +'/'+ todolistItem.user._id,
 	            data: todolistItem
-	        }).then(function(response){
-	        	console.log("response", response)
-	            return response;
+	        }).then(function(newTodolistItem){
+	            return newTodolistItem.data;
 	        })
 		},
 		getTodolist (userId, listTitle) {
@@ -31,11 +30,17 @@ simpleToDoApp.service('todolistService', function($http){
 		getTodolists (userId) {
 			return $http.get('/api/todolists/' + userId)
 			.then(function(populatedUser){
-				return populatedUser.data;
+				return populatedUser.data.todolists;
 			})
 			.catch(function(err){
 				console.log(err);
 			})
+		},
+		deleteTodolist(selectedTodolist){
+			return $http.delete('/api/todolists/' + selectedTodolist._id)
+		},
+		deleteTodolistItem(selectedItem){
+			return $http.delete('/api/todos/' + selectedItem._id)
 		}
 	};
 	return service;

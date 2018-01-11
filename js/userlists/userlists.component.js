@@ -5,9 +5,24 @@ simpleToDoApp.component('userlists', {
 	    this.$onInit = function () { //We can only use our bindings inside of our controllers $onInit  
 	    	this.prodUrl = PROD_URL;
 		    todolistService.getTodolists(this.currentUser._id)
-		    .then((populatedUser)=>{
-		    	this.todolists = populatedUser.todolists;
+		    .then((todolists)=>{
+		    	this.todolists = todolists;
 		    })
+	    }
+
+	    this.deleteTodolist = function (selectedTodolist) {
+	    	todolistService.deleteTodolist(selectedTodolist)
+	    	.then(() => {
+	    		for (var i = this.todolists.length - 1; i >= 0; i--) {
+	    		 	if(this.todolists[i]._id === selectedTodolist._id) {
+	    		 		this.todolists.splice(i, 1);
+	    		 		return;
+	    		 	}
+	    		 }
+	    	})
+	    	.catch(err => {
+	    		console.log(err)
+	    	})
 	    }
 
 	},

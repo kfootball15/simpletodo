@@ -28,7 +28,6 @@ router.get('/:username', function(req, res, next){
 	//If the user has typed a username into the URL, we want to either find that username or (if it does not exist) we want to create that username
 	User.findOne(req.params)
 	.then(function(user){
-		console.log("Found User", user)
 		if (user) res.status(200).send(user); //User exists, so lets send it
 		else return createUser(req.params); //User does not exist, so lets create it
 	})

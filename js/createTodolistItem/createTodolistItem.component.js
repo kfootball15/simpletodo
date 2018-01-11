@@ -7,19 +7,26 @@ simpleToDoApp.component('createTodolistItem', {
 				owner: this.currentTodolistId,
 				user: this.currentUser
 			}
-			console.log("Initial todolistitem", this.todolistItem);
 		}
+
+		this.refreshForm = function () {
+			this.todolistItem.description = '';
+			this.todolistItem.item = '';
+		}
+
 
 		this.createTodolistItem = (todolistItem) => {
 			todolistService.createTodolistItem(todolistItem)
-			.then((todolistItem)=>{
-				//Push this newly created item into our user array? Somehow communicate this to parent controller (todolistController) on the userlists page
+			.then((newItem)=>{
+				this.refreshList({newItem:newItem});
+				this.refreshForm();
 			})
 		}
 
 	},
 	bindings: {
 		currentUser: '<',
-		currentTodolistId: '<'
+		currentTodolistId: '<', //Data Binding Issues and Resolutions: https://medium.com/front-end-hacking/angularjs-component-binding-types-my-experiences-10f354d4660
+		refreshList: '&' // Function Bindings: http://www.codelord.net/2016/05/13/understanding-angulars-and-binding/
 	}
 });

@@ -16,12 +16,10 @@
 		    <input type="checkbox" style="display:inline-block;">
 
 		    <!-- TODOLIST BUTTON -->
-		    <!-- Route to todolist -->
 		    <button ui-sref="todolist({userId: $ctrl.currentUser.username, todolistTitle: todolist.title})" style="display:inline-block">{{todolist.title}}</button>
 
 		    <!-- DELETE BUTTON -->
-		    <!-- TODO: Delete Function -->
-		    <input type="button" value="X" style="display:inline-block;">
+		    <input type="button" value="X" ng-click="$ctrl.deleteTodolist(todolist)" style="display:inline-block;">
 	</div>
 	<div>
 		<h1>Create a new To Do List:</h1>

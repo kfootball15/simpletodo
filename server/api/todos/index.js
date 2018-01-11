@@ -12,18 +12,17 @@ function createTodo (todo) {
 }
 
 function findTodolist (todolistTitle, todolistUserId) {
-	console.log("Find This Todolist by Title and Owner", todolistTitle)
 	return Todolist.findOne({title: todolistTitle, owner: todolistUserId})
 }
 
 router.get('/:todoId', function(req, res, next){
-	console.log("Got into: /api/userId/listId")
 	res.sendFile(path.join(__dirname, 'todolist.json'));
 })
 
+//createTodolistItem
 router.post('/:ownerTitle/:userId', function(req, res, next){
-	console.log("Got into: /api/todos/userId/listId", req.params, req.body)
-	// res.sendFile(path.join(__dirname, 'todolist.json'));
+	var newTodo;
+
 	findTodolist(req.params.ownerTitle, req.params.userId)
 	.then(function(foundTodolist){
 		if(foundTodolist){
@@ -32,29 +31,24 @@ router.post('/:ownerTitle/:userId', function(req, res, next){
 		}
 	})
 	.then(function(todo){
-		console.log("todo after create:", todo)
+		newTodo = todo;
 		return Todolist.update(	{ _id: todo.owner },
-								{ $push: { 'todos': todo } }, 
-								function(err, info) {console.log("ERROR: ", err, info)})
+								{ $push: { 'todos': todo } })
+	})
+	.then(function(updatedTodolist){
+		res.status(201).send(newTodo)
 	})
 	.catch(function(err){
 		console.log("ERROR:", err)
 	})
 })
 
-// router.post('/:title/:ownerId', function(req, res, next) {
-// 	console.log("POST /" + req.params.title + "/" + req.params.ownerId);
-
-//     createTodolist(req.params)
-//     .then(function(newTodolist) {
-//     	User.update({
-//     		_id: req.params.ownerId
-//     	},{
-//     		$push: {
-//     			'todos': newTodolist
-//     		}
-//     	}, function(err, info) {console.log("ERROR: ", err, info)})
-//         res.status(201).send(newTodolist);
-//     })
-//     .catch(next);
-// });
+router.delete('/:todoId', function(req, res, next){
+	Todo.find({_id:req.params.todoId})
+	.remove()
+	.exec()
+	.then((deletedItem) => {
+		res.status(202).send(deletedItem)
+	})
+	.catch(next)
+})

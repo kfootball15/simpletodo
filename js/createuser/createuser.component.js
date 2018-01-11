@@ -1,7 +1,6 @@
 simpleToDoApp.component('createUser', {
 	templateUrl: '/js/createuser/createuser.template.html',
 	controller: function createUserController(userService, $state) {
-	    this.test = "Create User Component";
 	    this.user = {
 	    	username: ""
 	    }
