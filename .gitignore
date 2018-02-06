@@ -1,6 +1,5 @@
 node_modules/
 server/playground
-server/env
 server/logs
 js/todolist.json
 js/todolists.json

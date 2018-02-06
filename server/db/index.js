@@ -10,6 +10,8 @@ var db = mongoose.connect(DATABASE_URI,{
 	useMongoClient: true
 })
 
+
+
 // Promises returned from mongoose queries/operations are BLUEBIRD promises
 mongoose.Promise = Promise;
 
@@ -23,6 +25,7 @@ var startDbPromise = new Promise(function (resolve, reject) {
     db.on('open', function () {
     	resolve(db);
     });
+    db.on('error', console.error.bind(console, 'connection error:'));
     db.on('error', reject);
 });
 
