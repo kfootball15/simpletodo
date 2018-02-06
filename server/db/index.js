@@ -36,10 +36,4 @@ console.log(chalk.yellow('Opening connection to MongoDB . . .'));
 
 module.exports = mongoose.connect(DATABASE_URI,{
 	useMongoClient: true
-}).then(
-  	() => { 
-  		/** ready to use. The `mongoose.connect()` promise resolves to undefined. */
-  		console.log(chalk.green('MongoDB connection opened!'))
-	},
-  	err => { console.log(chalk.red('MongoDB Error!'))  }
-)
+})

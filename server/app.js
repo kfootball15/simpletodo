@@ -62,7 +62,13 @@ var startServer = function () {
 };
 
 
-startDb.then(startServer).catch(function (err) {
+startDb
+.then(function(){
+  		console.log(chalk.green('MongoDB connection opened!!!'))
+  		startServer();
+	}, err => { console.log(chalk.red('MongoDB Error!'))  }
+)
+.catch(function (err) {
     console.error(chalk.red(err.stack));
     process.kill(1);
 });
