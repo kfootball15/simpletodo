@@ -1,11 +1,11 @@
 'use strict';
 //var Promise = require('bluebird');
-var path = require('path');
-var chalk = require('chalk');
+const path = require('path');
+const chalk = require('chalk');
 
 var DATABASE_URI = require(path.join(__dirname, '..', 'env')).DATABASE_URI;
 
-var mongoose = require('mongoose');
+const mongoose = require('mongoose');
 // var db = mongoose.connect(DATABASE_URI,{
 // 	useMongoClient: true
 // })
@@ -27,7 +27,7 @@ require('./models');
 // });
 
 console.log(chalk.yellow('Opening connection to MongoDB . . .'));
-console.log(DATABASE_URI, process.env.NODE_ENV)
+console.log(DATABASE_URI, path.join(__dirname, '..', 'env'),  process.env.NODE_ENV)
 
 
 // (function () {
