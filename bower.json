@@ -1,7 +1,7 @@
 {
   "name": "simpletodo",
   "description": "simple todo list project",
-  "main": "server/index.html",
+  "main": "server/app.js",
   "authors": [
     "kfootball15 <fenster.js@gmail.com>"
   ],

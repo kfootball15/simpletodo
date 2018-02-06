@@ -1,7 +1,7 @@
 {
-  "name": "portfolio",
+  "name": "simpletodo",
   "version": "1.0.0",
-  "description": "Portfolio Project",
+  "description": "simple to do project",
   "main": "server/app.js",
   "scripts": {
     "test": "mocha",
