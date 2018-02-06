@@ -5,7 +5,8 @@
   "main": "server/app.js",
   "scripts": {
     "test": "mocha",
-    "start": "nodemon ./server/app.js --ignore 'server/logs/*.json'",
+    "start": "node ./server/app.js",
+    "localstart": "nodemon ./server/app.js --ignore 'server/logs/*.json'", 
     "postinstall": "./node_modules/bower/bin/bower install"
   },
   "author": "",

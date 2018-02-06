@@ -14,4 +14,6 @@ Push To it:
 		git remote add heroku <heroku git link>
 		git push heroku
 To Open the website:
-	Heroku Open
+	heroku open
+If There are Heroku Errors, run:
+	heroku logs
