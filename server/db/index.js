@@ -3,7 +3,7 @@
 const path = require('path');
 const chalk = require('chalk');
 
-var DATABASE_URI = require(path.join(__dirname, '..', 'env')).DATABASE_DB;
+var DATABASE_URI = require(path.join(__dirname, '..', 'env')).DATABASE_URI;
 
 const mongoose = require('mongoose');
 // var db = mongoose.connect(DATABASE_URI,{

@@ -6,6 +6,6 @@
  */
 
 module.exports = {
-    "DATABASE_DB": process.env.MONGOLAB_URI,
+    "DATABASE_URI": process.env.DATABASE_DB,
     "SESSION_SECRET": process.env.SESSION_SECRET,
 };
