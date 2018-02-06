@@ -7,6 +7,7 @@ var schema = new mongoose.Schema({
     item: String,
     description: String,
     list: [String],
+    isCompleted: Boolean,
     owner: { //These todo items will be owned by specific lists
         type: mongoose.Schema.Types.ObjectId,
         ref: 'todolist'

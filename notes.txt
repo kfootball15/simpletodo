@@ -1,8 +1,24 @@
-//SPA Applications (single page)
-	// You no longer need to reload the entire application to change pages or update applicaiton model, just the part of the page you are changing
-	// Keeps track of history, so you can still use back button
+// -- TODO -- \\
++ implement SASS into project
++ Style Todolist Page
++ Style Todolist Item Page
++ Style Home Page
++ Add Model Property to Todo Items 
+	+completed: true/false
++ Track completed todo items
+	+ Kind of like "Completed" reminders in apple
+	+ Ability to "undo" and return completed reminders to incomplete
+	+ Show/Hide completed Todo div (Kind of like accordian style)
++ Host on domain
+	+ Start hosting after all ABOVE have been completed 
++ username and todolist title Validation ?
+	+ Do not allow users to enter certain characters or numbers
++ Add Todolist features
+	+ Location
+	+ Lists inside of Todolists (kind of like collections of todos within todolists that you can still checkOff one at a time)
 
-
+// -- DEFECTS -- \\
+// URLs ending in '/' will create blank users and blank todolists
 
 
 //Angular 1.6
