@@ -3,9 +3,7 @@ var devConfigPath = path.join(__dirname, 'development.js');
 var productionConfigPath = path.join(__dirname, 'production.js');
 
 if (process.env.NODE_ENV === 'production') {
-	var productionPath = require(productionConfigPath);
-	console.log("At least we got here...", productionPath)
-    module.exports = productionPath;
+    module.exports = require(productionConfigPath);
 } else {
     module.exports = require(devConfigPath);
 }
