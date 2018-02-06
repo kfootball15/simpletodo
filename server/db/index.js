@@ -25,7 +25,6 @@ var startDbPromise = new Promise(function (resolve, reject) {
     db.on('open', function () {
     	resolve(db);
     });
-    db.on('error', console.error.bind(console, 'connection error:'));
     db.on('error', reject);
 });
 
