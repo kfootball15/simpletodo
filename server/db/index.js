@@ -27,6 +27,7 @@ require('./models');
 // });
 
 console.log(chalk.yellow('Opening connection to MongoDB . . .'));
+console.log(DATABASE_URI, process.env.NODE_ENV)
 
 
 // (function () {
