@@ -1,0 +1,22 @@
+{
+  "name": "simpletodo",
+  "description": "simple todo list project",
+  "main": "server/index.html",
+  "authors": [
+    "kfootball15 <fenster.js@gmail.com>"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/kfootball15/simpletodo",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "^1.6.9",
+    "angular-ui-router": "1.0.8",
+    "bootstrap": "^4.0.0"
+  }
+}
