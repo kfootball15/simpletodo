@@ -11,7 +11,7 @@ const mongoose = require('mongoose');
 // })
 
 // Promises returned from mongoose queries/operations are BLUEBIRD promises
-mongoose.Promise = Promise;
+// mongoose.Promise = Promise;
 
 // Require our models -- these should register the model into mongoose
 // so the rest of the application can simply call mongoose.model('User')
