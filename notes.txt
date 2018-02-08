@@ -1,51 +1,56 @@
+// -- ---- -- \\
 // -- TODO -- \\
-+ implement SASS into project
-+ Style Todolist Page
-+ Style Todolist Item Page
-+ Style Home Page
-+ Add Model Property to Todo Items 
-	+completed: true/false
-+ Track completed todo items
-	+ Kind of like "Completed" reminders in apple
-	+ Ability to "undo" and return completed reminders to incomplete
-	+ Show/Hide completed Todo div (Kind of like accordian style)
-+ Host on domain
-	+ Start hosting after all ABOVE have been completed 
-+ username and todolist title Validation ?
-	+ Do not allow users to enter certain characters or numbers
-+ Add Todolist features
-	+ Location
-	+ Lists inside of Todolists (kind of like collections of todos within todolists that you can still checkOff one at a time)
+// -- ---- -- \\
+	[x] Create Directives for editing/deleting todo items and todolists
+		[x] Todolist Directive
+		[x] Todo Item Directive
+	[] Proper Forms for creating Todolists and Todo Items
+		[] Todolist Form
+		[] Todoitem Form
+	[] Todolist Items should be able to be edited (title, description, complete:true/false) and rearranged
+		[] edit item
+		[] rearrange order of items
+		[] isComplete: true/false
+	[] Todolists should be able to be edited (title, isComplete) and rearranged
+		[] edit item
+		[] rearrange order of items
+		[] isComplete: true/false
+	[] Creating a Todolist and todolistitem straight from the URL does NOT work yet
+	[] Nav component that lets you go backwards
+	[] Implement SASS into project
+		[] Implement Sass
+		[] Style Todolist Page
+		[] Style Todolist Item Page
+		[] Style Home Page
+	[] Add Model Property to Todo Items 
+		[] completed: true/false
+	[] Track completed todo items
+		[] Kind of like "Completed" reminders in apple
+		[] Ability to "undo" and return completed reminders to incomplete
+		[] Show/Hide completed Todo div (Kind of like accordian style)
 
+	//--AFTER COMPLETING ABOVE, HOST ON DOMAIN AND DO BELOW:--\\
+
+	[] Testing (end to end testing, other types)
+		[] Jasmine/Karma/Mocha/Chai
+	[] username and todolist title Validation ?
+		[] Do not allow users to enter certain characters or numbers
+	[] Add Todolist features
+		[] Location
+		[] Lists inside of Todolists (kind of like collections of todos within todolists that you can still checkOff one at a time)
+	[] Optimize the website
+		[] Cache images and JS scipts and pages
+		[] Utilize Local Storage over Cookies to reduce bandwidth of HTTP requests
+		[] minify and uglify JS code
+		[] use gulp or webpack to minify files and build everything out
+
+	//-- Reach Goals --\\
+	[] Make the project open source so others can add to it
+
+
+
+// -- ------- -- \\
 // -- DEFECTS -- \\
-// URLs ending in '/' will create blank users and blank todolists
-
-
-//Angular 1.6
-
-// Angular Modules
-	// Angular modules are just like a container for:
-		// Controllers
-		// Routes
-		// Factories/Services
-		// Directives
-		// Filters
-	// You can break different parts of your application into different containers
-
-// Angular Directives
-	ng-app // Is an example of an HTML directive
-	<html ng-app>
-
-	//  
-
-// Angular Initialization (or bootstrapping)
-	
-	// You can bootstrap (initialize) your applicaiton manually by using ng-app like so:
-		<html ng-app=ng-app="simpleToDoApp">
-
-	// Three important things oc
-		//1. The injector that will be used for dependency injection is created.
-
-		//2. The injector will then create the root scope that will become the context for the model of our application.
-
-		//3. AngularJS will then "compile" the DOM starting at the ngApp root element, processing any directives and bindings found along the way.
+// -- ------- -- \\
+	[] URLs ending in '/' will create blank users and blank todolists
+	[] Creating a Todolist and todolistitem straight from the URL does NOT work yet

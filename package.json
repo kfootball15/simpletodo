@@ -5,7 +5,7 @@
   "main": "server/app.js",
   "scripts": {
     "test": "mocha",
-    "start": "nodemon ./server/app.js --ignore 'server/logs/*.json'",
+    "start": "sass --watch ./styles:public/styles & nodemon ./server/app.js --ignore 'server/logs/*.json'",
     "postinstall": "./node_modules/bower/bin/bower install"
   },
   "author": "",

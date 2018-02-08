@@ -1,0 +1,9 @@
+<div ng-repeat="todolist in usertodolists">
+	    <input type="checkbox" style="display:inline-block;">
+
+	    <!-- TODOLIST BUTTON -->
+	    <button ui-sref="todolist({userId: userId, todolistTitle: todolist.title})" style="display:inline-block">{{todolist.title}}</button>
+
+	    <!-- DELETE BUTTON -->
+	    <input type="button" value="X" ng-click="deleteTodolist(todolist)" style="display:inline-block;">
+</div>

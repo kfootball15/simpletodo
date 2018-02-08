@@ -1,0 +1,12 @@
+<div>
+  <h1>{{$ctrl.todolist.title}}</h1>
+  <p>{{$ctrl.currentUrl}}</p>
+  <todos
+      todos="$ctrl.todolist.todos"
+      ></todos>
+  <create-todolist-item 
+      current-user="$ctrl.currentUser" 
+      current-todolist-id="$ctrl.todolistTitle"
+      refresh-list="$ctrl.refreshList(newItem)"
+      ></create-todolist-item>
+</div>

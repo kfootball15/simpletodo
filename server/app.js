@@ -40,6 +40,7 @@ app.use((req, res, next)=>{
 // Serve our static public directory
 app.use('/bower_components',  express.static(path.join(__dirname, '..', 'bower_components')));
 app.use('/js',  express.static(path.join(__dirname, '..', 'js')));
+app.use('/public',  express.static(path.join(__dirname, '..', 'public')));
 
 // Api Routes
 app.use('/api', require('./api'));

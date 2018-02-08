@@ -5,6 +5,8 @@ To run:
 	Must have nodemon installed (npm install -g nodemon)
 	Must have mongo instance running
 
+	npm start (will run sass to compile css and node <app.js>)
+
 To Push to Heroku:
 Heroku Needs a Git Repository, create one:
 	heroku create

@@ -7,6 +7,7 @@ var schema = new mongoose.Schema({
         type: String,
         required: true
     },
+    isCompleted: Boolean,
     todos: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Todo'

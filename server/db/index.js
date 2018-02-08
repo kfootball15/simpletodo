@@ -1,10 +1,12 @@
 'use strict';
+const blueBirdPromise = require('bluebird')
 const path = require('path');
 const chalk = require('chalk');
 
 var DATABASE_URI = require(path.join(__dirname, '..', 'env')).DATABASE_URI;
 
 const mongoose = require('mongoose');
+mongoose.Promise = blueBirdPromise;
 
 // Require our models -- these should register the model into mongoose
 // so the rest of the application can simply call mongoose.model('User')

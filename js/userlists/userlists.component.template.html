@@ -1,0 +1,14 @@
+<div>
+  <p>by {{$ctrl.currentUser.username}}</p>
+
+	<todolists
+		userId="$ctrl.currentUser.username"
+		usertodolists="$ctrl.todolists"
+		deleteTodolist="$ctrl.deleteTodolist"
+		></todolists>
+
+	<div>
+		<h1>Create a new To Do List:</h1>
+		<p>{{$ctrl.prodUrl}}{{$ctrl.currentUser.username}}/<create-todolist user="$ctrl.currentUser"></create-todolist></p>
+	</div>
+</div>
