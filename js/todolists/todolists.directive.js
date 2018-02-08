@@ -1,13 +1,14 @@
 simpleToDoApp.directive('todolists', function(todolistService){
 	return {
 		restrict: 'E',
-		templateUrl: '/js/userlists/todolists.directive.template.html',
+		templateUrl: '/js/todolists/todolists.directive.template.html',
 		scope:{
-			userId: "=",
+			username: "=",
 			usertodolists: "=",
 			deleteTodolist: "&"
 		},
 		link: function (scope, element, attrs) {
+		    	console.log(scope.username, scope.usertodolists)
 		    scope.deleteTodolist = function (selectedTodolist) {
 		    	todolistService.deleteTodolist(selectedTodolist)
 		    	.then(() => {

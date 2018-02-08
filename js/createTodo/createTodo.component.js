@@ -1,5 +1,5 @@
-simpleToDoApp.component('createTodolistItem', {
-	templateUrl: '/js/createTodolistItem/createTodolistItem.template.html',
+simpleToDoApp.component('createTodo', {
+	templateUrl: '/js/createTodo/createTodo.template.html',
 	controller: function createTodolistItemController(todolistService, PROD_URL) {
 
 		this.$onInit = function () {

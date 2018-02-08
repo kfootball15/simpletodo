@@ -2,7 +2,7 @@
 	    <input type="checkbox" style="display:inline-block;">
 
 	    <!-- TODOLIST BUTTON -->
-	    <button ui-sref="todolist({userId: userId, todolistTitle: todolist.title})" style="display:inline-block">{{todolist.title}}</button>
+	    <button ui-sref="todolist({userId: username, todolistTitle: todolist.title})" style="display:inline-block">{{todolist.title}}</button>
 
 	    <!-- DELETE BUTTON -->
 	    <input type="button" value="X" ng-click="deleteTodolist(todolist)" style="display:inline-block;">

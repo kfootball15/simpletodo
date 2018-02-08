@@ -15,7 +15,7 @@
 		[] edit item
 		[] rearrange order of items
 		[] isComplete: true/false
-	[] Creating a Todolist and todolistitem straight from the URL does NOT work yet
+	[] Creating a Todolist and todolistitem straight from the URL does NOT work yet (it will create a todolist but it does NOT save for the user)
 	[] Nav component that lets you go backwards
 	[] Implement SASS into project
 		[] Implement Sass

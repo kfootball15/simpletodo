@@ -9,10 +9,10 @@ simpleToDoApp
 		url:'/',
 		component: 'home'
 	})
-	.state('userlists', {
+	.state('todolists', {
 		cache: false,
 		url: '/:username',
-		component: 'userlists',
+		component: 'todolistsComponent',
 		resolve: {
 			currentUser: function ($stateParams, userService) {
 				//Resolve for the username entered into our URL paramters
@@ -42,18 +42,10 @@ simpleToDoApp
 			}
 		}
 	})
-	.state('todolistItem', {
-		url: '/:userId/:todolistId/:todolistItemId',
-		component: 'todolistItem'
-		// resolve: {
-	 //      loggedInUser: function (AuthService){
-	 //        return AuthService.getLoggedInUser()
-	 //      },
-	 //      allUsers: function(UserFactory) {
-	 //        return UserFactory.getAllUsers();
-	 //      }
-	 //    }
-	})
+	// .state('todolistItem', {
+	// 	url: '/:userId/:todolistId/:todolistItemId',
+	// 	component: 'todolistItem'
+	// })
 
 	// This, along with <base href="/"> in our index.html, removes the angular !# url prefix
 	$locationProvider.html5Mode(true);
