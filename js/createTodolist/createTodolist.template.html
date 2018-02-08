@@ -8,7 +8,7 @@
 	<div class="input-container">
 		<input 
 			type="text" 
-			ng-class="{'ng-invalid': true}"
+			autocomplete="off"
 			ng-model="$ctrl.todolist.title"
 			name="username"
 			placeholder="Title" 
@@ -20,7 +20,8 @@
 			
 	  	<input 
 	  		ng-disabled="createTodolistForm.$invalid" 
-	  		ng-class="{'disabled-button': createTodolistForm.$invalid, 'enabled-button': createTodolistForm.$valid}"type="submit" 
+	  		ng-class="{'disabled-button': createTodolistForm.$invalid, 'enabled-button': createTodolistForm.$valid}" 
+	  		type="submit" 
 	  		id="submit" 
 	  		value="Create!" />
   	</div>

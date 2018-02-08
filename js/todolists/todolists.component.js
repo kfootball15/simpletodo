@@ -3,7 +3,6 @@ simpleToDoApp.component('todolistsComponent', {
 	controller: function todolistsController($stateParams, userService, todolistService, PROD_URL) {
 	    
 	    this.$onInit = function () { //We can only use our bindings inside of our controllers $onInit  
-	    	console.log(this.currentUser.username)
 	    	//Create Current URL(For display)
 	    	this.prodUrl = PROD_URL;
 
@@ -11,6 +10,7 @@ simpleToDoApp.component('todolistsComponent', {
 		    todolistService.getTodolists(this.currentUser._id)
 		    .then((todolists)=>{
 		    	this.todolists = todolists;
+		    	this.todolistsReversed = this.todolists.reverse()
 		    })
 		    
 	    }

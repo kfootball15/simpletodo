@@ -11,6 +11,7 @@
 			type="text" 
 			name="username"
 			placeholder="Enter a username" 
+			autocomplete="off"
 	  		class="inline-input"
 			ng-model="$ctrl.user.username"
 			ng-minlength="3"
@@ -31,10 +32,12 @@
   	 	class="error-messages">
         <p 
         	ng-message="required || minlength || maxlength">
-        		Your 'username' must be between 3 and 20 characters</p>
+        		Your 'username' must be between 3 and 20 characters
+    		</p>
         <p 
         	ng-message="validUsername">
-        		Your 'username' can only contain letters and numbers, no special characters</p>
+        		Your 'username' can only contain letters and numbers, no special characters
+        	</p>
     </div>
 
 </form>

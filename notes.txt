@@ -4,9 +4,9 @@
 	[x] Create Directives for editing/deleting todo items and todolists
 		[x] Todolist Directive
 		[x] Todo Item Directive
-	[] Proper Forms for creating Todolists and Todo Items
-		[] createUser Form
-			[] modal if username exists ("This name exists. Do you want to see this users todolists or do you want to create a new one?")
+	[x] Proper Forms for creating Todolists and Todo Items
+		[x] createUser Form
+			[***] modal if username exists ("This name exists. Do you want to see this users todolists or do you want to create a new one?")
 			[x] enable/disable go button
 		[x] Todolist Form
 		[x] Todoitem Form
@@ -15,7 +15,8 @@
 		[] rearrange order of items
 		[] isComplete: true/false
 	[] Todolists should be able to be edited (title, isComplete) and rearranged
-		[] edit item
+		[x] edit title
+		[] Validation of form
 		[] rearrange order of items
 		[] isComplete: true/false
 	[] Creating a Todolist and todolistitem straight from the URL does NOT work yet (it will create a todolist but it does NOT save for the user)
@@ -58,3 +59,4 @@
 	[] URLs ending in '/' will create blank users and blank todolists
 	[] Creating a Todolist and todolistitem straight from the URL does NOT work yet
 	[] Creating a user from the create-user component on home page will overwrite an existing user
+		[***] modal if username exists ("This name exists. Do you want to see this users todolists or do you want to create a new one?")

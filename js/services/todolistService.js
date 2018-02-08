@@ -14,7 +14,8 @@ simpleToDoApp.service('todolistService', function($http){
 	            method: 'POST',
 	            url: '/api/todos/' + todolistItem.owner +'/'+ todolistItem.user._id,
 	            data: todolistItem
-	        }).then(function(newTodolistItem){
+	        })
+	        .then(function(newTodolistItem){
 	            return newTodolistItem.data;
 	        })
 		},
@@ -41,6 +42,17 @@ simpleToDoApp.service('todolistService', function($http){
 		},
 		deleteTodolistItem(selectedItem){
 			return $http.delete('/api/todos/' + selectedItem._id)
+		},
+		updateTodolist(selectedTodolist){
+			console.log(selectedTodolist)
+			return $http({
+				method: 'PUT',
+				url: '/api/todolists/' + selectedTodolist._id,
+				data: selectedTodolist
+			})
+			.then((updatedTodolist)=>{
+				return updatedTodolist.data
+			})
 		}
 	};
 	return service;

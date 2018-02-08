@@ -77,3 +77,11 @@ router.delete('/:todolistId', function(req, res, next){
 	})
 	.catch(next)
 })
+
+router.put('/:todolistId', function (req, res, next){
+	console.log("Got here", req.params.todolistId, req.body.title)
+	Todolist.findByIdAndUpdate(req.params.todolistId, {title: req.body.title}, {new: true})
+	.then((updatedTodolist)=>{
+		res.status(200).send(updatedTodolist)
+	})
+})

@@ -1,14 +1,15 @@
 <div>
   <p>by {{$ctrl.currentUser.username}}</p>
 
-	<todolists
-		username="$ctrl.currentUser.username"
-		usertodolists="$ctrl.todolists"
-		deleteTodolist="$ctrl.deleteTodolist"
-		></todolists>
-
 	<div>
 		<h1>Create a new To Do List:</h1>
 		<p class="url-container">{{$ctrl.prodUrl}}{{$ctrl.currentUser.username}}&#47;<create-todolist user="$ctrl.currentUser"></create-todolist></p>
 	</div>
+	
+	<todolists
+		username="$ctrl.currentUser.username"
+		usertodolists="$ctrl.todolistsReversed"
+		deleteTodolist="$ctrl.deleteTodolist"
+		></todolists>
+
 </div>

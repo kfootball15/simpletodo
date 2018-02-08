@@ -1,9 +1,72 @@
 <div ng-repeat="todolist in usertodolists">
 	    <input type="checkbox" style="display:inline-block;">
 
-	    <!-- TODOLIST BUTTON -->
-	    <button ui-sref="todolist({userId: username, todolistTitle: todolist.title})" style="display:inline-block">{{todolist.title}}</button>
+	    <!-- EDIT MODE -->
+	    <form
+	    	ng-show="todolist.editMode"
+	    	name="editTodolist"
+	    	ng-submit="updateTodolist(editTodolist.$valid, todolist)"
+	    	ng-model-options="{ updateOn: 'submit' }"
+	    	class="input-container"
+	    	novalidate>
+		    <button 
+		    	type="submit" 
+		    	ng-class="{'disabled-button': editTodolist.$invalid, 'enabled-button': editTodolist.$valid}" 
+		    	style="display:inline-block"
+		    	ng-disable="editTodolist.$invalid">
+		    		Update
+		    	</button>
+	    	<input 
+	    		type="text"
+	    		autocomplete="off" 
+	    		name="editTitle"
+	    		ng-minlength="2"
+				ng-maxlength="20"
+	    		ng-model="todolist.title"
+	    		ng-model-options="{ updateOn: 'submit keyup' }"
+	    		valid-title
+	    		required
+	    		>
+	    	<button
+	    		ng-click="editMode(todolist)"
+	    		type="button">
+	    			Cancel
+	    		</button>
+    	</form>
+
+
+	    <!-- DISPLAY MODE -->
+	    <div
+	    	ng-show="!todolist.editMode"
+	    	style="display:inline-block;">
+		    <button
+		    	ng-click="editMode(todolist)"
+		    	style="display:inline-block">
+		    		Edit name
+		    	</button>
+		    <button 
+		    	ui-sref="todolist({userId: username, todolistTitle: todolist.title})" 
+		    	style="display:inline-block">
+		    		{{todolist.title}}
+		    	</button>
+    	</div>
 
 	    <!-- DELETE BUTTON -->
-	    <input type="button" value="X" ng-click="deleteTodolist(todolist)" style="display:inline-block;">
+	    <input 
+		    type="button" 
+		    value="X" 
+		    ng-click="deleteTodolist(todolist)" 
+		    style="display:inline-block;"
+		    >
+	<div 
+	 	ng-messages="editTodolist.editTitle.$error"
+	 	ng-show="editTodolist.editTitle.$invalid && !editTodolist.editTitle.$pristine"
+	 	class="error-messages">
+	    <p 
+	    	ng-message="required || minlength || maxlength">
+	    		Your title must be between 2 and 20 characters</p>
+	    <p 
+	    	ng-message="validTitle">
+	    		Your title can only contain letters and numbers, no special characters</p>
+	</div>
 </div>
