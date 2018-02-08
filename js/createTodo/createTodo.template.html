@@ -1,36 +1,80 @@
-<div>TODO LIST ITEM COMPONENT</div>
 <form
-	id="createTodolistItemForm" 
-	name="createTodolistItemForm"
-	ng-submit="$ctrl.createTodolistItem($ctrl.todolistItem)"
-	style="display:inline-block"
+	id="create-todolist-itemForm" 
+	name="createTodoForm"
+	ng-submit="$ctrl.createTodo(createTodoForm.$valid, createTodoForm)"
 	novalidate
 	>
-
-	<input 
-		type="text" 
-		ng-model="$ctrl.todolistItem.item"
-		name="item"
-		placeholder="Item Name" 
-		required
+	<div style="display: block">
+		<div class="input-container">
+			<input 
+				name="title"
+				type="text" 
+				class="todo-inputs large-width"
+				placeholder="Title" 
+				ng-model="$ctrl.todolistItem.title"
+				ng-minlength="3"
+				ng-maxlength="20"
+				valid-title
+				required
+				>
+			<input
+				name="description"
+				type="text" 
+				class="todo-inputs large-width"
+				placeholder="Description" 
+				ng-model="$ctrl.todolistItem.description"
+				ng-maxlength="50"
+				valid-description
+				>
+			<!-- </textarea> -->
+			<span 
+				ng-show="$ctrl.todolistItem.description.length">{{$ctrl.todolistItem.description.length}}/50</span> 
+			<!-- <input 
+				type="text" 
+				ng-model="$ctrl.todolistItem.list"
+				name="list"
+				placeholder="List" 
+				required
+				> -->
+		</div>
+		<div 
+			class="submit-container"
+			ng-class="{'disabled-button': createTodoForm.$invalid, 'enabled-button': createTodoForm.$valid}" 
+	  		>
+	  		<input 
+	  			type="submit" 
+	  			id="submit" 
+	  			value="Create!" 
+	  			ng-disabled="createTodoForm.$invalid">
+	  			
+		</div>
+	</div>
+	<div 
+		ng-messages="createTodoForm.title.$error" 
+		ng-show="createTodoForm.title.$invalid && !createTodoForm.title.$pristine"
+		class="error-messages"
 		>
-	<input 
-		type="text" 
-		ng-model="$ctrl.todolistItem.description"
-		name="description"
-		placeholder="Description" 
-		required
+		<p ng-message="required">	
+			A Title is required
+			</p>
+		<p ng-message="maxlength || minlength">	
+			Your Title must be between 3 and 20 characters
+			</p>
+		<p ng-message="validTitle">	
+			You Title may only include letters and numbers
+			</p>
+	</div>
+	<div 
+		ng-messages="createTodoForm.description.$error" 
+		ng-show="createTodoForm.description.$invalid && !createTodoForm.description.$pristine"
+		class="error-messages"
 		>
-<!-- 	<input 
-		type="text" 
-		ng-model="$ctrl.todolistItem.list"
-		name="list"
-		placeholder="List" 
-		required
-		> -->
-		
-	<span class="error" ng-show="createUserForm.input.$error.required">
-      You must enter something!</span>
-  	<input type="submit" id="submit" value="Create!" />
+		<p ng-message="maxlength || minlength">	
+			Your Description must be less then 50 characters
+			</p>
+		<p ng-message="validDescription">	
+			You Description may only include letters and numbers
+			</p>
+	</div>
 
 </form>

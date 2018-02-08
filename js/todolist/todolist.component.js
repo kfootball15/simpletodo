@@ -14,11 +14,12 @@ simpleToDoApp.component('todolist', {
 		   	todolistService.getTodolist(this.currentUser._id, $stateParams.todolistTitle)
 		    .then((todolist)=>{
 		    	this.todolist = todolist;
+		    	this.todolist.todosReversed = this.todolist.todos.reverse() //Reverse the order of the todolist so the most recent todo items appear at the top
 		    })   
 	    }
 
 	    this.refreshList = function (item) {
-	    	this.todolist.todos.push(item)
+	    	this.todolist.todos.unshift(item)
 	    }
 
 	},

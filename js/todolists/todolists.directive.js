@@ -7,8 +7,7 @@ simpleToDoApp.directive('todolists', function(todolistService){
 			usertodolists: "=",
 			deleteTodolist: "&"
 		},
-		link: function (scope, element, attrs) {
-		    	console.log(scope.username, scope.usertodolists)
+		link (scope, element, attrs) {
 		    scope.deleteTodolist = function (selectedTodolist) {
 		    	todolistService.deleteTodolist(selectedTodolist)
 		    	.then(() => {

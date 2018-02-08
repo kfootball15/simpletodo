@@ -4,11 +4,13 @@ simpleToDoApp.component('createUser', {
 	    this.user = {
 	    	username: ""
 	    }
-	    this.createUser = (user) => {
-	    	userService.createUser(user.username)
-		    .then((fetchedUser)=>{
-		    	$state.go('todolists', {username: fetchedUser.username});
-		    })
+	    this.createUser = (isValid) => {
+	    	if(isValid){
+		    	userService.createUser(this.user.username)
+			    .then((fetchedUser)=>{
+			    	$state.go('todolists', {username: fetchedUser.username});
+			    })
+	    	}
 	    }
 	}
 });

@@ -1,6 +1,6 @@
 <div ng-repeat="todoitem in todos">
 	<input type="checkbox" style="display:inline-block;">
-	<h2 style="display:inline-block;">{{todoitem.item}}</h2>
+	<h2 style="display:inline-block;">{{todoitem.title}}</h2>
 	<input type="button" value="X" name="" ng-click="deleteItem(todoitem)">
 	<p>{{todoitem.description}}</p>
 	<div ng-if="todoitem.list">

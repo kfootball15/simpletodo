@@ -1,4 +1,4 @@
-var simpleToDoApp = angular.module('simpleToDoApp', ['ui.router']);
+var simpleToDoApp = angular.module('simpleToDoApp', ['ui.router', 'ngMessages']);
 
 simpleToDoApp
 .config(function($locationProvider, $stateProvider){

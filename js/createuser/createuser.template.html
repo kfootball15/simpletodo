@@ -1,22 +1,43 @@
 <!-- https://docs.angularjs.org/api/ng/input/input%5Btext%5D -->
 <form
-	id="createUserForm" 
+	id="create-user-form" 
 	name="createUserForm"
-	ng-submit="$ctrl.createUser($ctrl.user)"
-	style="display:inline-block"
+	ng-submit="$ctrl.createUser(createUserForm.$valid)"
 	novalidate
 	>
 
-	<input 
-		type="text" 
-		ng-model="$ctrl.user.username"
-		name="username"
-		placeholder="Enter a username" 
-		required
-		>
-		
-	<span class="error" ng-show="createUserForm.input.$error.required">
-      You must enter something!</span>
-  	<input type="submit" id="submit" value="Go!" />
+	<div class="input-container">
+		<input
+			type="text" 
+			name="username"
+			placeholder="Enter a username" 
+	  		class="inline-input"
+			ng-model="$ctrl.user.username"
+			ng-minlength="3"
+			ng-maxlength="20"
+			valid-username
+			required
+			>
+	  	<input 
+	  		ng-class="{'disabled-button': createUserForm.$invalid, 'enabled-button': createUserForm.$valid}" 
+	  		ng-disabled="createUserForm.$invalid" 
+	  		type="submit" 
+	  		id="submit" 
+	  		value="Go!" />
+  	</div>
+  	 <div 
+  	 	ng-messages="createUserForm.$error"
+  	 	ng-show="createUserForm.$invalid && !createUserForm.$pristine"
+  	 	class="error-messages">
+        <p 
+        	ng-message="required || minlength || maxlength">
+        		Your 'username' must be between 3 and 20 characters</p>
+        <p 
+        	ng-message="validUsername">
+        		Your 'username' can only contain letters and numbers, no special characters</p>
+    </div>
 
 </form>
+
+
+

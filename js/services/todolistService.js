@@ -9,7 +9,7 @@ simpleToDoApp.service('todolistService', function($http){
 				console.log("ERROR:", err)
 			})
 		},
-		createTodolistItem (todolistItem) {
+		createTodo (todolistItem) {
 			return $http({
 	            method: 'POST',
 	            url: '/api/todos/' + todolistItem.owner +'/'+ todolistItem.user._id,

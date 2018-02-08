@@ -4,4 +4,64 @@ body {
 body h1 {
   color: blue; }
 
+.url-container {
+  display: block; }
+
+.error-messages {
+  margin-left: 10px;
+  padding: 10px;
+  background-color: #FA787E;
+  display: inline-block; }
+  .error-messages p {
+    margin: 0;
+    color: #fff; }
+
+input[type="submit"] {
+  background: none;
+  color: inherit;
+  border: none;
+  padding: 0;
+  font: inherit;
+  cursor: pointer;
+  outline: inherit; }
+
+form {
+  display: inline-block; }
+  form .disabled-button {
+    background-color: #FA787E;
+    color: #ff969b; }
+  form .enabled-button {
+    background-color: #78FA89;
+    color: #ffffff; }
+  form .input-container {
+    float: left;
+    display: inline-block; }
+  form .inline-input {
+    display: inline-block; }
+  form .submit-container {
+    float: left;
+    display: inline-block;
+    height: 40px;
+    line-height: 40px;
+    width: 100px;
+    text-align: center; }
+    form .submit-container input {
+      width: 100%; }
+  form textarea {
+    margin: 0;
+    margin-right: 0px;
+    height: 13px; }
+  form textarea.large-width {
+    width: 400px; }
+  form input[type="text"].todo-inputs {
+    display: block; }
+  form textarea.todo-inputs {
+    display: block; }
+  form input.large-width {
+    width: 400px; }
+  form input.ng-invalid.ng-touched, form textarea.ng-invalid.ng-touched {
+    background-color: #FA787E; }
+  form input.ng-valid.ng-touched, form textarea.ng-invalid.ng-touched {
+    background-color: #78FA89; }
+
 /*# sourceMappingURL=home.css.map */

@@ -5,7 +5,7 @@ simpleToDoApp.directive('todos', function(todolistService){
 		scope: {
 			todos:"="
 		},
-		link: function (scope, element, attrs) {
+		link (scope, element, attrs) {
 			scope.deleteItem = function (selectedItem){
 		    	todolistService.deleteTodolistItem(selectedItem)
 		    	.then((success)=>{

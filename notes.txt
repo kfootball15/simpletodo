@@ -5,8 +5,11 @@
 		[x] Todolist Directive
 		[x] Todo Item Directive
 	[] Proper Forms for creating Todolists and Todo Items
-		[] Todolist Form
-		[] Todoitem Form
+		[] createUser Form
+			[] modal if username exists ("This name exists. Do you want to see this users todolists or do you want to create a new one?")
+			[x] enable/disable go button
+		[x] Todolist Form
+		[x] Todoitem Form
 	[] Todolist Items should be able to be edited (title, description, complete:true/false) and rearranged
 		[] edit item
 		[] rearrange order of items
@@ -18,7 +21,7 @@
 	[] Creating a Todolist and todolistitem straight from the URL does NOT work yet (it will create a todolist but it does NOT save for the user)
 	[] Nav component that lets you go backwards
 	[] Implement SASS into project
-		[] Implement Sass
+		[x] Implement Sass
 		[] Style Todolist Page
 		[] Style Todolist Item Page
 		[] Style Home Page
@@ -54,3 +57,4 @@
 // -- ------- -- \\
 	[] URLs ending in '/' will create blank users and blank todolists
 	[] Creating a Todolist and todolistitem straight from the URL does NOT work yet
+	[] Creating a user from the create-user component on home page will overwrite an existing user

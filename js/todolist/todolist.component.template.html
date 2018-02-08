@@ -1,12 +1,12 @@
 <div>
   <h1>{{$ctrl.todolist.title}}</h1>
   <p>{{$ctrl.currentUrl}}</p>
-  <todos
-      todos="$ctrl.todolist.todos"
-      ></todos>
   <create-todo 
       current-user="$ctrl.currentUser" 
-      current-todolist-id="$ctrl.todolistTitle"
+      current-todolist-title="$ctrl.todolistTitle"
       refresh-list="$ctrl.refreshList(newItem)"
       ></create-todo>
+  <todos
+      todos="$ctrl.todolist.todosReversed"
+      ></todos>
 </div>

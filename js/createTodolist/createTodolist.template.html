@@ -1,22 +1,39 @@
 <!-- https://docs.angularjs.org/api/ng/input/input%5Btext%5D -->
 <form
-	id="createUserForm" 
-	name="createUserForm"
-	ng-submit="$ctrl.createTodolist($ctrl.todolist)"
-	style="display:inline-block"
+	id="create-todolist-form" 
+	name="createTodolistForm"
+	ng-submit="$ctrl.createTodolist(createTodolistForm.$valid)"
 	novalidate
 	>
-
-	<input 
-		type="text" 
-		ng-model="$ctrl.todolist.title"
-		name="username"
-		placeholder="Title" 
-		required
-		>
-		
-	<span class="error" ng-show="createUserForm.input.$error.required">
-      You must enter something!</span>
-  	<input type="submit" id="submit" value="Create!" />
+	<div class="input-container">
+		<input 
+			type="text" 
+			ng-class="{'ng-invalid': true}"
+			ng-model="$ctrl.todolist.title"
+			name="username"
+			placeholder="Title" 
+			ng-minlength="2"
+			ng-maxlength="20"
+			valid-title
+			required
+			>
+			
+	  	<input 
+	  		ng-disabled="createTodolistForm.$invalid" 
+	  		ng-class="{'disabled-button': createTodolistForm.$invalid, 'enabled-button': createTodolistForm.$valid}"type="submit" 
+	  		id="submit" 
+	  		value="Create!" />
+  	</div>
+		<div 
+	 	ng-messages="createTodolistForm.$error"
+	 	ng-show="createTodolistForm.$invalid && !createTodolistForm.$pristine"
+	 	class="error-messages">
+        <p 
+        	ng-message="required || minlength || maxlength">
+        		Your Todo List must have a title between 2 and 20 characters</p>
+        <p 
+        	ng-message="validTitle">
+        		Your Todo List title can only contain letters and numbers, no special characters</p>
+    </div>
 
 </form>

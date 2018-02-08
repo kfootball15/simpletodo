@@ -4,7 +4,7 @@ var mongoose = require('mongoose');
 var deepPopulate = require('mongoose-deep-populate')(mongoose);
 
 var schema = new mongoose.Schema({
-    item: String,
+    title: String,
     description: String,
     list: [String],
     isCompleted: Boolean,
