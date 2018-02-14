@@ -15,18 +15,18 @@ require('./configure')(app)
 app.use(bodyParser.json());
 
 // Some Middleware where we can log some information from the user
-app.use((req, res, next)=>{
-	var now = new Date().toString();
+// app.use((req, res, next)=>{
+// 	var now = new Date().toString();
 
-	var currentInfo = `${now}: ${req.method} ${req.url}`
-	console.log(currentInfo)
-	fs.appendFile(path.join(__dirname, 'logs/server-log.json'), currentInfo + '\n', (err) => {
-		if (err) {
-			console.log('Unable to append to server.log');
-		}
-	})
-	next()
-})
+// 	var currentInfo = `${now}: ${req.method} ${req.url}`
+// 	console.log(currentInfo)
+// 	fs.appendFile(path.join(__dirname, 'logs/server-log.json'), currentInfo + '\n', (err) => {
+// 		if (err) {
+// 			console.log('Unable to append to server.log');
+// 		}
+// 	})
+// 	next()
+// })
 
 // *MAINTENANCE MODE* UNCOMMENT this code when you want the app to render in maintenance mode:
 	// app.use((req, res, next)=>{

@@ -24,18 +24,14 @@ simpleToDoApp.service('todolistService', function($http){
 			.then(function(todolist){
 				return todolist.data[0];
 			})
-			.catch(function(err){
-				console.log(err)
-			})
+			.catch(err => {console.log(err);})
 		},
 		getTodolists (userId) {
 			return $http.get('/api/todolists/' + userId)
 			.then(function(populatedUser){
 				return populatedUser.data.todolists;
 			})
-			.catch(function(err){
-				console.log(err);
-			})
+			.catch(err => {console.log(err);})
 		},
 		deleteTodolist(selectedTodolist){
 			return $http.delete('/api/todolists/' + selectedTodolist._id)
@@ -44,7 +40,6 @@ simpleToDoApp.service('todolistService', function($http){
 			return $http.delete('/api/todos/' + selectedItem._id)
 		},
 		updateTodolist(selectedTodolist){
-			console.log(selectedTodolist)
 			return $http({
 				method: 'PUT',
 				url: '/api/todolists/' + selectedTodolist._id,
@@ -53,6 +48,18 @@ simpleToDoApp.service('todolistService', function($http){
 			.then((updatedTodolist)=>{
 				return updatedTodolist.data
 			})
+			.catch(err => {console.log(err);})
+		},
+		updateTodo(selectedTodo){
+			return $http({
+				method: 'PUT',
+				url: '/api/todos/' + selectedTodo._id,
+				data: selectedTodo
+			})
+			.then((updatedTodo)=>{
+				return updatedTodo.data
+			})
+			.catch(err => {console.log(err);})
 		}
 	};
 	return service;

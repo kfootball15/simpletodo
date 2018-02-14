@@ -1,11 +1,25 @@
-<div ng-repeat="todolist in usertodolists">
-	    <input type="checkbox" style="display:inline-block;">
+<ul class="todolists" >
 
-	    <!-- EDIT MODE -->
+	
+	<li 
+		class="list-item todolist"
+		ng-repeat="todolist in usertodolists | orderBy: 'isCompleted' "
+		ng-class="{'isCompleted': todolist.isCompleted}"
+		>
+
+		<!-- Checkbox -->
+	    <input 
+	    	type="checkbox" 
+	    	ng-model="todolist.isCompleted"
+	    	ng-click="toggleCompleted(todolist)"
+	    	style="display:inline-block;"
+	    	>
+
+	    <!-- Edit Mode -->
 	    <form
 	    	ng-show="todolist.editMode"
 	    	name="editTodolist"
-	    	ng-submit="updateTodolist(editTodolist.$valid, todolist)"
+	    	ng-submit="editTodolistTitle(editTodolist.$valid, todolist)"
 	    	ng-model-options="{ updateOn: 'submit' }"
 	    	class="input-container"
 	    	novalidate>
@@ -28,14 +42,14 @@
 	    		required
 	    		>
 	    	<button
-	    		ng-click="editMode(todolist)"
+	    		ng-click="editMode(todolist, true)"
 	    		type="button">
 	    			Cancel
 	    		</button>
-    	</form>
+		</form>
 
 
-	    <!-- DISPLAY MODE -->
+	    <!-- !Edit Mode -->
 	    <div
 	    	ng-show="!todolist.editMode"
 	    	style="display:inline-block;">
@@ -49,24 +63,41 @@
 		    	style="display:inline-block">
 		    		{{todolist.title}}
 		    	</button>
-    	</div>
+		</div>
 
-	    <!-- DELETE BUTTON -->
+	    <!-- Delete Button -->
 	    <input 
 		    type="button" 
 		    value="X" 
 		    ng-click="deleteTodolist(todolist)" 
 		    style="display:inline-block;"
 		    >
-	<div 
-	 	ng-messages="editTodolist.editTitle.$error"
-	 	ng-show="editTodolist.editTitle.$invalid && !editTodolist.editTitle.$pristine"
-	 	class="error-messages">
-	    <p 
-	    	ng-message="required || minlength || maxlength">
-	    		Your title must be between 2 and 20 characters</p>
-	    <p 
-	    	ng-message="validTitle">
-	    		Your title can only contain letters and numbers, no special characters</p>
-	</div>
-</div>
+
+		<!-- Error Messages -->
+		<!-- Title Errors -->
+		<div 
+		 	ng-messages="editTodolist.editTitle.$error"
+		 	ng-show="editTodolist.editTitle.$invalid && !editTodolist.editTitle.$pristine"
+		 	class="error-messages">
+		    <p 
+		    	ng-message="required || minlength || maxlength">
+		    		Your title must be between 2 and 20 characters</p>
+		    <p 
+		    	ng-message="validTitle">
+		    		Your title can only contain letters and numbers, no special characters</p>
+		</div>
+		<!-- Description Errors -->
+		<div 
+			ng-messages="editTodolist.description.$error" 
+			ng-show="editTodolist.description.$invalid && !editTodolist.description.$pristine"
+			class="error-messages"
+			>
+			<p ng-message="maxlength || minlength">	
+				Your Description must be less then 50 characters
+				</p>
+			<p ng-message="validDescription">	
+				You Description may only include letters and numbers
+				</p>
+		</div>
+	</li>
+</ul>

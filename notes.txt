@@ -10,31 +10,44 @@
 			[x] enable/disable go button
 		[x] Todolist Form
 		[x] Todoitem Form
-	[] Todolist Items should be able to be edited (title, description, complete:true/false) and rearranged
-		[] edit item
-		[] rearrange order of items
-		[] isComplete: true/false
-	[] Todolists should be able to be edited (title, isComplete) and rearranged
+
+	[x] Fix defect where editing title updates incorrectly
+
+	[x] Todos should be able to be edited (title, description, complete:true/false) and rearranged
 		[x] edit title
-		[] Validation of form
-		[] rearrange order of items
-		[] isComplete: true/false
+		[x] edit description
+		[x] isComplete: true/false
+	[x] Todolists should be able to be edited (title, isComplete) and rearranged
+		[x] edit title
+		[x] Validation of form
+		[x] isComplete: true/false
+
+	[x] Todolists should be organized into 2 categories, isCompleted and !isCompleted
+	[x] Todos should be organized into 2 categories, isCompleted and !isCompleted
+
+	[] Nav component that lets you go backwards - may require a controller that keeps track of all user data so that user can be routed correctly
+
 	[] Creating a Todolist and todolistitem straight from the URL does NOT work yet (it will create a todolist but it does NOT save for the user)
-	[] Nav component that lets you go backwards
 	[] Implement SASS into project
 		[x] Implement Sass
-		[] Style Todolist Page
-		[] Style Todolist Item Page
-		[] Style Home Page
+		[] Style Components with Grids
+			[] Style Todolist Page
+			[] Style Todolist Item Page
+			[] Style Home Page
 	[] Add Model Property to Todo Items 
 		[] completed: true/false
 	[] Track completed todo items
 		[] Kind of like "Completed" reminders in apple
 		[] Ability to "undo" and return completed reminders to incomplete
 		[] Show/Hide completed Todo div (Kind of like accordian style)
+	[] Make sure lazy loading and data is being loading in properly and effectively
 
 	//--AFTER COMPLETING ABOVE, HOST ON DOMAIN AND DO BELOW:--\\
 
+	[] Todos Order
+		[] rearrange order of items
+	[] Todolist Order
+		[] rearrange order or todolists
 	[] Testing (end to end testing, other types)
 		[] Jasmine/Karma/Mocha/Chai
 	[] username and todolist title Validation ?
@@ -47,6 +60,8 @@
 		[] Utilize Local Storage over Cookies to reduce bandwidth of HTTP requests
 		[] minify and uglify JS code
 		[] use gulp or webpack to minify files and build everything out
+	[] Add modal if username exists ("This name exists. Do you want to see this users todolists or do you want to create a new one?")
+	[] Use a gulp task runner to minify/uglify site
 
 	//-- Reach Goals --\\
 	[] Make the project open source so others can add to it
@@ -60,3 +75,4 @@
 	[] Creating a Todolist and todolistitem straight from the URL does NOT work yet
 	[] Creating a user from the create-user component on home page will overwrite an existing user
 		[***] modal if username exists ("This name exists. Do you want to see this users todolists or do you want to create a new one?")
+	[] Editing Todolist Titles not working properly as cancelling will still update the current title (although it will not save which is good)

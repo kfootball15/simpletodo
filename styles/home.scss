@@ -89,3 +89,37 @@ form {
 		background-color: $valid-color;
 	}
 }
+
+
+
+
+// TODOLISTS
+ul.todolists, ul.todos-list {
+	list-style-type: none;
+	
+	.list-item {
+		-webkit-transition: all 0.5s ease-in-out;
+		-moz-transition: all 0.5s ease-in-out;
+		transition: all 0.5s ease-in-out;
+
+		&.isCompleted {
+			background-color: $valid-color;
+			margin-top:50px;
+		}
+		&.isCompleted ~ .isCompleted {
+			margin-top:0px;
+		}
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+

@@ -52,3 +52,10 @@ router.delete('/:todoId', function(req, res, next){
 	})
 	.catch(next)
 })
+
+router.put('/:todoId', function (req, res, next){
+	Todo.findByIdAndUpdate(req.params.todoId, {title: req.body.title, description: req.body.description, isCompleted: req.body.isCompleted}, {new: true})
+	.then((updatedTodo)=>{
+		res.status(200).send(updatedTodo)
+	})
+})

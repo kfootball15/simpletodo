@@ -64,4 +64,16 @@ form {
   form input.ng-valid.ng-touched, form textarea.ng-invalid.ng-touched {
     background-color: #78FA89; }
 
+ul.todolists, ul.todos-list {
+  list-style-type: none; }
+  ul.todolists .list-item, ul.todos-list .list-item {
+    -webkit-transition: all 0.5s ease-in-out;
+    -moz-transition: all 0.5s ease-in-out;
+    transition: all 0.5s ease-in-out; }
+    ul.todolists .list-item.isCompleted, ul.todos-list .list-item.isCompleted {
+      background-color: #78FA89;
+      margin-top: 50px; }
+    ul.todolists .list-item.isCompleted ~ .isCompleted, ul.todos-list .list-item.isCompleted ~ .isCompleted {
+      margin-top: 0px; }
+
 /*# sourceMappingURL=home.css.map */

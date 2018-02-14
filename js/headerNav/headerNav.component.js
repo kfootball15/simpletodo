@@ -5,6 +5,10 @@ simpleToDoApp.component('headerNav', {
 			{
 				text: "Home",
 				state: "home"
+			},
+			{
+				text: "Todo Lists",
+				state: "todolists"
 			}
 		];
 	}
