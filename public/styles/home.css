@@ -1,8 +1,12 @@
 body {
-  color: #333; }
+  color: #333;
+  margin: 0; }
 
 body h1 {
   color: blue; }
+
+a {
+  text-decoration: none; }
 
 .url-container {
   display: block; }
@@ -64,7 +68,7 @@ form {
   form input.ng-valid.ng-touched, form textarea.ng-invalid.ng-touched {
     background-color: #78FA89; }
 
-ul.todolists, ul.todos-list {
+ul {
   list-style-type: none; }
   ul.todolists .list-item, ul.todos-list .list-item {
     -webkit-transition: all 0.5s ease-in-out;
@@ -75,5 +79,23 @@ ul.todolists, ul.todos-list {
       margin-top: 50px; }
     ul.todolists .list-item.isCompleted ~ .isCompleted, ul.todos-list .list-item.isCompleted ~ .isCompleted {
       margin-top: 0px; }
+  ul.header-nav {
+    display: flex;
+    justify-content: space-around;
+    text-transform: uppercase;
+    margin: 0;
+    padding: 0; }
+    ul.header-nav li {
+      text-align: center;
+      flex-grow: 1;
+      display: flex; }
+      ul.header-nav li a {
+        flex-grow: 1; }
+      ul.header-nav li.home {
+        background-color: red; }
+      ul.header-nav li.todolists {
+        background-color: blue; }
+      ul.header-nav li.todolist {
+        background-color: green; }
 
 /*# sourceMappingURL=home.css.map */

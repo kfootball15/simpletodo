@@ -51,8 +51,13 @@ router.get('/:userId/:todolistTitle', function(req, res, next){
 	.populate('todos')
 	.exec()
 	.then((todolists) => {
+		//^SHOULD THIS BE TODOLISTS OR TODOLIST (SINGULAR)
 		console.log(todolists)
+		//if(todolists){
 		res.status(200).send(todolists);
+		//} else { 
+		//	CREATE A NEW TODOLIST WITH GIVEN TITLE AND SEND IT BACK 
+		//}
 	})
 	.catch(next)
 })

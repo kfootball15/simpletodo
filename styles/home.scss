@@ -6,10 +6,15 @@ $valid-text-color: #ffffff;
 
 body{
 	color: $primary-color;
+	margin: 0;
 }
 
 body h1 {
 	color:blue;
+}
+
+a {
+	text-decoration: none;
 }
 
 .url-container {
@@ -94,27 +99,60 @@ form {
 
 
 // TODOLISTS
-ul.todolists, ul.todos-list {
+ul {
+
 	list-style-type: none;
 	
-	.list-item {
-		-webkit-transition: all 0.5s ease-in-out;
-		-moz-transition: all 0.5s ease-in-out;
-		transition: all 0.5s ease-in-out;
+	&.todolists, &.todos-list {
+		
+		.list-item {
+			-webkit-transition: all 0.5s ease-in-out;
+			-moz-transition: all 0.5s ease-in-out;
+			transition: all 0.5s ease-in-out;
 
-		&.isCompleted {
-			background-color: $valid-color;
-			margin-top:50px;
+			&.isCompleted {
+				background-color: $valid-color;
+				margin-top:50px;
+			}
+			&.isCompleted ~ .isCompleted {
+				margin-top:0px;
+			}
 		}
-		&.isCompleted ~ .isCompleted {
-			margin-top:0px;
+	}
+
+	&.header-nav{
+		display: flex;
+		justify-content: space-around;
+		text-transform: uppercase;
+		margin: 0;
+		padding: 0;
+
+		li {
+			text-align: center;
+			flex-grow: 1;
+			display: flex;
+			a {
+				flex-grow:1;
+			}
+			&.home { //Home
+				background-color:red;
+			}
+			&.todolists { //todolists
+				background-color:blue;
+			}
+			&.todolist { //todo
+				background-color:green;
+			}
 		}
 	}
 }
 
 
 
-
+// cubic-bezier(.5,0,.1,1) 0s,-webkit-transform .54s 
+// cubic-bezier(.5,0,.1,1) 0s,-moz-transform .54s 
+// cubic-bezier(.5,0,.1,1) 0s,-o-transform .54s 
+// cubic-bezier(.5,0,.1,1) 0s;
 
 
 

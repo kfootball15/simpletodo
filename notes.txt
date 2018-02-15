@@ -46,6 +46,7 @@
 
 	[] Todos Order
 		[] rearrange order of items
+	[] Further break down the todolists and todolist components so that each individual list item is a component or directive
 	[] Todolist Order
 		[] rearrange order or todolists
 	[] Testing (end to end testing, other types)
@@ -72,7 +73,8 @@
 // -- DEFECTS -- \\
 // -- ------- -- \\
 	[] URLs ending in '/' will create blank users and blank todolists
-	[] Creating a Todolist and todolistitem straight from the URL does NOT work yet
+	[] Todo List Titles cannot have spaces in them (They should be able to have spaces!)
+	[] Creating a Todolist and todolistitem straight from the URL does NOT work yet (Although you can access existing todolists this way just fine)
 	[] Creating a user from the create-user component on home page will overwrite an existing user
 		[***] modal if username exists ("This name exists. Do you want to see this users todolists or do you want to create a new one?")
 	[] Editing Todolist Titles not working properly as cancelling will still update the current title (although it will not save which is good)
