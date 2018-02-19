@@ -27,16 +27,16 @@
 
 	[x] Nav component that lets you go backwards - may require a controller that keeps track of all user data so that user can be routed correctly
 
-	[] Creating a Todolist and todolistitem straight from the URL does NOT work yet (it will create a todolist but it does NOT save for the user)
-		[] Make sure you can do all of these things:
-			[] create user from website AND Url
-			[] create todolist from website AND Url
-				[] The created todolist will be associated with the user it is a part of
-			[] create todo from websie AND Url
-				[] Creating a todo from the URL will edit and update the todolist it is a part of.
-			[] create a user, and todolist, and a todoitem all in one go, ie (s2doo.me/<newUser>/<newTodolist>/<newTodo>), and have everything be created successfully.
-			[] create a user and a todolist in one go
-			
+	[x] Creating a Todolist and todolistitem straight from the URL does NOT work yet (it will create a todolist but it does NOT save for the user)
+		[x] Make sure you can do all of these things:
+			[x] create user from website AND Url
+			[x] create todolist from website AND Url
+				[x] The created todolist will be associated with the user it is a part of
+			[x] create todo from website AND Url
+				[x] Creating a todo from the URL will edit and update the todolist it is a part of.
+			[x] create a user, and todolist, and a todoitem all in one go, ie (s2doo.me/<newUser>/<newTodolist>/<newTodo>), and have everything be created successfully.
+			[x] create a user and a todolist in one go
+
 	[] Implement SASS into project
 		[x] Implement Sass
 		[] Style Components with Grids
@@ -55,6 +55,16 @@
 		[] rearrange order or todolists
 	[] Testing (end to end testing, other types)
 		[] Jasmine/Karma/Mocha/Chai
+			[] Here are some tests to start with:
+					[] Creating a Todolist and todolistitem straight from the URL does NOT work yet (it will create a todolist but it does NOT save for the user)
+						[] Make sure you can do all of these things:
+							[] create user from website AND Url
+							[] create todolist from website AND Url
+								[] The created todolist will be associated with the user it is a part of
+							[] create todo from website AND Url
+								[x] Creating a todo from the URL will edit and update the todolist it is a part of.
+							[x] create a user, and todolist, and a todoitem all in one go, ie (s2doo.me/<newUser>/<newTodolist>/<newTodo>), and have everything be created successfully.
+							[x] create a user and a todolist in one go
 	[x] username and todolist title Validation ?
 		[x] Do not allow users to enter certain characters or numbers
 	[] Add Todolist features
@@ -78,7 +88,9 @@
 // -- ------- -- \\
 	[] URLs ending in '/' will create blank users and blank todolists
 	[] Todo List Titles cannot have spaces in them (They should be able to have spaces!)
-	[] Creating a Todolist and todolistitem straight from the URL does NOT work yet (Although you can access existing todolists this way just fine)
+	[x] Creating a Todolist and todolistitem straight from the URL does NOT work yet (Although you can access existing todolists this way just fine)
 	[] Creating a user from the create-user component on home page will overwrite an existing user
 		[***] modal if username exists ("This name exists. Do you want to see this users todolists or do you want to create a new one?")
-	[] Editing Todolist Titles not working properly as cancelling will still update the current title (although it will not save which is good)
+	[x] Editing Todolist Titles not working properly as cancelling will still update the current title (although it will not save which is good)
+	[] When we delete a todolist, it is not removing that todolist._id from the users "todolists" array. So a user may have an array with like 20 todolists but only have 3 todolists showing, and that is because he has deleted 17 of them. (try console logging "console.log(this.currentUser.todolists)" in the todolists.component.js $onInit method).
+		** This is low priority, there is no consequence of this, but it would be cleaner to do so i think... ALTHOUGH, Maybe we should keep these Ids incase user wants to bring back deleted list? nah, deelete them from array!

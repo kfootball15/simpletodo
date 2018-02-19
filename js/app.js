@@ -20,9 +20,16 @@ simpleToDoApp
 				.then(function(user){
 					return user;
 				})
-				.catch(function(err){
-					console.log("No User with that name!", err);
-				})
+				.catch(err=>{console.log("No User with that name!", err);})
+			},
+			currentTodolists: function (todolistService, currentUser) {   	
+				//Fetch Todolists
+			    return todolistService.getTodolists(currentUser._id)
+			    .then((todolists)=>{
+			    	console.log(todolists.reverse())
+			    	return todolists.reverse()
+			    })
+				.catch(err=>{console.log(err);})
 			}
 		}
 	})

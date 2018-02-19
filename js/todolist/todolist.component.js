@@ -1,6 +1,6 @@
 simpleToDoApp.component('todolist', {
 	templateUrl: '/js/todolist/todolist.component.template.html',
-	controller: function todolistController($stateParams, todolistService, PROD_URL) {
+	controller: function todolistController($stateParams, PROD_URL) {
 
 		this.$onInit = function () { //We can only use our bindings inside of our controllers $onInit  
 

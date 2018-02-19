@@ -11,6 +11,8 @@ simpleToDoApp.directive('todolists', function(todolistService){
 		    
 		    var tempModel;
 
+		    console.log(scope.usertodolists)
+
 		    scope.deleteTodolist = function (selectedTodolist) {
 		    	todolistService.deleteTodolist(selectedTodolist)
 		    	.then(() => {
@@ -36,12 +38,6 @@ simpleToDoApp.directive('todolists', function(todolistService){
 		    	if(isValid){
 			    	todolistService.updateTodolist(selectedTodolist)
 			    	.then((updatedTodolist)=> {
-			    		// for(var i = 0; i < scope.usertodolists.length - 1; i++){
-			    		// 	if (scope.usertodolists[i]._id === updatedTodolist._id){
-			    		// 		scope.usertodolists[i].title=updatedTodolist.title
-			    		// 		break;
-			    		// 	}
-			    		// }
 			    		scope.editMode(selectedTodolist)
 			    	})
 			    	.catch(err=>{console.error(err)})
