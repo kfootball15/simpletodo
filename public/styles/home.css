@@ -88,14 +88,25 @@ ul {
     ul.header-nav li {
       text-align: center;
       flex-grow: 1;
-      display: flex; }
+      display: flex;
+      border: 0 0px 0 0 solid #333; }
       ul.header-nav li a {
-        flex-grow: 1; }
+        flex-grow: 1;
+        padding: 20px; }
       ul.header-nav li.home {
-        background-color: red; }
+        background-color: #585858;
+        color: #fff; }
+        ul.header-nav li.home a {
+          color: #fff; }
       ul.header-nav li.todolists {
-        background-color: blue; }
+        background-color: #9a9a9a;
+        -webkit-box-shadow: inset 2px 0px 5px 0px #444;
+        box-shadow: inset 2px 0px 5px 0px #444; }
+        ul.header-nav li.todolists a {
+          color: #fff; }
       ul.header-nav li.todolist {
-        background-color: green; }
+        background-color: #d6d6d6;
+        -webkit-box-shadow: inset 2px 0px 5px 0px #888;
+        box-shadow: inset 2px 0px 5px 0px #888; }
 
 /*# sourceMappingURL=home.css.map */

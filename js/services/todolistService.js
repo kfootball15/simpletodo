@@ -1,7 +1,7 @@
 simpleToDoApp.service('todolistService', function($http){
 	var service = {
 		createTodolist (todolist) {
-			return $http.post('/api/todolists/' + todolist.title + '/' + todolist.ownerId)
+			return $http.post('/api/todolists/' + todolist.ownerId + '/' + todolist.title)
 			.then(function(fetchedTodolist){
 				return fetchedTodolist.data
 			})
@@ -22,7 +22,7 @@ simpleToDoApp.service('todolistService', function($http){
 		getTodolist (userId, listTitle) {
 			return $http.get('/api/todolists/' + userId + '/' + listTitle)
 			.then(function(todolist){
-				return todolist.data[0];
+				return todolist.data;
 			})
 			.catch(err => {console.log(err);})
 		},

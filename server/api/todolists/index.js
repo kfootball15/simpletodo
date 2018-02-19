@@ -18,24 +18,33 @@ function createTodolist (todolist) {
 	return Todolist.create(todolist)
 }
 
-router.post('/:title/:owner', function(req, res, next) {
+function updateUser (userId, todolist) {
+	return User.update({ _id: userId },
+				{ $push: { 'todolists': todolist }}, 
+                function(err, info) {
+                	if (err) console.error("Error updated user", err);
+                	else console.log("Successfully updated user", info)
+                })
+}
 
+router.post('/:owner/:title', function(req, res, next) {
+	
 	var toSendTodolist;
-    //1. First we need to check if a todolist with this "username" already exists.
+
     Todolist.find({title: req.params.title, owner: req.params.owner})
+    .populate('todos')
+	.exec()
     .then((todolistExists) => {
         if(todolistExists[0]){
-            res.status(200).send(todolistExists[0]);
+            res.status(200).send(todolistExists[0]); //Since we have found the existing todolist, we send it back
         } else {
-            return createTodolist({ owner:req.params.owner, title: req.params.title})
+            return createTodolist({ owner:req.params.owner, title: req.params.title}) //Since the requested todolist does not exist, we will create it.
         }
     })
     .then((newTodolist) => {
     	if(newTodolist){
     		toSendTodolist = newTodolist;
-		    return User.update(	{ _id: req.params.owner },
-		    					{ $push: { 'todolists': newTodolist }}, 
-		    	                function(err, info) {console.log("ERROR Updating User: ", err, info)})
+		    return updateUser(req.params.owner, newTodolist)
     	}
     })
     .then((updatedUser) => {
@@ -45,20 +54,29 @@ router.post('/:title/:owner', function(req, res, next) {
 
 });
 
-router.get('/:userId/:todolistTitle', function(req, res, next){
-	console.log("title", req.params.todolistTitle, "owner", req.params.userId)
-	Todolist.find({title: req.params.todolistTitle, owner: req.params.userId})
+router.get('/:owner/:title', function(req, res, next){
+
+	var toSendTodolist;
+
+	Todolist.find({title: req.params.title, owner: req.params.owner})
 	.populate('todos')
 	.exec()
 	.then((todolists) => {
-		//^SHOULD THIS BE TODOLISTS OR TODOLIST (SINGULAR)
-		console.log(todolists)
-		//if(todolists){
-		res.status(200).send(todolists);
-		//} else { 
-		//	CREATE A NEW TODOLIST WITH GIVEN TITLE AND SEND IT BACK 
-		//}
+		if(todolists.length){
+			res.status(200).send(todolists[0]);//Since the todolist exists we simply need to send it back to the user
+		} else { 
+			return createTodolist({ owner:req.params.owner, title: req.params.title})//Since we cannot find the requested todolist, lets create a new one and send it back 
+		}
 	})
+	.then((newTodolist) => {
+    	if(newTodolist){
+    		toSendTodolist = newTodolist;
+		    return updateUser(req.params.owner, newTodolist)
+    	}
+    })
+	.then((updatedUser) => {
+	    if(toSendTodolist) res.status(201).send(toSendTodolist);
+    })
 	.catch(next)
 })
 
@@ -67,7 +85,6 @@ router.get('/:userId', function(req, res, next){
 	.populate('todolists')
 	.exec() //using this method ensures we are returned a real A+ conformant promise and not a mongoose 'promise'
 	.then((user) => {
-		console.log("USER:", user)
 		res.status(200).send(user)
 	})
 	.catch(next)

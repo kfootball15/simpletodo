@@ -25,21 +25,25 @@
 	[x] Todolists should be organized into 2 categories, isCompleted and !isCompleted
 	[x] Todos should be organized into 2 categories, isCompleted and !isCompleted
 
-	[] Nav component that lets you go backwards - may require a controller that keeps track of all user data so that user can be routed correctly
+	[x] Nav component that lets you go backwards - may require a controller that keeps track of all user data so that user can be routed correctly
 
 	[] Creating a Todolist and todolistitem straight from the URL does NOT work yet (it will create a todolist but it does NOT save for the user)
+		[] Make sure you can do all of these things:
+			[] create user from website AND Url
+			[] create todolist from website AND Url
+				[] The created todolist will be associated with the user it is a part of
+			[] create todo from websie AND Url
+				[] Creating a todo from the URL will edit and update the todolist it is a part of.
+			[] create a user, and todolist, and a todoitem all in one go, ie (s2doo.me/<newUser>/<newTodolist>/<newTodo>), and have everything be created successfully.
+			[] create a user and a todolist in one go
+			
 	[] Implement SASS into project
 		[x] Implement Sass
 		[] Style Components with Grids
 			[] Style Todolist Page
 			[] Style Todolist Item Page
 			[] Style Home Page
-	[] Add Model Property to Todo Items 
-		[] completed: true/false
-	[] Track completed todo items
-		[] Kind of like "Completed" reminders in apple
-		[] Ability to "undo" and return completed reminders to incomplete
-		[] Show/Hide completed Todo div (Kind of like accordian style)
+
 	[] Make sure lazy loading and data is being loading in properly and effectively
 
 	//--AFTER COMPLETING ABOVE, HOST ON DOMAIN AND DO BELOW:--\\
@@ -51,8 +55,8 @@
 		[] rearrange order or todolists
 	[] Testing (end to end testing, other types)
 		[] Jasmine/Karma/Mocha/Chai
-	[] username and todolist title Validation ?
-		[] Do not allow users to enter certain characters or numbers
+	[x] username and todolist title Validation ?
+		[x] Do not allow users to enter certain characters or numbers
 	[] Add Todolist features
 		[] Location
 		[] Lists inside of Todolists (kind of like collections of todos within todolists that you can still checkOff one at a time)

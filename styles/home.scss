@@ -131,17 +131,30 @@ ul {
 			text-align: center;
 			flex-grow: 1;
 			display: flex;
+			border: 0 0px 0 0 solid #333;
 			a {
 				flex-grow:1;
+				padding: 20px;
 			}
 			&.home { //Home
-				background-color:red;
+				background-color:#585858;
+				color: #fff;
+				a {
+					color: #fff;
+				}
 			}
 			&.todolists { //todolists
-				background-color:blue;
+				background-color:#9a9a9a;
+				-webkit-box-shadow: inset 2px 0px 5px 0px #444;
+				      box-shadow: inset 2px 0px 5px 0px #444;
+				a {
+					color: #fff;
+				}
 			}
 			&.todolist { //todo
-				background-color:green;
+				background-color:#d6d6d6;
+				-webkit-box-shadow: inset 2px 0px 5px 0px #888;
+				      box-shadow: inset 2px 0px 5px 0px #888;
 			}
 		}
 	}
