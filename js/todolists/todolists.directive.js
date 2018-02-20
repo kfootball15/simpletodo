@@ -11,8 +11,6 @@ simpleToDoApp.directive('todolists', function(todolistService){
 		    
 		    var tempModel;
 
-		    console.log(scope.usertodolists)
-
 		    scope.deleteTodolist = function (selectedTodolist) {
 		    	todolistService.deleteTodolist(selectedTodolist)
 		    	.then(() => {

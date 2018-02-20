@@ -26,7 +26,6 @@ simpleToDoApp
 				//Fetch Todolists
 			    return todolistService.getTodolists(currentUser._id)
 			    .then((todolists)=>{
-			    	console.log(todolists.reverse())
 			    	return todolists.reverse()
 			    })
 				.catch(err=>{console.log(err);})

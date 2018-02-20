@@ -37,6 +37,8 @@
 			[x] create a user, and todolist, and a todoitem all in one go, ie (s2doo.me/<newUser>/<newTodolist>/<newTodo>), and have everything be created successfully.
 			[x] create a user and a todolist in one go
 
+	[] Allow spaces in Todolist titles, todo titles, todo descriptions, but NOT usernames
+
 	[] Implement SASS into project
 		[x] Implement Sass
 		[] Style Components with Grids
