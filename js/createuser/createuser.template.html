@@ -12,6 +12,7 @@
 				type="text" 
 		  		id="input-home"
 				name="username"
+				placeholder="Choose a Username"
 				autocomplete="off"
 		  		class="input__field input__field--isao"
 				ng-model="$ctrl.user.username"
@@ -29,6 +30,19 @@
 					Required
 				</span>
 			</label>
+			<div 
+				 	ng-messages="createUserForm.$error"
+				 	ng-show="createUserForm.$invalid && !createUserForm.$pristine"
+				 	class="error-messages">
+			    <p 
+			    	ng-message="required || minlength || maxlength">
+			    	Your 'username' must be between 3 and 20 characters
+				</p>
+			    <p 
+			    	ng-message="validUsername">
+			    	Your 'username' can only contain letters and numbers, no special characters
+			    </p>
+			</div>
 		</span>
 		<div
 		  	ng-class="{'disabled-button': createUserForm.$invalid, 'enabled-button': createUserForm.$valid}" 
@@ -46,16 +60,3 @@
   	</div>
 
 </form>
-<div 
-	 	ng-messages="createUserForm.$error"
-	 	ng-show="createUserForm.$invalid && !createUserForm.$pristine"
-	 	class="error-messages">
-    <p 
-    	ng-message="required || minlength || maxlength">
-    	Your 'username' must be between 3 and 20 characters
-	</p>
-    <p 
-    	ng-message="validUsername">
-    	Your 'username' can only contain letters and numbers, no special characters
-    </p>
-</div>

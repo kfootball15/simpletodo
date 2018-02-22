@@ -43,18 +43,18 @@
 		  		id="submit"
 		  		value="" />
   		</div>
+		<div 
+		 	class="error-messages"
+		 	ng-messages="createTodolistForm.$error"
+		 	ng-show="createTodolistForm.$invalid && !createTodolistForm.$pristine">
+	        <p 
+	        	ng-message="required || minlength || maxlength">
+	        		Title must be between 2 and 20 characters</p>
+	        <p 
+	        	ng-message="validTitle">
+	        		Title may only contain letters and numbers</p>
+	    </div>
 		
   	</div>
-	<div 
-	 	ng-messages="createTodolistForm.$error"
-	 	ng-show="createTodolistForm.$invalid && !createTodolistForm.$pristine"
-	 	class="error-messages">
-        <p 
-        	ng-message="required || minlength || maxlength">
-        		Your Todo List must have a title between 2 and 20 characters</p>
-        <p 
-        	ng-message="validTitle">
-        		Your Todo List title can only contain letters and numbers, no special characters</p>
-    </div>
 
 </form>

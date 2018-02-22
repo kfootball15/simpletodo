@@ -4,7 +4,7 @@
 	ng-submit="$ctrl.createTodo(createTodoForm.$valid, createTodoForm)"
 	novalidate
 	>
-	<div style="display: block">
+
 		<div class="inputs-container">
 			<span class="input input--isao">
 				<input 
@@ -28,6 +28,21 @@
 						Required
 					</span>
 				</label>
+				<div 
+					ng-messages="createTodoForm.title.$error" 
+					ng-show="createTodoForm.title.$invalid && !createTodoForm.title.$pristine"
+					class="error-messages"
+					>
+					<p ng-message="required">	
+						A Title is required
+						</p>
+					<p ng-message="maxlength || minlength">	
+						Title must be between 3 and 20 characters
+						</p>
+					<p ng-message="validTitle">	
+						Title may only include letters and numbers
+						</p>
+				</div>
 			</span>
 			<span class="input input--isao">
 				<input
@@ -51,6 +66,18 @@
 					<!-- <span 
 						ng-show="$ctrl.todolistItem.description.length">{{$ctrl.todolistItem.description.length}}/50</span>  -->
 				</label>
+				<div 
+					ng-messages="createTodoForm.description.$error" 
+					ng-show="createTodoForm.description.$invalid && !createTodoForm.description.$pristine"
+					class="error-messages"
+					>
+					<p ng-message="maxlength || minlength">	
+						Description must be fewer then 50 characters
+						</p>
+					<p ng-message="validDescription">	
+						Description may only include letters and numbers
+						</p>
+				</div>
 			</span>
 			<div
 			  	ng-class="{'disabled-button': createTodoForm.$invalid, 'enabled-button': createTodoForm.$valid}" 
@@ -66,33 +93,5 @@
 			  		value="" />
 	  		</div>
 		</div>
-	</div>
-	<div 
-		ng-messages="createTodoForm.title.$error" 
-		ng-show="createTodoForm.title.$invalid && !createTodoForm.title.$pristine"
-		class="error-messages"
-		>
-		<p ng-message="required">	
-			A Title is required
-			</p>
-		<p ng-message="maxlength || minlength">	
-			Your Title must be between 3 and 20 characters
-			</p>
-		<p ng-message="validTitle">	
-			You Title may only include letters and numbers
-			</p>
-	</div>
-	<div 
-		ng-messages="createTodoForm.description.$error" 
-		ng-show="createTodoForm.description.$invalid && !createTodoForm.description.$pristine"
-		class="error-messages"
-		>
-		<p ng-message="maxlength || minlength">	
-			Your Description must be less then 50 characters
-			</p>
-		<p ng-message="validDescription">	
-			You Description may only include letters and numbers
-			</p>
-	</div>
 
 </form>

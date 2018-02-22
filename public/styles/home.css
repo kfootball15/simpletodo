@@ -4,18 +4,28 @@ body {
   font-family: 'Nunito', sans-serif;
   font-size: 36px;
   background-color: #FFD9DA; }
+  @media only screen and (min-device-width: 375px) and (max-device-width: 667px) {
+    body {
+      font-size: 28px; } }
 
-@media only screen and (min-device-width: 375px) and (max-device-width: 667px) {
-  body {
-    font-size: 20px; } }
-@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
-  body {
-    font-size: 24px; } }
-@media screen and (-webkit-min-device-pixel-ratio: 0) {
-  select,
-  textarea,
-  input {
-    font-size: 16px; } }
+input[type="color"],
+input[type="date"],
+input[type="datetime"],
+input[type="datetime-local"],
+input[type="email"],
+input[type="month"],
+input[type="number"],
+input[type="password"],
+input[type="search"],
+input[type="tel"],
+input[type="text"],
+input[type="time"],
+input[type="url"],
+input[type="week"],
+select:focus,
+textarea {
+  font-size: 16px; }
+
 a {
   text-decoration: none; }
 
@@ -27,194 +37,6 @@ input[type="submit"] {
   font: inherit;
   cursor: pointer;
   outline: inherit; }
-
-form#create-user-form {
-  display: flex; }
-form .submit-button {
-  height: 50px;
-  width: 50px;
-  position: relative;
-  cursor: pointer;
-  flex: 1 0 50px;
-  margin-right: 75px;
-  margin-bottom: 30px; }
-  @media only screen and (min-device-width: 375px) and (max-device-width: 667px) {
-    form .submit-button {
-      margin-right: 0px; } }
-  form .submit-button:hover {
-    opacity: 1; }
-  form .submit-button input {
-    height: 100%;
-    width: 100%;
-    position: absolute; }
-  form .submit-button .icon-container {
-    height: 100%;
-    width: 100%;
-    position: absolute;
-    display: flex;
-    justify-content: center;
-    align-items: center img;
-      align-items-width: 60%;
-      align-items-height: 60%; }
-form .disabled-button {
-  border-radius: 45px;
-  background-color: #FA787E;
-  color: #e0c1c2;
-  opacity: 0.3; }
-form .enabled-button {
-  border-radius: 45px;
-  background-color: #78FA89;
-  color: #ffffff;
-  opacity: .5; }
-form .inputs-container {
-  display: flex;
-  justify-content: flex-start;
-  align-items: center; }
-  form .inputs-container .input {
-    position: relative;
-    z-index: 1;
-    display: inline-block;
-    margin-left: .5em;
-    vertical-align: top; }
-    form .inputs-container .input.input--isao {
-      flex: 2 1 auto;
-      margin-right: 15px; }
-    form .inputs-container .input .input__field {
-      position: relative;
-      display: block;
-      float: right;
-      padding: 0.8em;
-      width: 60%;
-      border: none;
-      border-radius: 0;
-      background: #f0f0f0;
-      color: #aaa;
-      font-weight: bold;
-      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-      -webkit-appearance: none;
-      /* for box shadows to show on iOS */ }
-      form .inputs-container .input .input__field:focus {
-        outline: none; }
-      form .inputs-container .input .input__field.input__field--isao {
-        z-index: 10;
-        padding: 0.75em 0.1em 0.25em;
-        width: 100%;
-        background: transparent;
-        color: #afb3b8;
-        font-size: .7em; }
-        form .inputs-container .input .input__field.input__field--isao:focus + .input__label--isao::before {
-          -webkit-transform: scale3d(1, 1, 1);
-          transform: scale3d(1, 1, 1); }
-          form .inputs-container .input .input__field.input__field--isao:focus + .input__label--isao::before.invalidInputColor {
-            background: #FA787E; }
-          form .inputs-container .input .input__field.input__field--isao:focus + .input__label--isao::before.validInputColor {
-            background: #78FA89; }
-        form .inputs-container .input .input__field.input__field--isao:focus + .input__label--isao {
-          pointer-events: none; }
-        form .inputs-container .input .input__field.input__field--isao:focus + .input__label--isao::after {
-          opacity: 1;
-          -webkit-transform: translate3d(0, 0, 0);
-          transform: translate3d(0, 0, 0); }
-        form .inputs-container .input .input__field.input__field--isao:focus + .input__label--isao .input__label-content--isao {
-          opacity: 0;
-          -webkit-transform: translate3d(0, -50%, 0);
-          transform: translate3d(0, -50%, 0); }
-    form .inputs-container .input .input__label {
-      display: inline-block;
-      float: right;
-      padding: 0 1em;
-      width: 40%;
-      font-weight: bold;
-      font-size: 70.25%;
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
-      -webkit-touch-callout: none;
-      -webkit-user-select: none;
-      -khtml-user-select: none;
-      -moz-user-select: none;
-      -ms-user-select: none;
-      user-select: none; }
-      form .inputs-container .input .input__label.input__label--isao {
-        position: relative;
-        overflow: hidden;
-        padding: 0;
-        width: 100%;
-        text-align: left; }
-        form .inputs-container .input .input__label.input__label--isao.validInputColor::before {
-          background: #78FA89; }
-        form .inputs-container .input .input__label.input__label--isao.invalidInputColor::before {
-          background: #FA787E; }
-        form .inputs-container .input .input__label.input__label--isao::before {
-          content: '';
-          position: absolute;
-          top: 0;
-          width: 100%;
-          height: 7px;
-          background: #dadada;
-          -webkit-transform: scale3d(1, 0.4, 1);
-          transform: scale3d(1, 0.4, 1);
-          -webkit-transform-origin: 50% 100%;
-          transform-origin: 50% 100%;
-          -webkit-transition: -webkit-transform 0.3s, background-color 0.3s;
-          transition: transform 0.3s, background-color 0.3s;
-          -webkit-transition-timing-function: cubic-bezier(0.2, 1, 0.3, 1);
-          transition-timing-function: cubic-bezier(0.2, 1, 0.3, 1); }
-        form .inputs-container .input .input__label.input__label--isao::after {
-          content: attr(data-content);
-          position: absolute;
-          top: 0;
-          left: 0;
-          padding: 0.75em 0.15em;
-          opacity: 0;
-          -webkit-transform: translate3d(0, 50%, 0);
-          transform: translate3d(0, 50%, 0);
-          -webkit-transition: opacity 0.3s, -webkit-transform 0.3s;
-          transition: opacity 0.3s, transform 0.3s;
-          -webkit-transition-timing-function: cubic-bezier(0.2, 1, 0.3, 1);
-          transition-timing-function: cubic-bezier(0.2, 1, 0.3, 1);
-          pointer-events: none; }
-      form .inputs-container .input .input__label .input__label-content {
-        position: relative;
-        display: block;
-        padding: 1.6em 0;
-        width: 100%; }
-        form .inputs-container .input .input__label .input__label-content.input__label-content--isao {
-          padding: 0.25em 0.15em;
-          -webkit-transition: opacity 0.3s, -webkit-transform 0.3s;
-          transition: opacity 0.3s, transform 0.3s;
-          -webkit-transition-timing-function: cubic-bezier(0.2, 1, 0.3, 1);
-          transition-timing-function: cubic-bezier(0.2, 1, 0.3, 1);
-          -webkit-transition: opacity 0.3s, -webkit-transform 0.3s;
-          transition: opacity 0.3s, transform 0.3s;
-          -webkit-transition-timing-function: cubic-bezier(0.2, 1, 0.3, 1);
-          transition-timing-function: cubic-bezier(0.2, 1, 0.3, 1); }
-form .inline-input {
-  display: inline-block; }
-form .submit-container {
-  float: left;
-  display: inline-block;
-  height: 40px;
-  line-height: 40px;
-  width: 100px;
-  text-align: center; }
-  form .submit-container input {
-    width: 100%; }
-form textarea {
-  margin: 0;
-  margin-right: 0px;
-  height: 13px; }
-form textarea.large-width {
-  width: 400px; }
-form input[type="text"].todo-inputs {
-  display: block; }
-form textarea.todo-inputs {
-  display: block; }
-form input.large-width {
-  width: 400px; }
-form input.ng-invalid.ng-touched, form textarea.ng-invalid.ng-touched {
-  background-color: #FA787E; }
-form input.ng-valid.ng-touched, form textarea.ng-invalid.ng-touched {
-  background-color: #78FA89; }
 
 home, todolists-component, todolist-component {
   display: grid;
@@ -258,18 +80,221 @@ header-nav {
             cursor: default;
             pointer-events: none; }
 
-#home-container, #create-todolist-container, #create-todo-container {
+#create-user-container, #create-todolist-container, #create-todo-container {
   grid-row: 2/3;
   display: flex; }
-  #home-container .row-url, #create-todolist-container .row-url, #create-todo-container .row-url {
+  #create-user-container .row-url, #create-todolist-container .row-url, #create-todo-container .row-url {
     font-size: 1em;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: row;
     flex: 1 1; }
-    #home-container .row-url create-user, #create-todolist-container .row-url create-user, #create-todo-container .row-url create-user {
+    @media only screen and (min-device-width: 375px) and (max-device-width: 667px) {
+      #create-user-container .row-url, #create-todolist-container .row-url, #create-todo-container .row-url {
+        flex-flow: column wrap;
+        margin-top: 25px; } }
+    @media only screen and (min-device-width: 375px) and (max-device-width: 667px) {
+      #create-user-container .row-url span.prodUrl, #create-todolist-container .row-url span.prodUrl, #create-todo-container .row-url span.prodUrl {
+        display: none; } }
+    #create-user-container .row-url create-user, #create-user-container .row-url create-todolist, #create-user-container .row-url create-todo, #create-todolist-container .row-url create-user, #create-todolist-container .row-url create-todolist, #create-todolist-container .row-url create-todo, #create-todo-container .row-url create-user, #create-todo-container .row-url create-todolist, #create-todo-container .row-url create-todo {
       margin-top: 36px; }
+      @media only screen and (min-device-width: 375px) and (max-device-width: 667px) {
+        #create-user-container .row-url create-user, #create-user-container .row-url create-todolist, #create-user-container .row-url create-todo, #create-todolist-container .row-url create-user, #create-todolist-container .row-url create-todolist, #create-todolist-container .row-url create-todo, #create-todo-container .row-url create-user, #create-todo-container .row-url create-todolist, #create-todo-container .row-url create-todo {
+          width: 100%; } }
+      #create-user-container .row-url create-user form, #create-user-container .row-url create-todolist form, #create-user-container .row-url create-todo form, #create-todolist-container .row-url create-user form, #create-todolist-container .row-url create-todolist form, #create-todolist-container .row-url create-todo form, #create-todo-container .row-url create-user form, #create-todo-container .row-url create-todolist form, #create-todo-container .row-url create-todo form {
+        display: flex;
+        justify-content: center; }
+        #create-user-container .row-url create-user form .inputs-container, #create-user-container .row-url create-todolist form .inputs-container, #create-user-container .row-url create-todo form .inputs-container, #create-todolist-container .row-url create-user form .inputs-container, #create-todolist-container .row-url create-todolist form .inputs-container, #create-todolist-container .row-url create-todo form .inputs-container, #create-todo-container .row-url create-user form .inputs-container, #create-todo-container .row-url create-todolist form .inputs-container, #create-todo-container .row-url create-todo form .inputs-container {
+          flex-flow: row nowrap;
+          display: flex;
+          width: 100%; }
+          @media only screen and (min-device-width: 375px) and (max-device-width: 667px) {
+            #create-user-container .row-url create-user form .inputs-container, #create-user-container .row-url create-todolist form .inputs-container, #create-user-container .row-url create-todo form .inputs-container, #create-todolist-container .row-url create-user form .inputs-container, #create-todolist-container .row-url create-todolist form .inputs-container, #create-todolist-container .row-url create-todo form .inputs-container, #create-todo-container .row-url create-user form .inputs-container, #create-todo-container .row-url create-todolist form .inputs-container, #create-todo-container .row-url create-todo form .inputs-container {
+              flex-flow: column wrap;
+              margin: 0 20px; } }
+          #create-user-container .row-url create-user form .inputs-container .submit-button, #create-user-container .row-url create-todolist form .inputs-container .submit-button, #create-user-container .row-url create-todo form .inputs-container .submit-button, #create-todolist-container .row-url create-user form .inputs-container .submit-button, #create-todolist-container .row-url create-todolist form .inputs-container .submit-button, #create-todolist-container .row-url create-todo form .inputs-container .submit-button, #create-todo-container .row-url create-user form .inputs-container .submit-button, #create-todo-container .row-url create-todolist form .inputs-container .submit-button, #create-todo-container .row-url create-todo form .inputs-container .submit-button {
+            height: 50px;
+            width: 50px;
+            position: relative;
+            cursor: pointer;
+            flex: 1 0 50px;
+            margin-bottom: 30px; }
+            @media only screen and (min-device-width: 375px) and (max-device-width: 667px) {
+              #create-user-container .row-url create-user form .inputs-container .submit-button, #create-user-container .row-url create-todolist form .inputs-container .submit-button, #create-user-container .row-url create-todo form .inputs-container .submit-button, #create-todolist-container .row-url create-user form .inputs-container .submit-button, #create-todolist-container .row-url create-todolist form .inputs-container .submit-button, #create-todolist-container .row-url create-todo form .inputs-container .submit-button, #create-todo-container .row-url create-user form .inputs-container .submit-button, #create-todo-container .row-url create-todolist form .inputs-container .submit-button, #create-todo-container .row-url create-todo form .inputs-container .submit-button {
+                margin-right: 0px;
+                margin-top: 25px;
+                align-self: center; } }
+            #create-user-container .row-url create-user form .inputs-container .submit-button.disabled-button, #create-user-container .row-url create-todolist form .inputs-container .submit-button.disabled-button, #create-user-container .row-url create-todo form .inputs-container .submit-button.disabled-button, #create-todolist-container .row-url create-user form .inputs-container .submit-button.disabled-button, #create-todolist-container .row-url create-todolist form .inputs-container .submit-button.disabled-button, #create-todolist-container .row-url create-todo form .inputs-container .submit-button.disabled-button, #create-todo-container .row-url create-user form .inputs-container .submit-button.disabled-button, #create-todo-container .row-url create-todolist form .inputs-container .submit-button.disabled-button, #create-todo-container .row-url create-todo form .inputs-container .submit-button.disabled-button {
+              border-radius: 45px;
+              background-color: #FA787E;
+              color: #e0c1c2;
+              opacity: 0.3;
+              -webkit-transition: -webkit-opacity 0.3s, background-color 0.4s;
+              transition: opacity 0.3s, background-color 0.4s; }
+              #create-user-container .row-url create-user form .inputs-container .submit-button.disabled-button:hover input, #create-user-container .row-url create-todolist form .inputs-container .submit-button.disabled-button:hover input, #create-user-container .row-url create-todo form .inputs-container .submit-button.disabled-button:hover input, #create-todolist-container .row-url create-user form .inputs-container .submit-button.disabled-button:hover input, #create-todolist-container .row-url create-todolist form .inputs-container .submit-button.disabled-button:hover input, #create-todolist-container .row-url create-todo form .inputs-container .submit-button.disabled-button:hover input, #create-todo-container .row-url create-user form .inputs-container .submit-button.disabled-button:hover input, #create-todo-container .row-url create-todolist form .inputs-container .submit-button.disabled-button:hover input, #create-todo-container .row-url create-todo form .inputs-container .submit-button.disabled-button:hover input {
+                cursor: default; }
+            #create-user-container .row-url create-user form .inputs-container .submit-button.enabled-button, #create-user-container .row-url create-todolist form .inputs-container .submit-button.enabled-button, #create-user-container .row-url create-todo form .inputs-container .submit-button.enabled-button, #create-todolist-container .row-url create-user form .inputs-container .submit-button.enabled-button, #create-todolist-container .row-url create-todolist form .inputs-container .submit-button.enabled-button, #create-todolist-container .row-url create-todo form .inputs-container .submit-button.enabled-button, #create-todo-container .row-url create-user form .inputs-container .submit-button.enabled-button, #create-todo-container .row-url create-todolist form .inputs-container .submit-button.enabled-button, #create-todo-container .row-url create-todo form .inputs-container .submit-button.enabled-button {
+              border-radius: 45px;
+              background-color: #63F075;
+              color: #ffffff;
+              opacity: .5;
+              -webkit-transition: -webkit-opacity 0.3s, background-color 0.4s;
+              transition: opacity 0.3s, background-color 0.4s; }
+              #create-user-container .row-url create-user form .inputs-container .submit-button.enabled-button:hover, #create-user-container .row-url create-todolist form .inputs-container .submit-button.enabled-button:hover, #create-user-container .row-url create-todo form .inputs-container .submit-button.enabled-button:hover, #create-todolist-container .row-url create-user form .inputs-container .submit-button.enabled-button:hover, #create-todolist-container .row-url create-todolist form .inputs-container .submit-button.enabled-button:hover, #create-todolist-container .row-url create-todo form .inputs-container .submit-button.enabled-button:hover, #create-todo-container .row-url create-user form .inputs-container .submit-button.enabled-button:hover, #create-todo-container .row-url create-todolist form .inputs-container .submit-button.enabled-button:hover, #create-todo-container .row-url create-todo form .inputs-container .submit-button.enabled-button:hover {
+                opacity: 1; }
+            #create-user-container .row-url create-user form .inputs-container .submit-button input, #create-user-container .row-url create-todolist form .inputs-container .submit-button input, #create-user-container .row-url create-todo form .inputs-container .submit-button input, #create-todolist-container .row-url create-user form .inputs-container .submit-button input, #create-todolist-container .row-url create-todolist form .inputs-container .submit-button input, #create-todolist-container .row-url create-todo form .inputs-container .submit-button input, #create-todo-container .row-url create-user form .inputs-container .submit-button input, #create-todo-container .row-url create-todolist form .inputs-container .submit-button input, #create-todo-container .row-url create-todo form .inputs-container .submit-button input {
+              height: 100%;
+              width: 100%;
+              position: absolute; }
+            #create-user-container .row-url create-user form .inputs-container .submit-button .icon-container, #create-user-container .row-url create-todolist form .inputs-container .submit-button .icon-container, #create-user-container .row-url create-todo form .inputs-container .submit-button .icon-container, #create-todolist-container .row-url create-user form .inputs-container .submit-button .icon-container, #create-todolist-container .row-url create-todolist form .inputs-container .submit-button .icon-container, #create-todolist-container .row-url create-todo form .inputs-container .submit-button .icon-container, #create-todo-container .row-url create-user form .inputs-container .submit-button .icon-container, #create-todo-container .row-url create-todolist form .inputs-container .submit-button .icon-container, #create-todo-container .row-url create-todo form .inputs-container .submit-button .icon-container {
+              height: 100%;
+              width: 100%;
+              position: absolute;
+              display: flex;
+              justify-content: center;
+              align-items: center img;
+                align-items-width: 60%;
+                align-items-height: 60%; }
+          #create-user-container .row-url create-user form .inputs-container .error-messages, #create-user-container .row-url create-todolist form .inputs-container .error-messages, #create-user-container .row-url create-todo form .inputs-container .error-messages, #create-todolist-container .row-url create-user form .inputs-container .error-messages, #create-todolist-container .row-url create-todolist form .inputs-container .error-messages, #create-todolist-container .row-url create-todo form .inputs-container .error-messages, #create-todo-container .row-url create-user form .inputs-container .error-messages, #create-todo-container .row-url create-todolist form .inputs-container .error-messages, #create-todo-container .row-url create-todo form .inputs-container .error-messages {
+            position: absolute;
+            width: 100%;
+            margin-top: 90px;
+            margin-left: 21px; }
+            #create-user-container .row-url create-user form .inputs-container .error-messages p, #create-user-container .row-url create-todolist form .inputs-container .error-messages p, #create-user-container .row-url create-todo form .inputs-container .error-messages p, #create-todolist-container .row-url create-user form .inputs-container .error-messages p, #create-todolist-container .row-url create-todolist form .inputs-container .error-messages p, #create-todolist-container .row-url create-todo form .inputs-container .error-messages p, #create-todo-container .row-url create-user form .inputs-container .error-messages p, #create-todo-container .row-url create-todolist form .inputs-container .error-messages p, #create-todo-container .row-url create-todo form .inputs-container .error-messages p {
+              background-color: #FA787E;
+              color: #114b5f;
+              font-size: .5em;
+              padding: 5px 24px;
+              max-width: 350px; }
+          #create-user-container .row-url create-user form .inputs-container .input, #create-user-container .row-url create-todolist form .inputs-container .input, #create-user-container .row-url create-todo form .inputs-container .input, #create-todolist-container .row-url create-user form .inputs-container .input, #create-todolist-container .row-url create-todolist form .inputs-container .input, #create-todolist-container .row-url create-todo form .inputs-container .input, #create-todo-container .row-url create-user form .inputs-container .input, #create-todo-container .row-url create-todolist form .inputs-container .input, #create-todo-container .row-url create-todo form .inputs-container .input {
+            position: relative;
+            z-index: 1;
+            display: inline-block;
+            margin-left: .5em;
+            vertical-align: top; }
+            #create-user-container .row-url create-user form .inputs-container .input.ng-invalid.ng-touched, #create-user-container .row-url create-todolist form .inputs-container .input.ng-invalid.ng-touched, #create-user-container .row-url create-todo form .inputs-container .input.ng-invalid.ng-touched, #create-todolist-container .row-url create-user form .inputs-container .input.ng-invalid.ng-touched, #create-todolist-container .row-url create-todolist form .inputs-container .input.ng-invalid.ng-touched, #create-todolist-container .row-url create-todo form .inputs-container .input.ng-invalid.ng-touched, #create-todo-container .row-url create-user form .inputs-container .input.ng-invalid.ng-touched, #create-todo-container .row-url create-todolist form .inputs-container .input.ng-invalid.ng-touched, #create-todo-container .row-url create-todo form .inputs-container .input.ng-invalid.ng-touched {
+              background-color: #FA787E; }
+            #create-user-container .row-url create-user form .inputs-container .input.ng-valid.ng-touched, #create-user-container .row-url create-todolist form .inputs-container .input.ng-valid.ng-touched, #create-user-container .row-url create-todo form .inputs-container .input.ng-valid.ng-touched, #create-todolist-container .row-url create-user form .inputs-container .input.ng-valid.ng-touched, #create-todolist-container .row-url create-todolist form .inputs-container .input.ng-valid.ng-touched, #create-todolist-container .row-url create-todo form .inputs-container .input.ng-valid.ng-touched, #create-todo-container .row-url create-user form .inputs-container .input.ng-valid.ng-touched, #create-todo-container .row-url create-todolist form .inputs-container .input.ng-valid.ng-touched, #create-todo-container .row-url create-todo form .inputs-container .input.ng-valid.ng-touched {
+              background-color: #63F075; }
+            #create-user-container .row-url create-user form .inputs-container .input.input--isao, #create-user-container .row-url create-todolist form .inputs-container .input.input--isao, #create-user-container .row-url create-todo form .inputs-container .input.input--isao, #create-todolist-container .row-url create-user form .inputs-container .input.input--isao, #create-todolist-container .row-url create-todolist form .inputs-container .input.input--isao, #create-todolist-container .row-url create-todo form .inputs-container .input.input--isao, #create-todo-container .row-url create-user form .inputs-container .input.input--isao, #create-todo-container .row-url create-todolist form .inputs-container .input.input--isao, #create-todo-container .row-url create-todo form .inputs-container .input.input--isao {
+              flex: 2 1 auto;
+              margin-right: 15px; }
+            #create-user-container .row-url create-user form .inputs-container .input .input__field, #create-user-container .row-url create-todolist form .inputs-container .input .input__field, #create-user-container .row-url create-todo form .inputs-container .input .input__field, #create-todolist-container .row-url create-user form .inputs-container .input .input__field, #create-todolist-container .row-url create-todolist form .inputs-container .input .input__field, #create-todolist-container .row-url create-todo form .inputs-container .input .input__field, #create-todo-container .row-url create-user form .inputs-container .input .input__field, #create-todo-container .row-url create-todolist form .inputs-container .input .input__field, #create-todo-container .row-url create-todo form .inputs-container .input .input__field {
+              position: relative;
+              display: block;
+              float: right;
+              padding: 0.8em;
+              width: 60%;
+              border: none;
+              border-radius: 0;
+              background: #f0f0f0;
+              color: #aaa;
+              font-weight: bold;
+              font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+              -webkit-appearance: none;
+              /* for box shadows to show on iOS */ }
+              #create-user-container .row-url create-user form .inputs-container .input .input__field:focus, #create-user-container .row-url create-todolist form .inputs-container .input .input__field:focus, #create-user-container .row-url create-todo form .inputs-container .input .input__field:focus, #create-todolist-container .row-url create-user form .inputs-container .input .input__field:focus, #create-todolist-container .row-url create-todolist form .inputs-container .input .input__field:focus, #create-todolist-container .row-url create-todo form .inputs-container .input .input__field:focus, #create-todo-container .row-url create-user form .inputs-container .input .input__field:focus, #create-todo-container .row-url create-todolist form .inputs-container .input .input__field:focus, #create-todo-container .row-url create-todo form .inputs-container .input .input__field:focus {
+                outline: none; }
+              #create-user-container .row-url create-user form .inputs-container .input .input__field.input__field--isao, #create-user-container .row-url create-todolist form .inputs-container .input .input__field.input__field--isao, #create-user-container .row-url create-todo form .inputs-container .input .input__field.input__field--isao, #create-todolist-container .row-url create-user form .inputs-container .input .input__field.input__field--isao, #create-todolist-container .row-url create-todolist form .inputs-container .input .input__field.input__field--isao, #create-todolist-container .row-url create-todo form .inputs-container .input .input__field.input__field--isao, #create-todo-container .row-url create-user form .inputs-container .input .input__field.input__field--isao, #create-todo-container .row-url create-todolist form .inputs-container .input .input__field.input__field--isao, #create-todo-container .row-url create-todo form .inputs-container .input .input__field.input__field--isao {
+                z-index: 10;
+                padding: 0.75em 0.1em 0.25em;
+                width: 100%;
+                background: transparent;
+                color: #afb3b8;
+                font-size: .7em; }
+                #create-user-container .row-url create-user form .inputs-container .input .input__field.input__field--isao:focus + .input__label--isao::before, #create-user-container .row-url create-todolist form .inputs-container .input .input__field.input__field--isao:focus + .input__label--isao::before, #create-user-container .row-url create-todo form .inputs-container .input .input__field.input__field--isao:focus + .input__label--isao::before, #create-todolist-container .row-url create-user form .inputs-container .input .input__field.input__field--isao:focus + .input__label--isao::before, #create-todolist-container .row-url create-todolist form .inputs-container .input .input__field.input__field--isao:focus + .input__label--isao::before, #create-todolist-container .row-url create-todo form .inputs-container .input .input__field.input__field--isao:focus + .input__label--isao::before, #create-todo-container .row-url create-user form .inputs-container .input .input__field.input__field--isao:focus + .input__label--isao::before, #create-todo-container .row-url create-todolist form .inputs-container .input .input__field.input__field--isao:focus + .input__label--isao::before, #create-todo-container .row-url create-todo form .inputs-container .input .input__field.input__field--isao:focus + .input__label--isao::before {
+                  -webkit-transform: scale3d(1, 1, 1);
+                  transform: scale3d(1, 1, 1); }
+                #create-user-container .row-url create-user form .inputs-container .input .input__field.input__field--isao:focus + .input__label--isao, #create-user-container .row-url create-todolist form .inputs-container .input .input__field.input__field--isao:focus + .input__label--isao, #create-user-container .row-url create-todo form .inputs-container .input .input__field.input__field--isao:focus + .input__label--isao, #create-todolist-container .row-url create-user form .inputs-container .input .input__field.input__field--isao:focus + .input__label--isao, #create-todolist-container .row-url create-todolist form .inputs-container .input .input__field.input__field--isao:focus + .input__label--isao, #create-todolist-container .row-url create-todo form .inputs-container .input .input__field.input__field--isao:focus + .input__label--isao, #create-todo-container .row-url create-user form .inputs-container .input .input__field.input__field--isao:focus + .input__label--isao, #create-todo-container .row-url create-todolist form .inputs-container .input .input__field.input__field--isao:focus + .input__label--isao, #create-todo-container .row-url create-todo form .inputs-container .input .input__field.input__field--isao:focus + .input__label--isao {
+                  pointer-events: none; }
+                #create-user-container .row-url create-user form .inputs-container .input .input__field.input__field--isao:focus + .input__label--isao::after, #create-user-container .row-url create-todolist form .inputs-container .input .input__field.input__field--isao:focus + .input__label--isao::after, #create-user-container .row-url create-todo form .inputs-container .input .input__field.input__field--isao:focus + .input__label--isao::after, #create-todolist-container .row-url create-user form .inputs-container .input .input__field.input__field--isao:focus + .input__label--isao::after, #create-todolist-container .row-url create-todolist form .inputs-container .input .input__field.input__field--isao:focus + .input__label--isao::after, #create-todolist-container .row-url create-todo form .inputs-container .input .input__field.input__field--isao:focus + .input__label--isao::after, #create-todo-container .row-url create-user form .inputs-container .input .input__field.input__field--isao:focus + .input__label--isao::after, #create-todo-container .row-url create-todolist form .inputs-container .input .input__field.input__field--isao:focus + .input__label--isao::after, #create-todo-container .row-url create-todo form .inputs-container .input .input__field.input__field--isao:focus + .input__label--isao::after {
+                  opacity: 1;
+                  -webkit-transform: translate3d(0, 0, 0);
+                  transform: translate3d(0, 0, 0); }
+                #create-user-container .row-url create-user form .inputs-container .input .input__field.input__field--isao:focus + .input__label--isao .input__label-content--isao, #create-user-container .row-url create-todolist form .inputs-container .input .input__field.input__field--isao:focus + .input__label--isao .input__label-content--isao, #create-user-container .row-url create-todo form .inputs-container .input .input__field.input__field--isao:focus + .input__label--isao .input__label-content--isao, #create-todolist-container .row-url create-user form .inputs-container .input .input__field.input__field--isao:focus + .input__label--isao .input__label-content--isao, #create-todolist-container .row-url create-todolist form .inputs-container .input .input__field.input__field--isao:focus + .input__label--isao .input__label-content--isao, #create-todolist-container .row-url create-todo form .inputs-container .input .input__field.input__field--isao:focus + .input__label--isao .input__label-content--isao, #create-todo-container .row-url create-user form .inputs-container .input .input__field.input__field--isao:focus + .input__label--isao .input__label-content--isao, #create-todo-container .row-url create-todolist form .inputs-container .input .input__field.input__field--isao:focus + .input__label--isao .input__label-content--isao, #create-todo-container .row-url create-todo form .inputs-container .input .input__field.input__field--isao:focus + .input__label--isao .input__label-content--isao {
+                  opacity: 0;
+                  -webkit-transform: translate3d(0, -50%, 0);
+                  transform: translate3d(0, -50%, 0); }
+            #create-user-container .row-url create-user form .inputs-container .input .input__label, #create-user-container .row-url create-todolist form .inputs-container .input .input__label, #create-user-container .row-url create-todo form .inputs-container .input .input__label, #create-todolist-container .row-url create-user form .inputs-container .input .input__label, #create-todolist-container .row-url create-todolist form .inputs-container .input .input__label, #create-todolist-container .row-url create-todo form .inputs-container .input .input__label, #create-todo-container .row-url create-user form .inputs-container .input .input__label, #create-todo-container .row-url create-todolist form .inputs-container .input .input__label, #create-todo-container .row-url create-todo form .inputs-container .input .input__label {
+              display: inline-block;
+              float: right;
+              padding: 0 1em;
+              width: 40%;
+              font-weight: bold;
+              font-size: 70.25%;
+              -webkit-font-smoothing: antialiased;
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-touch-callout: none;
+              -webkit-user-select: none;
+              -khtml-user-select: none;
+              -moz-user-select: none;
+              -ms-user-select: none;
+              user-select: none;
+              -webkit-transition: -webkit-transform 0.3s, color 0.4s;
+              transition: transform 0.3s, color 0.4s; }
+              #create-user-container .row-url create-user form .inputs-container .input .input__label.invalidInputColor, #create-user-container .row-url create-todolist form .inputs-container .input .input__label.invalidInputColor, #create-user-container .row-url create-todo form .inputs-container .input .input__label.invalidInputColor, #create-todolist-container .row-url create-user form .inputs-container .input .input__label.invalidInputColor, #create-todolist-container .row-url create-todolist form .inputs-container .input .input__label.invalidInputColor, #create-todolist-container .row-url create-todo form .inputs-container .input .input__label.invalidInputColor, #create-todo-container .row-url create-user form .inputs-container .input .input__label.invalidInputColor, #create-todo-container .row-url create-todolist form .inputs-container .input .input__label.invalidInputColor, #create-todo-container .row-url create-todo form .inputs-container .input .input__label.invalidInputColor {
+                color: #FA787E; }
+              #create-user-container .row-url create-user form .inputs-container .input .input__label.validInputColor, #create-user-container .row-url create-todolist form .inputs-container .input .input__label.validInputColor, #create-user-container .row-url create-todo form .inputs-container .input .input__label.validInputColor, #create-todolist-container .row-url create-user form .inputs-container .input .input__label.validInputColor, #create-todolist-container .row-url create-todolist form .inputs-container .input .input__label.validInputColor, #create-todolist-container .row-url create-todo form .inputs-container .input .input__label.validInputColor, #create-todo-container .row-url create-user form .inputs-container .input .input__label.validInputColor, #create-todo-container .row-url create-todolist form .inputs-container .input .input__label.validInputColor, #create-todo-container .row-url create-todo form .inputs-container .input .input__label.validInputColor {
+                color: #63F075; }
+              #create-user-container .row-url create-user form .inputs-container .input .input__label.input__label--isao, #create-user-container .row-url create-todolist form .inputs-container .input .input__label.input__label--isao, #create-user-container .row-url create-todo form .inputs-container .input .input__label.input__label--isao, #create-todolist-container .row-url create-user form .inputs-container .input .input__label.input__label--isao, #create-todolist-container .row-url create-todolist form .inputs-container .input .input__label.input__label--isao, #create-todolist-container .row-url create-todo form .inputs-container .input .input__label.input__label--isao, #create-todo-container .row-url create-user form .inputs-container .input .input__label.input__label--isao, #create-todo-container .row-url create-todolist form .inputs-container .input .input__label.input__label--isao, #create-todo-container .row-url create-todo form .inputs-container .input .input__label.input__label--isao {
+                position: relative;
+                overflow: hidden;
+                padding: 0;
+                width: 100%;
+                text-align: left; }
+                #create-user-container .row-url create-user form .inputs-container .input .input__label.input__label--isao.validInputColor::before, #create-user-container .row-url create-todolist form .inputs-container .input .input__label.input__label--isao.validInputColor::before, #create-user-container .row-url create-todo form .inputs-container .input .input__label.input__label--isao.validInputColor::before, #create-todolist-container .row-url create-user form .inputs-container .input .input__label.input__label--isao.validInputColor::before, #create-todolist-container .row-url create-todolist form .inputs-container .input .input__label.input__label--isao.validInputColor::before, #create-todolist-container .row-url create-todo form .inputs-container .input .input__label.input__label--isao.validInputColor::before, #create-todo-container .row-url create-user form .inputs-container .input .input__label.input__label--isao.validInputColor::before, #create-todo-container .row-url create-todolist form .inputs-container .input .input__label.input__label--isao.validInputColor::before, #create-todo-container .row-url create-todo form .inputs-container .input .input__label.input__label--isao.validInputColor::before {
+                  background: #63F075; }
+                #create-user-container .row-url create-user form .inputs-container .input .input__label.input__label--isao.invalidInputColor::before, #create-user-container .row-url create-todolist form .inputs-container .input .input__label.input__label--isao.invalidInputColor::before, #create-user-container .row-url create-todo form .inputs-container .input .input__label.input__label--isao.invalidInputColor::before, #create-todolist-container .row-url create-user form .inputs-container .input .input__label.input__label--isao.invalidInputColor::before, #create-todolist-container .row-url create-todolist form .inputs-container .input .input__label.input__label--isao.invalidInputColor::before, #create-todolist-container .row-url create-todo form .inputs-container .input .input__label.input__label--isao.invalidInputColor::before, #create-todo-container .row-url create-user form .inputs-container .input .input__label.input__label--isao.invalidInputColor::before, #create-todo-container .row-url create-todolist form .inputs-container .input .input__label.input__label--isao.invalidInputColor::before, #create-todo-container .row-url create-todo form .inputs-container .input .input__label.input__label--isao.invalidInputColor::before {
+                  background: #FA787E; }
+                #create-user-container .row-url create-user form .inputs-container .input .input__label.input__label--isao::before, #create-user-container .row-url create-todolist form .inputs-container .input .input__label.input__label--isao::before, #create-user-container .row-url create-todo form .inputs-container .input .input__label.input__label--isao::before, #create-todolist-container .row-url create-user form .inputs-container .input .input__label.input__label--isao::before, #create-todolist-container .row-url create-todolist form .inputs-container .input .input__label.input__label--isao::before, #create-todolist-container .row-url create-todo form .inputs-container .input .input__label.input__label--isao::before, #create-todo-container .row-url create-user form .inputs-container .input .input__label.input__label--isao::before, #create-todo-container .row-url create-todolist form .inputs-container .input .input__label.input__label--isao::before, #create-todo-container .row-url create-todo form .inputs-container .input .input__label.input__label--isao::before {
+                  content: '';
+                  position: absolute;
+                  top: 0;
+                  width: 100%;
+                  height: 7px;
+                  background: #dadada;
+                  -webkit-transform: scale3d(1, 0.4, 1);
+                  transform: scale3d(1, 0.4, 1);
+                  -webkit-transform-origin: 50% 100%;
+                  transform-origin: 50% 100%;
+                  -webkit-transition: -webkit-transform 0.3s, background-color 0.4s;
+                  transition: transform 0.3s, background-color 0.4s;
+                  -webkit-transition-timing-function: cubic-bezier(0.2, 1, 0.3, 1);
+                  transition-timing-function: cubic-bezier(0.2, 1, 0.3, 1); }
+                #create-user-container .row-url create-user form .inputs-container .input .input__label.input__label--isao::after, #create-user-container .row-url create-todolist form .inputs-container .input .input__label.input__label--isao::after, #create-user-container .row-url create-todo form .inputs-container .input .input__label.input__label--isao::after, #create-todolist-container .row-url create-user form .inputs-container .input .input__label.input__label--isao::after, #create-todolist-container .row-url create-todolist form .inputs-container .input .input__label.input__label--isao::after, #create-todolist-container .row-url create-todo form .inputs-container .input .input__label.input__label--isao::after, #create-todo-container .row-url create-user form .inputs-container .input .input__label.input__label--isao::after, #create-todo-container .row-url create-todolist form .inputs-container .input .input__label.input__label--isao::after, #create-todo-container .row-url create-todo form .inputs-container .input .input__label.input__label--isao::after {
+                  content: attr(data-content);
+                  position: absolute;
+                  top: 0;
+                  left: 0;
+                  padding: 0.5em 0.15em;
+                  opacity: 0;
+                  -webkit-transform: translate3d(0, 50%, 0);
+                  transform: translate3d(0, 50%, 0);
+                  -webkit-transition: opacity 0.3s, -webkit-transform 0.3s;
+                  transition: opacity 0.3s, transform 0.3s;
+                  -webkit-transition-timing-function: cubic-bezier(0.2, 1, 0.5, 1);
+                  transition-timing-function: cubic-bezier(0.2, 1, 0.3, 1);
+                  pointer-events: none; }
+              #create-user-container .row-url create-user form .inputs-container .input .input__label .input__label-content, #create-user-container .row-url create-todolist form .inputs-container .input .input__label .input__label-content, #create-user-container .row-url create-todo form .inputs-container .input .input__label .input__label-content, #create-todolist-container .row-url create-user form .inputs-container .input .input__label .input__label-content, #create-todolist-container .row-url create-todolist form .inputs-container .input .input__label .input__label-content, #create-todolist-container .row-url create-todo form .inputs-container .input .input__label .input__label-content, #create-todo-container .row-url create-user form .inputs-container .input .input__label .input__label-content, #create-todo-container .row-url create-todolist form .inputs-container .input .input__label .input__label-content, #create-todo-container .row-url create-todo form .inputs-container .input .input__label .input__label-content {
+                position: relative;
+                display: block;
+                padding: 1.6em 0;
+                width: 100%; }
+                #create-user-container .row-url create-user form .inputs-container .input .input__label .input__label-content.input__label-content--isao, #create-user-container .row-url create-todolist form .inputs-container .input .input__label .input__label-content.input__label-content--isao, #create-user-container .row-url create-todo form .inputs-container .input .input__label .input__label-content.input__label-content--isao, #create-todolist-container .row-url create-user form .inputs-container .input .input__label .input__label-content.input__label-content--isao, #create-todolist-container .row-url create-todolist form .inputs-container .input .input__label .input__label-content.input__label-content--isao, #create-todolist-container .row-url create-todo form .inputs-container .input .input__label .input__label-content.input__label-content--isao, #create-todo-container .row-url create-user form .inputs-container .input .input__label .input__label-content.input__label-content--isao, #create-todo-container .row-url create-todolist form .inputs-container .input .input__label .input__label-content.input__label-content--isao, #create-todo-container .row-url create-todo form .inputs-container .input .input__label .input__label-content.input__label-content--isao {
+                  padding: 0.25em 0.15em;
+                  -webkit-transition: opacity 0.3s, -webkit-transform 0.3s;
+                  transition: opacity 0.3s, transform 0.3s;
+                  -webkit-transition-timing-function: cubic-bezier(0.2, 1, 0.3, 1);
+                  transition-timing-function: cubic-bezier(0.2, 1, 0.3, 1);
+                  -webkit-transition: opacity 0.3s, -webkit-transform 0.3s;
+                  transition: opacity 0.3s, transform 0.3s;
+                  -webkit-transition-timing-function: cubic-bezier(0.2, 1, 0.3, 1);
+                  transition-timing-function: cubic-bezier(0.2, 1, 0.3, 1); }
+
+.todolists-container, .todos-container, .home-info-container {
+  grid-row: 3/4;
+  display: flex; }
 
 ul {
   list-style-type: none; }
@@ -278,7 +303,7 @@ ul {
     -moz-transition: all 0.5s ease-in-out;
     transition: all 0.5s ease-in-out; }
     ul.todolists .list-item.isCompleted, ul.todos-list .list-item.isCompleted {
-      background-color: #78FA89;
+      background-color: #63F075;
       margin-top: 50px; }
     ul.todolists .list-item.isCompleted ~ .isCompleted, ul.todos-list .list-item.isCompleted ~ .isCompleted {
       margin-top: 0px; }

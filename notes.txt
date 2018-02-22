@@ -95,6 +95,7 @@
 // -- DEFECTS -- \\
 // -- ------- -- \\
 	[] URLs ending in '/' will create blank users and blank todolists
+	[] No Validation on URL creation (In other words, I can create titles and users with too few characters and special characters from the URL)
 	[] Todo List Titles cannot have spaces in them (They should be able to have spaces!)
 	[x] Creating a Todolist and todolistitem straight from the URL does NOT work yet (Although you can access existing todolists this way just fine)
 	[] Creating a user from the create-user component on home page will overwrite an existing user
