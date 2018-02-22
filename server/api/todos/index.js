@@ -24,30 +24,28 @@ router.post('/:ownerTitle/:userId', function(req, res, next){
 	var newTodo;
 
 	findTodolist(req.params.ownerTitle, req.params.userId)
-	.then(function(foundTodolist){
+	.then( foundTodolist => {
 		if(foundTodolist){
 			req.body.owner = foundTodolist._id;
 			return createTodo(req.body);
 		}
 	})
-	.then(function(todo){
+	.then( todo => {
 		newTodo = todo;
 		return Todolist.update(	{ _id: todo.owner },
 								{ $push: { 'todos': todo } })
 	})
-	.then(function(updatedTodolist){
+	.then( updatedTodolist => {
 		res.status(201).send(newTodo)
 	})
-	.catch(function(err){
-		console.log("ERROR:", err)
-	})
+	.catch(next)
 })
 
 router.delete('/:todoId', function(req, res, next){
 	Todo.find({_id:req.params.todoId})
 	.remove()
 	.exec()
-	.then((deletedItem) => {
+	.then( deletedItem => {
 		res.status(202).send(deletedItem)
 	})
 	.catch(next)
@@ -55,7 +53,8 @@ router.delete('/:todoId', function(req, res, next){
 
 router.put('/:todoId', function (req, res, next){
 	Todo.findByIdAndUpdate(req.params.todoId, {title: req.body.title, description: req.body.description, isCompleted: req.body.isCompleted}, {new: true})
-	.then((updatedTodo)=>{
+	.then( updatedTodo =>{
 		res.status(200).send(updatedTodo)
 	})
+	.catch(next)
 })

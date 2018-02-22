@@ -34,20 +34,20 @@ router.post('/:owner/:title', function(req, res, next) {
     Todolist.find({title: req.params.title, owner: req.params.owner})
     .populate('todos')
 	.exec()
-    .then((todolistExists) => {
+    .then( todolistExists => {
         if(todolistExists[0]){
             res.status(200).send(todolistExists[0]); //Since we have found the existing todolist, we send it back
         } else {
             return createTodolist({ owner:req.params.owner, title: req.params.title}) //Since the requested todolist does not exist, we will create it.
         }
     })
-    .then((newTodolist) => {
+    .then( newTodolist => {
     	if(newTodolist){
     		toSendTodolist = newTodolist;
 		    return updateUser(req.params.owner, newTodolist)
     	}
     })
-    .then((updatedUser) => {
+    .then( updatedUser => {
 	    if(toSendTodolist) res.status(201).send(toSendTodolist);
     })
     .catch(next);
@@ -61,20 +61,20 @@ router.get('/:owner/:title', function(req, res, next){
 	Todolist.find({title: req.params.title, owner: req.params.owner})
 	.populate('todos')
 	.exec()
-	.then((todolists) => {
+	.then( todolists => {
 		if(todolists.length){
 			res.status(200).send(todolists[0]);//Since the todolist exists we simply need to send it back to the user
 		} else { 
 			return createTodolist({ owner:req.params.owner, title: req.params.title})//Since we cannot find the requested todolist, lets create a new one and send it back 
 		}
 	})
-	.then((newTodolist) => {
+	.then( newTodolist => {
     	if(newTodolist){
     		toSendTodolist = newTodolist;
 		    return updateUser(req.params.owner, newTodolist)
     	}
     })
-	.then((updatedUser) => {
+	.then( updatedUser => {
 	    if(toSendTodolist) res.status(201).send(toSendTodolist);
     })
 	.catch(next)
@@ -94,7 +94,7 @@ router.delete('/:todolistId', function(req, res, next){
 	Todolist.find({_id: req.params.todolistId })
 	.remove()
 	.exec()
-	.then((deletedItem) => {
+	.then( deletedItem => {
 		res.status(202).send(deletedItem)
 	})
 	.catch(next)
@@ -102,7 +102,8 @@ router.delete('/:todolistId', function(req, res, next){
 
 router.put('/:todolistId', function (req, res, next){
 	Todolist.findByIdAndUpdate(req.params.todolistId, {title: req.body.title, isCompleted: req.body.isCompleted}, {new: true})
-	.then((updatedTodolist)=>{
+	.then( updatedTodolist => {
 		res.status(200).send(updatedTodolist)
 	})
+	.catch(next)
 })

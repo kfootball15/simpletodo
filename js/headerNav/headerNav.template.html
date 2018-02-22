@@ -1,4 +1,9 @@
 <div id="header-nav-container">
+	<div class="logo">
+		<a ui-sref="home">
+			<img ng-src="public/images/logo-nav.png">
+		</a>
+	</div>
 	<ul class="header-nav">
 		<li ng-repeat="link in $ctrl.linksToShow" 
 			class="{{link.state}}">

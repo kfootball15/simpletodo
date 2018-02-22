@@ -6,41 +6,56 @@
 	novalidate
 	>
 
-	<div class="input-container">
-		<input
-			type="text" 
-			name="username"
-			placeholder="Enter a username" 
-			autocomplete="off"
-	  		class="inline-input"
-			ng-model="$ctrl.user.username"
-			ng-minlength="3"
-			ng-maxlength="20"
-			valid-username
-			required
-			>
-	  	<input 
-	  		ng-class="{'disabled-button': createUserForm.$invalid, 'enabled-button': createUserForm.$valid}" 
-	  		ng-disabled="createUserForm.$invalid" 
-	  		type="submit" 
-	  		id="submit" 
-	  		value="Go!" />
+	<div class="inputs-container">
+		<span class="input input--isao">
+			<input
+				type="text" 
+		  		id="input-home"
+				name="username"
+				autocomplete="off"
+		  		class="input__field input__field--isao"
+				ng-model="$ctrl.user.username"
+				ng-minlength="3"
+				ng-maxlength="20"
+				valid-username
+				required
+				>
+			<label 
+				class="input__label input__label--isao"
+				for="input-home"
+				data-content="Enter a Username"
+				ng-class="{'validInputColor': createUserForm.$valid, 'invalidInputColor': createUserForm.$invalid}">
+				<span class="input__label-content input__label-content--isao">
+					Required
+				</span>
+			</label>
+		</span>
+		<div
+		  	ng-class="{'disabled-button': createUserForm.$invalid, 'enabled-button': createUserForm.$valid}" 
+	  		class="submit-button">
+	  		<div class="icon-container">
+				<img ng-src="public/styles/open-iconic-master/svg/chevron-right.svg"
+				alt="Next">
+			</div>
+		  	<input 
+		  		ng-disabled="createUserForm.$invalid" 
+		  		type="submit" 
+		  		id="submit"
+		  		value="" />
+  		</div>
   	</div>
-  	 <div 
-  	 	ng-messages="createUserForm.$error"
-  	 	ng-show="createUserForm.$invalid && !createUserForm.$pristine"
-  	 	class="error-messages">
-        <p 
-        	ng-message="required || minlength || maxlength">
-        		Your 'username' must be between 3 and 20 characters
-    		</p>
-        <p 
-        	ng-message="validUsername">
-        		Your 'username' can only contain letters and numbers, no special characters
-        	</p>
-    </div>
 
 </form>
-
-
-
+<div 
+	 	ng-messages="createUserForm.$error"
+	 	ng-show="createUserForm.$invalid && !createUserForm.$pristine"
+	 	class="error-messages">
+    <p 
+    	ng-message="required || minlength || maxlength">
+    	Your 'username' must be between 3 and 20 characters
+	</p>
+    <p 
+    	ng-message="validUsername">
+    	Your 'username' can only contain letters and numbers, no special characters
+    </p>
+</div>

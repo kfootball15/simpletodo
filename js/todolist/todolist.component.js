@@ -1,4 +1,4 @@
-simpleToDoApp.component('todolist', {
+simpleToDoApp.component('todolistComponent', {
 	templateUrl: '/js/todolist/todolist.component.template.html',
 	controller: function todolistController($stateParams, PROD_URL) {
 

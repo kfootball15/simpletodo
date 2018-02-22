@@ -5,27 +5,47 @@
 	ng-submit="$ctrl.createTodolist(createTodolistForm.$valid)"
 	novalidate
 	>
-	<div class="input-container">
-		<input 
-			type="text" 
-			autocomplete="off"
-			ng-model="$ctrl.todolist.title"
-			name="username"
-			placeholder="Title" 
-			ng-minlength="2"
-			ng-maxlength="20"
-			valid-title
-			required
-			>
-			
-	  	<input 
-	  		ng-disabled="createTodolistForm.$invalid" 
-	  		ng-class="{'disabled-button': createTodolistForm.$invalid, 'enabled-button': createTodolistForm.$valid}" 
-	  		type="submit" 
-	  		id="submit" 
-	  		value="Create!" />
+	<div class="inputs-container">
+		<span class="input input--isao">
+			<input 
+				type="text" 
+				id="input-todolist"
+				autocomplete="off"
+				ng-model="$ctrl.todolist.title"
+				class="input__field input__field--isao"
+				name="username"
+				placeholder="Title" 
+				ng-minlength="2"
+				ng-maxlength="20"
+				valid-title
+				required
+				>
+			<label 
+				class="input__label input__label--isao"
+				for="input-todolist"
+				data-content="Enter a Title"
+				ng-class="{'validInputColor': createTodolistForm.$valid, 'invalidInputColor': createTodolistForm.$invalid}">
+				<span class="input__label-content input__label-content--isao">
+					Required
+				</span>
+			</label>
+		</span>
+		<div
+		  	ng-class="{'disabled-button': createTodolistForm.$invalid, 'enabled-button': createTodolistForm.$valid}" 
+	  		class="submit-button">
+	  		<div class="icon-container">
+				<img ng-src="public/styles/open-iconic-master/svg/chevron-right.svg"
+				alt="Next">
+			</div>
+		  	<input 
+		  		ng-disabled="createTodolistForm.$invalid" 
+		  		type="submit" 
+		  		id="submit"
+		  		value="" />
+  		</div>
+		
   	</div>
-		<div 
+	<div 
 	 	ng-messages="createTodolistForm.$error"
 	 	ng-show="createTodolistForm.$invalid && !createTodolistForm.$pristine"
 	 	class="error-messages">

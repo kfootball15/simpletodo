@@ -1,18 +1,21 @@
 <header-nav
 	current-user="$ctrl.currentUser"
 	></header-nav>
-<div>
-  <p>by {{$ctrl.currentUser.username}}</p>
-
-	<div>
-		<h1>Create a new To Do List:</h1>
-		<p class="url-container">{{$ctrl.prodUrl}}{{$ctrl.currentUser.username}}&#47;<create-todolist user="$ctrl.currentUser"></create-todolist></p>
+		<!-- <h1>Create a new To Do List:</h1> -->
+<div id="create-todolist-container">
+	<div class="row-url">
+		<span class="prodUrl">{{$ctrl.prodUrl}}{{$ctrl.currentUser.username}}&#47;</span>
+		<create-todolist 
+			class="input-form"
+			user="$ctrl.currentUser"></create-todolist>
 	</div>
 	
+
+</div>
+<div class="todolists-container">
 	<todolists
 		username="$ctrl.currentUser.username"
 		usertodolists="$ctrl.currentTodolists"
 		deleteTodolist="$ctrl.deleteTodolist"
 		></todolists>
-
 </div>

@@ -2,14 +2,20 @@
   current-user="$ctrl.currentUser"
   current-todolist="$ctrl.todolistTitle"
   ></header-nav>
-<div>
-  <h1>{{$ctrl.todolist.title}}</h1>
-  <p>{{$ctrl.currentUrl}}</p>
-  <create-todo 
-      current-user="$ctrl.currentUser" 
-      current-todolist-title="$ctrl.todolistTitle"
-      refresh-list="$ctrl.refreshList(newItem)"
-      ></create-todo>
+<div id="create-todo-container">
+  
+  <div class="row-url">
+    <!-- <span class="prodUrl">{{$ctrl.currentUrl}}</span> -->
+    <create-todo 
+        class="input-form justify-center"
+        current-user="$ctrl.currentUser" 
+        current-todolist-title="$ctrl.todolistTitle"
+        refresh-list="$ctrl.refreshList(newItem)"
+        ></create-todo>
+  </div>
+
+</div>
+<div class="todos-container">
   <todos
       todos="$ctrl.currentTodolist"
       ></todos>

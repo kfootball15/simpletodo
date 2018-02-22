@@ -5,50 +5,66 @@
 	novalidate
 	>
 	<div style="display: block">
-		<div class="input-container">
-			<input 
-				name="title"
-				type="text" 
-				class="todo-inputs large-width"
-				autocomplete="off"
-				placeholder="Title" 
-				ng-model="$ctrl.todolistItem.title"
-				ng-minlength="3"
-				ng-maxlength="20"
-				valid-title
-				required
-				>
-			<input
-				name="description"
-				type="text" 
-				class="todo-inputs large-width"
-				autocomplete="off"
-				placeholder="Description (optional)" 
-				ng-model="$ctrl.todolistItem.description"
-				ng-maxlength="50"
-				valid-description
-				>
-			<!-- </textarea> -->
-			<span 
-				ng-show="$ctrl.todolistItem.description.length">{{$ctrl.todolistItem.description.length}}/50</span> 
-			<!-- <input 
-				type="text" 
-				ng-model="$ctrl.todolistItem.list"
-				name="list"
-				placeholder="List" 
-				required
-				> -->
-		</div>
-		<div 
-			class="submit-container"
-			ng-class="{'disabled-button': createTodoForm.$invalid, 'enabled-button': createTodoForm.$valid}" 
-	  		>
-	  		<input 
-	  			type="submit" 
-	  			id="submit" 
-	  			value="Create!" 
-	  			ng-disabled="createTodoForm.$invalid">
-	  			
+		<div class="inputs-container">
+			<span class="input input--isao">
+				<input 
+					name="title"
+					type="text" 
+					class="input__field input__field--isao"
+					autocomplete="off"
+					placeholder="Title" 
+					ng-model="$ctrl.todolistItem.title"
+					ng-minlength="3"
+					ng-maxlength="20"
+					valid-title
+					required
+					>
+				<label 
+					class="input__label input__label--isao"
+					for="input-home"
+					data-content="Enter a Title"
+					ng-class="{'validInputColor': createTodoForm.$valid, 'invalidInputColor': createTodoForm.$invalid}">
+					<span class="input__label-content input__label-content--isao">
+						Required
+					</span>
+				</label>
+			</span>
+			<span class="input input--isao">
+				<input
+					name="description"
+					type="text" 
+					class="input__field input__field--isao"
+					autocomplete="off"
+					placeholder="Description" 
+					ng-model="$ctrl.todolistItem.description"
+					ng-maxlength="50"
+					valid-description
+					>
+				<label 
+					class="input__label input__label--isao"
+					for="input-home"
+					data-content="Enter a Description"
+					ng-class="{'validInputColor': createTodoForm.$valid, 'invalidInputColor': createTodoForm.$invalid}">
+					<span class="input__label-content input__label-content--isao">
+						Optional
+					</span>
+					<!-- <span 
+						ng-show="$ctrl.todolistItem.description.length">{{$ctrl.todolistItem.description.length}}/50</span>  -->
+				</label>
+			</span>
+			<div
+			  	ng-class="{'disabled-button': createTodoForm.$invalid, 'enabled-button': createTodoForm.$valid}" 
+		  		class="submit-button">
+		  		<div class="icon-container">
+					<img ng-src="public/styles/open-iconic-master/svg/chevron-right.svg"
+					alt="Next">
+				</div>
+			  	<input 
+			  		ng-disabled="createTodoForm.$invalid" 
+			  		type="submit" 
+			  		id="submit"
+			  		value="" />
+	  		</div>
 		</div>
 	</div>
 	<div 

@@ -17,7 +17,7 @@ function createUser (user) {
 router.post('/:username', function(req, res, next) {
 	//Create our user
     createUser(req.params)
-    .then(function(newUser) {
+    .then( newUser => {
         res.status(201).send(newUser);
     })
     .catch(next);
@@ -26,14 +26,12 @@ router.post('/:username', function(req, res, next) {
 router.get('/:username', function(req, res, next){
 	//If the user has typed a username into the URL, we want to either find that username or (if it does not exist) we want to create that username
 	User.findOne(req.params)
-	.then(function(user){
+	.then( user => {
 		if (user) res.status(200).send(user); //User exists, so lets send it
 		else return createUser(req.params); //User does not exist, so lets create it
 	})
-	.then(function(newUser){
+	.then( newUser => {
 		if(newUser) res.status(201).send(newUser);
 	})
-	.catch(function(err){
-		console.log("Our Error", err);
-	});
+	.catch(next);
 })

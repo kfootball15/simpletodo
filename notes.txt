@@ -37,7 +37,7 @@
 			[x] create a user, and todolist, and a todoitem all in one go, ie (s2doo.me/<newUser>/<newTodolist>/<newTodo>), and have everything be created successfully.
 			[x] create a user and a todolist in one go
 
-	[] Allow spaces in Todolist titles, todo titles, todo descriptions, but NOT usernames
+	[x] Allow spaces in Todolist titles, todo titles, todo descriptions, but NOT usernames
 
 	[] Implement SASS into project
 		[x] Implement Sass
@@ -46,15 +46,20 @@
 			[] Style Todolist Item Page
 			[] Style Home Page
 
+	[] Let user know when a new page is loading or that data is being saved ('Saving...') after clicking certain buttons.
+
 	[] Make sure lazy loading and data is being loading in properly and effectively
 
 	//--AFTER COMPLETING ABOVE, HOST ON DOMAIN AND DO BELOW:--\\
+	//--AFTER COMPLETING ABOVE, HOST ON DOMAIN AND DO BELOW:--\\
+	//--AFTER COMPLETING ABOVE, HOST ON DOMAIN AND DO BELOW:--\\
 
+	[] Allow users to add todo item descriptions in URL as an additional slash or as a query param
+	[] Todolist Order
+		[] rearrange order or todolists
 	[] Todos Order
 		[] rearrange order of items
 	[] Further break down the todolists and todolist components so that each individual list item is a component or directive
-	[] Todolist Order
-		[] rearrange order or todolists
 	[] Testing (end to end testing, other types)
 		[] Jasmine/Karma/Mocha/Chai
 			[] Here are some tests to start with:
@@ -69,6 +74,7 @@
 							[x] create a user and a todolist in one go
 	[x] username and todolist title Validation ?
 		[x] Do not allow users to enter certain characters or numbers
+	[] Break form submit button and input tags into seperate components/directives (since they are all designed and built so similarly, just need to pass in the proper form id)
 	[] Add Todolist features
 		[] Location
 		[] Lists inside of Todolists (kind of like collections of todos within todolists that you can still checkOff one at a time)
