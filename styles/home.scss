@@ -2,6 +2,7 @@ $primary-color: #FA787E;
 $primary-color-light: #FFD9DA;
 $primary-color-dark: #EA636A;
 $secondary-color: #114b5f;
+$secondary-color-light: #488499;
 $secondary-text-color: #114b5f;
 $invalid-color: #FA787E;
 $invalid-text-color: #e0c1c2;
@@ -22,6 +23,7 @@ body {
     font-family: 'Nunito', sans-serif;
     font-size: 36px;
     background-color: $primary-color-light;
+    box-sizing: border-box;
     // font-family: 'Fira Sans', sans-serif;
 	
 	//-- https://css-tricks.com/snippets/css/media-queries-for-standard-devices/
@@ -34,6 +36,8 @@ body {
 		font-size: 28px;
 	}
 }
+
+
 
 
 
@@ -82,7 +86,7 @@ input[type="submit"] {
 //Components
 home, todolists-component, todolist-component {
 	display: grid;
-	grid-template: 50px 200px auto / auto;
+	grid-template: 50px 300px auto / auto;
 }
 
 // Navbar
@@ -90,6 +94,10 @@ header-nav {
 	grid-row: 1/2;
 	display: flex;
 	background-color: $primary-color;
+
+	@media #{$information-iphone} {
+		font-size: .5em;
+	}
 	
 	#header-nav-container {
 		display: flex;
@@ -171,6 +179,8 @@ header-nav {
 		}
 		
 		span.prodUrl{
+			color: $secondary-text-color;
+
 			@media #{$information-iphone} {
 				display:none;
 			}
@@ -183,299 +193,582 @@ header-nav {
 				width: 100%
 			}
 
-			form {
+		}
+	}	
+}
+
+
+form {
+	display: flex;
+	justify-content: center;
+	
+	.inputs-container {
+
+		flex-flow: row nowrap;
+		display: flex;
+		width: 100%;
+
+		@media #{$information-iphone} {
+			flex-flow: column wrap;
+			margin: 0 20px;
+		}
+
+		.submit-button {
+			// padding: 5px;
+			height: 50px;
+			width: 50px;
+			position: relative;
+			cursor: pointer;
+			flex: 1 0 50px;
+			margin-bottom: 30px;
+
+			@media #{$information-iphone} {
+				margin-right: 0px;
+				margin-top: 50px;
+				align-self: center;
+			}
+
+			&.disabled-button {
+				border-radius: 45px;
+				background-color: $invalid-color;
+				color: $invalid-text-color;
+				opacity: 0.3;
+				-webkit-transition: -webkit-opacity $transform-transition-time, background-color $color-transition-time;
+				transition: opacity $transform-transition-time,  background-color $color-transition-time;
+			
+				&:hover {
+					input {
+						cursor: default;
+					}
+				}
+			}
+			&.enabled-button {
+				border-radius: 45px;
+				background-color: $valid-color;
+				color: $valid-text-color;
+				opacity: .5;
+				-webkit-transition: -webkit-opacity $transform-transition-time, background-color $color-transition-time;
+				transition: opacity $transform-transition-time,  background-color $color-transition-time;
+				
+				&:hover {
+					opacity: 1;
+				}
+			}
+			
+			input {
+				height: 100%;
+				width: 100%;
+				position: absolute;
+			}
+			.icon-container {
+				height: 100%;
+				width: 100%;
+				position:absolute;
 				display: flex;
 				justify-content: center;
+				align-items: center
 				
-				.inputs-container {
-
-					flex-flow: row nowrap;
-					display: flex;
-					width: 100%;
-
-					@media #{$information-iphone} {
-						flex-flow: column wrap;
-						margin: 0 20px;
-					}
-
-					.submit-button {
-						// padding: 5px;
-						height: 50px;
-						width: 50px;
-						position: relative;
-						cursor: pointer;
-						flex: 1 0 50px;
-						margin-bottom: 30px;
-
-						@media #{$information-iphone} {
-							margin-right: 0px;
-							margin-top: 25px;
-							align-self: center;
-						}
-
-						&.disabled-button {
-							border-radius: 45px;
-							background-color: $invalid-color;
-							color: $invalid-text-color;
-							opacity: 0.3;
-							-webkit-transition: -webkit-opacity $transform-transition-time, background-color $color-transition-time;
-							transition: opacity $transform-transition-time,  background-color $color-transition-time;
-						
-							&:hover {
-								input {
-									cursor: default;
-								}
-							}
-						}
-						&.enabled-button {
-							border-radius: 45px;
-							background-color: $valid-color;
-							color: $valid-text-color;
-							opacity: .5;
-							-webkit-transition: -webkit-opacity $transform-transition-time, background-color $color-transition-time;
-							transition: opacity $transform-transition-time,  background-color $color-transition-time;
-							
-							&:hover {
-								opacity: 1;
-							}
-						}
-						
-						input {
-							height: 100%;
-							width: 100%;
-							position: absolute;
-						}
-						.icon-container {
-							height: 100%;
-							width: 100%;
-							position:absolute;
-							display: flex;
-							justify-content: center;
-							align-items: center
-							
-							img {
-								width: 60%;
-								height: 60%;
-							}
-
-						}
-					}
-					.error-messages {
-						position: absolute;
-						width: 100%;
-						margin-top: 90px;
-						margin-left: 21px;
-						p {
-							background-color: $primary-color;
-							color: $secondary-text-color;
-							font-size: .5em;
-							padding: 5px 24px;
-							max-width: 350px;
-						}
-					}	
-					.input {
-						position: relative;
-						z-index: 1;
-						display: inline-block;
-						margin-left: .5em;
-						vertical-align: top;
-						
-						&.ng-invalid.ng-touched {
-							background-color: $invalid-color;
-						}
-						&.ng-valid.ng-touched {
-							background-color: $valid-color;
-						}
-						&.input--isao {
-							flex: 2 1 auto;
-							margin-right: 15px;
-						}
-						&.input--todo {
-
-						}
-
-						.input__field {
-							position: relative;
-							display: block;
-							float: right;
-							padding: 0.8em;
-							width: 60%;
-							border: none;
-							border-radius: 0;
-							background: #f0f0f0;
-							color: #aaa;
-							font-weight: bold;
-							font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-							-webkit-appearance: none; /* for box shadows to show on iOS */
-
-							
-							&:focus {
-								outline: none;
-							}
-							&.input__field--isao {
-								z-index: 10;
-								padding: 0.75em 0.1em 0.25em;
-								width: 100%;
-								background: transparent;
-								color: $input-text-color;
-								font-size: .7em;
-
-								&:focus {
-									// font-size: 1em;
-									+ .input__label--isao {
-										&::before {
-											-webkit-transform: scale3d(1, 1, 1);
-											transform: scale3d(1, 1, 1);
-										}
-									}
-									+ .input__label--isao {
-										pointer-events: none;
-									}
-									+ .input__label--isao::after {
-										opacity: 1;
-										-webkit-transform: translate3d(0, 0, 0);
-										transform: translate3d(0, 0, 0);
-									}
-									+ .input__label--isao .input__label-content--isao {
-										opacity: 0;
-										-webkit-transform: translate3d(0, -50%, 0);
-										transform: translate3d(0, -50%, 0);
-									}
-								}
-							}
-						}
-						.input__label {
-							display: inline-block;
-							float: right;
-							padding: 0 1em;
-							width: 40%;
-							// color: #6a7989;
-							font-weight: bold;
-							font-size: 70.25%;
-							-webkit-font-smoothing: antialiased;
-						    -moz-osx-font-smoothing: grayscale;
-							-webkit-touch-callout: none;
-							-webkit-user-select: none;
-							-khtml-user-select: none;
-							-moz-user-select: none;
-							-ms-user-select: none;
-							user-select: none;
-							-webkit-transition: -webkit-transform $transform-transition-time, color $color-transition-time;
-							transition: transform $transform-transition-time,  color $color-transition-time;
-							&.invalidInputColor {
-								color: $invalid-color;
-							}
-							&.validInputColor {
-								color: $valid-color;
-							}
-							&.input__label--isao {
-								position: relative;
-								overflow: hidden;
-								padding: 0;
-								width: 100%;
-								// color: #dadada;
-								text-align: left;
-
-								&.validInputColor {
-									&::before {
-										background: $valid-color;
-									}
-								}
-								&.invalidInputColor {
-									&::before {
-										background: $invalid-color;
-									}
-								}
-
-								&::before {
-									content: '';
-									position: absolute;
-									top: 0;
-									width: 100%;
-									height: 7px;
-									background: #dadada;
-									-webkit-transform: scale3d(1, 0.4, 1);
-									transform: scale3d(1, 0.4, 1);
-									-webkit-transform-origin: 50% 100%;
-									transform-origin: 50% 100%;
-									-webkit-transition: -webkit-transform $transform-transition-time, background-color $color-transition-time;
-									transition: transform $transform-transition-time, background-color $color-transition-time;
-									-webkit-transition-timing-function: cubic-bezier(0.2, 1, 0.3, 1);
-									transition-timing-function: cubic-bezier(0.2, 1, 0.3, 1);
-								}
-								&::after {
-									content: attr(data-content);
-									position: absolute;
-									top: 0;
-									left: 0;
-									padding: 0.5em 0.15em;
-									// color: #da7071;
-									opacity: 0;
-									-webkit-transform: translate3d(0, 50%, 0);
-									transform: translate3d(0, 50%, 0);
-									-webkit-transition: opacity $transform-transition-time, -webkit-transform $transform-transition-time;
-									transition: opacity $transform-transition-time, transform $transform-transition-time;
-									-webkit-transition-timing-function: cubic-bezier(0.2, 1, 0.5, 1);
-									transition-timing-function: cubic-bezier(0.2, 1, 0.3, 1);
-									pointer-events: none;
-								}
-							}
-							.input__label-content {
-								position: relative;
-								display: block;
-								padding: 1.6em 0;
-								width: 100%;
-
-								&.input__label-content--isao {
-									padding: 0.25em 0.15em;
-									-webkit-transition: opacity $transform-transition-time, -webkit-transform $transform-transition-time;
-									transition: opacity $transform-transition-time, transform $transform-transition-time;
-									-webkit-transition-timing-function: cubic-bezier(0.2, 1, 0.3, 1);
-									transition-timing-function: cubic-bezier(0.2, 1, 0.3, 1);
-									-webkit-transition: opacity $transform-transition-time, -webkit-transform $transform-transition-time;
-									transition: opacity $transform-transition-time, transform $transform-transition-time;
-									-webkit-transition-timing-function: cubic-bezier(0.2, 1, 0.3, 1);
-									transition-timing-function: cubic-bezier(0.2, 1, 0.3, 1);
-								}
-							}
-						}
-
-					}
+				img {
+					width: 60%;
+					height: 60%;
 				}
 
 			}
 		}
+		.error-messages {
+			position: absolute;
+			width: 100%;
+			margin-top: 90px;
+			margin-left: 21px;
+			
+			@media #{$information-iphone} {
+				margin-top: 68px;
+				margin-left: 0px;
+			}
+			p {
+				background-color: $primary-color;
+				color: $secondary-text-color;
+				font-size: .5em;
+				padding: 5px 24px;
+				max-width: 350px;
+				
+				@media #{$information-iphone} {
+					padding: 2px 5px;
+					font-size: .5em;
+				}
+			}
+		}	
+		.input {
+			position: relative;
+			z-index: 1;
+			display: inline-block;
+			margin-left: .5em;
+			vertical-align: top;
+
+			@media #{$information-iphone} {
+				margin-top: 20px;
+			}
+			
+			&.ng-invalid.ng-touched {
+				background-color: $invalid-color;
+			}
+			&.ng-valid.ng-touched {
+				background-color: $valid-color;
+			}
+			&.input--isao {
+				flex: 2 1 auto;
+				margin-right: 15px;
+			}
+			&.input--todo {
+
+			}
+
+			.input__field {
+				position: relative;
+				display: block;
+				float: right;
+				padding: 0.8em;
+				width: 60%;
+				border: none;
+				border-radius: 0;
+				background: #f0f0f0;
+				color: #aaa;
+				font-weight: bold;
+				font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+				-webkit-appearance: none; /* for box shadows to show on iOS */
+
+				
+				&:focus {
+					outline: none;
+				}
+				&.input__field--isao {
+					z-index: 10;
+					padding: 0.75em 0.1em 0.25em;
+					width: 100%;
+					background: transparent;
+					color: $input-text-color;
+					font-size: .7em;
+
+					&:focus {
+						// font-size: 1em;
+						+ .input__label--isao {
+							&::before {
+								-webkit-transform: scale3d(1, 1, 1);
+								transform: scale3d(1, 1, 1);
+							}
+						}
+						+ .input__label--isao {
+							pointer-events: none;
+						}
+						+ .input__label--isao::after {
+							opacity: 1;
+							-webkit-transform: translate3d(0, 0, 0);
+							transform: translate3d(0, 0, 0);
+						}
+						+ .input__label--isao .input__label-content--isao {
+							opacity: 0;
+							-webkit-transform: translate3d(0, -50%, 0);
+							transform: translate3d(0, -50%, 0);
+						}
+					}
+				}
+			}
+			.input__label {
+				display: inline-block;
+				float: right;
+				padding: 0 1em;
+				width: 40%;
+				// color: #6a7989;
+				font-weight: bold;
+				font-size: 70.25%;
+				-webkit-font-smoothing: antialiased;
+			    -moz-osx-font-smoothing: grayscale;
+				-webkit-touch-callout: none;
+				-webkit-user-select: none;
+				-khtml-user-select: none;
+				-moz-user-select: none;
+				-ms-user-select: none;
+				user-select: none;
+				-webkit-transition: -webkit-transform $transform-transition-time, color $color-transition-time;
+				transition: transform $transform-transition-time,  color $color-transition-time;
+				&.invalidInputColor {
+					color: $invalid-color;
+				}
+				&.validInputColor {
+					color: $valid-color;
+				}
+				&.input__label--isao {
+					position: relative;
+					overflow: hidden;
+					padding: 0;
+					width: 100%;
+					// color: #dadada;
+					text-align: left;
+
+					&.validInputColor {
+						&::before {
+							background: $valid-color;
+						}
+					}
+					&.invalidInputColor {
+						&::before {
+							background: $invalid-color;
+						}
+					}
+
+					&::before {
+						content: '';
+						position: absolute;
+						top: 0;
+						width: 100%;
+						height: 7px;
+						background: #dadada;
+						-webkit-transform: scale3d(1, 0.4, 1);
+						transform: scale3d(1, 0.4, 1);
+						-webkit-transform-origin: 50% 100%;
+						transform-origin: 50% 100%;
+						-webkit-transition: -webkit-transform $transform-transition-time, background-color $color-transition-time;
+						transition: transform $transform-transition-time, background-color $color-transition-time;
+						-webkit-transition-timing-function: cubic-bezier(0.2, 1, 0.3, 1);
+						transition-timing-function: cubic-bezier(0.2, 1, 0.3, 1);
+					}
+					&::after {
+						content: attr(data-content);
+						position: absolute;
+						top: 0;
+						left: 0;
+						padding: 0.5em 0.15em;
+						// color: #da7071;
+						opacity: 0;
+						-webkit-transform: translate3d(0, 50%, 0);
+						transform: translate3d(0, 50%, 0);
+						-webkit-transition: opacity $transform-transition-time, -webkit-transform $transform-transition-time;
+						transition: opacity $transform-transition-time, transform $transform-transition-time;
+						-webkit-transition-timing-function: cubic-bezier(0.2, 1, 0.5, 1);
+						transition-timing-function: cubic-bezier(0.2, 1, 0.3, 1);
+						pointer-events: none;
+					}
+				}
+				.input__label-content {
+					position: relative;
+					display: block;
+					padding: 1.6em 0;
+					width: 100%;
+
+					&.input__label-content--isao {
+						padding: 0.25em 0.15em;
+						-webkit-transition: opacity $transform-transition-time, -webkit-transform $transform-transition-time;
+						transition: opacity $transform-transition-time, transform $transform-transition-time;
+						-webkit-transition-timing-function: cubic-bezier(0.2, 1, 0.3, 1);
+						transition-timing-function: cubic-bezier(0.2, 1, 0.3, 1);
+						-webkit-transition: opacity $transform-transition-time, -webkit-transform $transform-transition-time;
+						transition: opacity $transform-transition-time, transform $transform-transition-time;
+						-webkit-transition-timing-function: cubic-bezier(0.2, 1, 0.3, 1);
+						transition-timing-function: cubic-bezier(0.2, 1, 0.3, 1);
+					}
+				}
+			}
+		}
 	}
-	
+}
+
+
+
+
+
+
+
+
+
+@keyframes icon {
+  from {
+    opacity: 0;
+    transform: scale(0.3);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1)
+  }
+}
+
+@keyframes check {
+  0% {
+    width: 1.5em;
+    height: 1.5em;
+    border-width: 5px;
+  }
+  10% {
+    width: 1.5em;
+    height: 1.5em;
+    opacity: 0.1;
+    background: rgba(0,0,0,0.2);
+    border-width: 15px;
+  }
+  12% {
+    width: 1.5em;
+    height: 1.5em;
+    opacity: 0.4;
+    background: rgba(0,0,0,0.1);
+    border-width: 0;
+  }
+  50% {
+    width: 2em;
+    height: 2em;
+    background: #00d478;
+    border: 0;
+    opacity: 0.6;
+  }
+  100% {
+    width: 2em;
+    height: 2em;
+    background: #00d478;
+    border: 0;
+    opacity: 1;
+  }
 }
 
 .todolists-container, .todos-container, .home-info-container {
 	grid-row: 3/4;
 	display: flex;
-}
+	justify-conent: flex-start;
+	color: $secondary-text-color;
+	font-size: .7em;
 
-// TODOLISTS
-ul {
+	todolists, todos {
+		margin: 25px 0 0 0;
+		flex: 1 1 auto;
+		display: flex;
+		// padding: 10px 50px;
+		width: 100vw;
 
-	list-style-type: none;
+		@media #{$information-iphone} {
+			padding: 0 0 0 0;
+		}
+	}
+
+
+	ul {
+		list-style-type: none;
+		display:flex;
+		flex-flow: column nowrap;
+		justify-content: center;
+		align-items: flex-start;
+		flex: 1 1 auto;
+		padding: 0;
+		width: 100%;
+
+		@media #{$information-iphone} {
+			align-items: center;
+		}
+
+		li.list__notification {
+			padding: 0 50px;
+		}
 	
-	&.todolists, &.todos-list {
-		
-		.list-item {
+		li.list-item, li.list-item .display-mode, li.list-item .edit-mode, li.list-item .edit-mode form {
+			flex: 1 1 auto;
+			width: 100%;
+			display: flex;
+			justify-content: flex-start;
 			-webkit-transition: all 0.5s ease-in-out;
 			-moz-transition: all 0.5s ease-in-out;
 			transition: all 0.5s ease-in-out;
 
+			@media #{$information-iphone} {
+				margin-top: 10px;
+			}
+			
 			&.isCompleted {
-				background-color: $valid-color;
 				margin-top:50px;
 			}
 			&.isCompleted ~ .isCompleted {
-				margin-top:0px;
+				margin-top:10px;
+			}
+
+			.inputs-container {
+				flex: 4 2 auto;
+				max-width: 800px;
+				width: 400px;
+				display: flex;
+				justify-content: flex-start;
+				align-items: center;
+				flex-direction: row;
+				margin: 0 10px;
+
+				.input.input--isao div.error-messages {
+					margin-top: 56px;
+					margin-left: 3px;
+				}
+			}
+
+
+			.text-container {
+				flex: 4 2 auto;
+				max-width: 800px;
+				width: 400px;
+				display: flex;
+				justify-content: flex-start;
+				align-items: center;
+				flex-direction: row;
+				margin: 0 10px;
+
+				@media #{$information-iphone} {
+					flex-flow: column nowrap;
+					justify-content: center;
+				}
+
+				&.isCompleted {
+					border-radius: 10px;
+					background-color: $valid-color;
+				}
+				p {
+					padding-left: 50px;
+
+					@media #{$information-iphone} {
+						padding: 0px;
+						margin: 0px;
+						text-align: center;
+					}
+				}
+				h2 {
+					@media #{$information-iphone} {
+						padding: 0px;
+						margin: 0px;
+					}
+				}
+				.input-container{
+					background: red;
+					flex: 1 1 auto;
+					display: flex;
+					justify-content: center;
+					width: 100%;
+
+					input {
+
+					}
+				}
+				span.todolist-edit {
+					z-index: 10;
+					flex: 1 0 auto;
+					max-width: 75px;
+					width: 75px;
+					font-size: .7em;
+					color: #fff;
+					background-color: $secondary-color;
+					text-align: center;
+					border-radius: 5px;
+					cursor: pointer;
+					margin: 0 10px;
+
+					@media #{$information-iphone} {
+						padding: 0px;
+						margin: 0px;
+					}
+					
+					&:hover {
+						background-color: $secondary-color-light;
+					}
+				}
+				.todolist-title {
+					cursor: pointer;
+					flex: 3 3 auto;
+					width: auto;
+					padding-left: 25px;
+					box-sizing: border-box;
+
+					@media #{$information-iphone} {
+						padding: 0px;
+						margin: 5px 0px;
+					}
+
+					&:hover {
+						background-color: $secondary-color;
+						color:white;
+						padding: 0 10px;
+						border-radius: 10px;
+					}
+				}
+			}
+
+			.checkbox-container {
+				position: relative;
+				flex: 1 1 auto;
+				width: 15vw;
+
+				&.delete-button {
+					// flex: 1 1;
+				}
+				.center {
+					position: absolute;
+					top: 50%; left: 50%;
+					transform: translate(-50%,-50%);
+
+				  	.label__checkbox {
+					    display: none;
+					}
+					.label__check {
+					  	display: inline-block;
+						border-radius: 50%;
+						border: 5px solid $primary-color-light;
+						background: white;
+						vertical-align: middle;
+						// margin-right: 20px;
+						width: 2em;
+						height: 2em;
+						cursor: pointer;
+						display: flex;
+						align-items: center;
+						justify-content: center;
+						transition: border .3s ease;
+
+						@media #{$information-iphone} {
+							// width: 1em;
+							// height: 1em;
+						}
+
+						&.label__delete {
+							width: 1.5em;
+							height: 1.5em;
+
+							&:hover {
+								border: 5px solid $primary-color;
+							}
+						}
+					  
+					  	img.icon {
+							opacity: 0.2;
+							color: transparent;
+							transition: opacity .3s .1s ease;
+							-webkit-text-stroke: 3px rgba(0,0,0,.5);
+							width: 20px;
+					  	}
+					  
+					  	&:hover {
+					    	border: 5px solid rgba(0,0,0,0.2);
+					  	}
+					}
+
+					.label__checkbox:checked + .label__text .label__check {
+					  	animation: check .5s cubic-bezier(0.895, 0.030, 0.685, 0.220) forwards;
+					  
+					  	.icon {
+						    opacity: 1;
+						    transform: scale(0);
+						    color: white;
+						    -webkit-text-stroke: 0;
+						    animation: icon .3s cubic-bezier(1.000, 0.008, 0.565, 1.650) .1s 1 forwards;
+					  	}
+					}
+				}
+			}
+			
+			.todo-strikethrough {
+				text-decoration: line-through;
 			}
 		}
 	}
 }
+
 
 //transition: opacity .1s ease, color .1s ease, font-size .5s ease, width .5s ease;
 

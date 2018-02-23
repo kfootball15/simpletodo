@@ -8,7 +8,7 @@
 		<li ng-repeat="link in $ctrl.linksToShow" 
 			class="{{link.state}}">
 			
-			<a ui-sref="{{link.state}}({{link.data}})" ui-sref-active="link.state">{{link.text}}</a>
+			<a ui-sref="{{link.state}}({{link.data}})" ui-sref-active="link.state">{{link.text| limitTo: 9}}{{link.text.length > 9 ? '...' : ''}}</a>
 		</li>	
 	</ul>
 </div>

@@ -1,121 +1,231 @@
 <ul 
-	class="todos-list"
+	class="todolists"
 	>
+
+	<li 
+		class="list__notification"
+		ng-show="!todos.length">
+		<p>Create a Todo above and it will appear here.</p>
+	</li>
 
 	<li 
 		class="list-item todos-list"
 		ng-repeat="todo in todos | orderBy: 'isCompleted'"
 		ng-class="{'isCompleted': todo.isCompleted}">
-
-		<!-- Checkbox -->
-		<input 
-	    	type="checkbox" 
-	    	ng-model="todo.isCompleted"
-	    	ng-click="toggleCompleted(todo)"
-	    	style="display:inline-block;"
-	    	>
-
-		<!-- Title -->
-		<h2 
-			style="display:inline-block;"
-			ng-click="editMode(todo, 'title')"
-			ng-show="!todo.editMode">
-			{{todo.title}}
-		</h2>
-		<!-- Description -->
-		<p 
-			style="display: inline-block; padding:10px;"
-			ng-click="editMode(todo)"
-			ng-show="!todo.editMode">
-			{{todo.description}}
-		</p>
-		<!-- Edit Mode -->
-		<form
-			name="editTodoTitleForm"
-			ng-submit="editTodo(editTodoTitleForm.$valid, todo)"
-			ng-model-options="{ updateOn: 'submit' }"
-			ng-show="todo.editMode"
-			novalidate
-			>
-			<button 
-		    	type="submit" 
-		    	ng-class="{'disabled-button': editTodoTitleForm.$invalid, 'enabled-button': editTodoTitleForm.$valid}" 
-		    	style="display:inline-block"
-		    	ng-disable="editTodoTitleForm.$invalid">
-	    			Update
-	    	</button>
-			<button
-	    		ng-click="editMode(todo, 'resetTitle')"
-	    		type="button">
-	    			Cancel
-	    		</button>
-			<input
-				name="editTitle"
-				type="text"
-				autocomplete="off"
-				ng-model="todo.title"
-				ng-model-options="{ updateOn: 'submit keyup' }"
-				ng-minlength="3"
-				ng-maxlength="20"
-				valid-title
-				required
-				>
-			<input
-				name="editDescription"
-				type="text" 
-				autocomplete="off"
-				placeholder="Description (optional)" 
-				ng-model="todo.description"
-				ng-model-options="{ updateOn: 'submit keyup' }"
-				ng-maxlength="50"
-				valid-description
-				>
-			<span 
-				ng-show="todo.title.length">{{todo.title.length}}/20</span> 
-			<span 
-				ng-show="todo.description.length">{{todo.description.length}}/50</span> 
-		</form>
 		
-		<!-- Delete Button -->
-		<input 
-			type="button" 
-			value="X" 
-			name="" 
-			ng-click="deleteItem(todo)">
+		<!-- Edit Mode -->
+		<div 
+			class="edit-mode"
+			ng-show="todo.editMode">
 
-		<!-- Stretch Goal: Lists inside a todo -->
-			<!-- <div ng-if="todo.list">
-				<h3>{{todo.list.title}}</h3>
-				<ol>
-				    <li ng-repeat="item in todo.list.items">{{item}}</li>
-				</ol>
-			</div> -->
-		<div 
-			ng-messages="editTodoTitleForm.editTitle.$error" 
-			ng-show="editTodoTitleForm.editTitle.$invalid && !editTodoTitleForm.editTitle.$pristine"
-			class="error-messages"
-			>
-			<p ng-message="required">	
-				A Title is required
-				</p>
-			<p ng-message="maxlength || minlength">	
-				Your Title must be between 3 and 20 characters
-				</p>
-			<p ng-message="validTitle">	
-				You Title may only include letters and numbers
-				</p>
+			<form
+				name="editTodoTitleForm"
+				ng-submit="editTodo(editTodoTitleForm.$valid, todo)"
+				ng-model-options="{ updateOn: 'submit' }"
+				novalidate
+				>
+				
+				<!-- CheckBox -->
+				<div 
+					class="checkbox-container"
+					type="submit" 
+			    	ng-class="{'disabled-button': editTodoTitleForm.$invalid, 'enabled-button': editTodoTitleForm.$valid}"
+			    	ng-disable="editTodoTitleForm.$invalid">
+					<div class="center">
+					  <label class="label">
+					    <input  
+				    		class="label__checkbox" 
+				    		type="submit" 
+				    		/>
+					    <span class="label__text">
+					      <span class="label__check">
+					        <img 
+					        	class="icon"
+					        	ng-src="public/styles/open-iconic-master/svg/check.svg" 
+					        	alt="Update">
+					      </span>
+					    </span>
+					  </label>
+					</div>
+				</div>
+				
+				<!-- Inputs -->
+		    	<div class="inputs-container">
+		    		<span class="input input--isao">
+						<input
+							class="input__field input__field--isao"
+							name="editTitle"
+							type="text"
+							id="todo-editTitle"
+							autocomplete="off"
+							ng-model="todo.title"
+							ng-model-options="{ updateOn: 'submit keyup' }"
+							ng-minlength="3"
+							ng-maxlength="20"
+							valid-title
+							required >
+						<label 
+							class="input__label input__label--isao"
+							for="todo-title"
+							data-content="Required"
+							ng-class="{'validInputColor': createTodoForm.$valid, 'invalidInputColor': createTodoForm.$invalid}">
+							<span class="input__label-content input__label-content--isao">
+								Title
+							</span>
+						</label>
+
+						<!-- Error Messages -->
+						<div 
+							ng-messages="editTodoTitleForm.editTitle.$error" 
+							ng-show="editTodoTitleForm.editTitle.$invalid && !editTodoTitleForm.editTitle.$pristine"
+							class="error-messages"
+							>
+							<p ng-message="required">	
+								A Title is required
+								</p>
+							<p ng-message="maxlength || minlength">	
+								Your Title must be between 3 and 20 characters
+								</p>
+							<p ng-message="validTitle">	
+								You Title may only include letters and numbers
+								</p>
+						</div>
+					</span>
+					<span class="input input--isao">
+						<input
+							class="input__field input__field--isao"
+							name="editDescription"
+							id="todo-editDescription"
+							type="text" 
+							autocomplete="off"
+							placeholder="Description (optional)" 
+							ng-model="todo.description"
+							ng-model-options="{ updateOn: 'submit keyup' }"
+							ng-maxlength="50"
+							valid-description >
+						<label 
+							class="input__label input__label--isao"
+							for="todo-editDescription"
+							data-content="Optional"
+							ng-class="{'validInputColor': createTodoForm.$valid, 'invalidInputColor': createTodoForm.$invalid}">
+							<span class="input__label-content input__label-content--isao">
+								Description
+							</span>
+						</label>
+
+						<!-- Error Messages -->
+						<div 
+							ng-messages="editTodoTitleForm.editDescription.$error" 
+							ng-show="editTodoTitleForm.editDescription.$invalid && !editTodoTitleForm.editDescription.$pristine"
+							class="error-messages"
+							>
+							<p ng-message="maxlength || minlength">	
+								Your Description must be less then 50 characters
+								</p>
+							<p ng-message="validDescription">	
+								You Description may only include letters and numbers
+								</p>
+						</div>
+					</span>
+				</div>
+
+				<!-- Delete Button -->
+				<div 
+					class="checkbox-container delete-button">
+					<div class="center">
+					  <label class="label">
+					  	<input 
+							type="button" 
+				    		class="label__checkbox" 
+		    				ng-click="editMode(todo, 'resetTitle')">
+					    <span class="label__text">
+					      <span class="label__check label__delete">
+					        <img 
+					        	class="icon"
+					        	ng-src="public/styles/open-iconic-master/svg/circle-x.svg" 
+					        	alt="X">
+					      </span>
+					    </span>
+					  </label>
+					</div>
+				</div>
+				<!-- <span 
+					ng-show="todo.title.length">{{todo.title.length}}/20</span> 
+				<span 
+					ng-show="todo.description.length">{{todo.description.length}}/50</span> --> 
+			</form>
 		</div>
+
+		<!-- Display mode -->
 		<div 
-			ng-messages="editTodoTitleForm.description.$error" 
-			ng-show="editTodoTitleForm.description.$invalid && !editTodoTitleForm.description.$pristine"
-			class="error-messages"
-			>
-			<p ng-message="maxlength || minlength">	
-				Your Description must be less then 50 characters
+			class="display-mode"
+			ng-show="!todo.editMode">
+			
+			<!-- Checkbox -->
+			<div 
+				class="checkbox-container"
+				>
+
+				<div class="center">
+				  <label class="label">
+				    <input  
+				    	ng-model="todo.isCompleted"
+			    		ng-click="toggleCompleted(todo)"
+			    		class="label__checkbox" 
+			    		type="checkbox" />
+				    <span class="label__text">
+				      <span class="label__check">
+				        <img 
+				        	class="icon"
+				        	ng-src="public/styles/open-iconic-master/svg/check.svg" 
+				        	alt="Next">
+				      </span>
+				    </span>
+				  </label>
+				</div>
+			</div>
+
+			<!-- Info -->
+			<div 
+				ng-class="{'isCompleted': todo.isCompleted}"
+				class="text-container">
+				<!-- Title -->
+				<h2 
+					ng-class="{'todo-strikethrough': todo.isCompleted}"
+					ng-click="editMode(todo, 'title')"
+					>
+					{{todo.title}}
+				</h2>
+				<!-- Description -->
+				<p 
+					ng-class="{'todo-strikethrough': todo.isCompleted}"
+					ng-click="editMode(todo)">
+					{{todo.description}}
 				</p>
-			<p ng-message="validDescription">	
-				You Description may only include letters and numbers
-				</p>
+			</div>
+			
+			<!-- Delete Button -->
+			<div 
+				class="checkbox-container delete-button">
+
+				<div class="center">
+				  <label class="label">
+				  	<input 
+						type="button" 
+			    		class="label__checkbox" 
+						ng-click="deleteItem(todo)">
+				    <span class="label__text">
+				      <span class="label__check label__delete">
+				        <img 
+				        	class="icon"
+				        	ng-src="public/styles/open-iconic-master/svg/circle-x.svg" 
+				        	alt="X">
+				      </span>
+				    </span>
+				  </label>
+				</div>
+			</div>
+			
 		</div>
 
 	</li>

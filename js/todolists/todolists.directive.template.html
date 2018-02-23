@@ -1,6 +1,8 @@
 <ul class="todolists" >
 
-	<li ng-show="!usertodolists.length">
+	<li 
+		class="list__notification"
+		ng-show="!usertodolists.length">
 		<p>Create a Todo List above and it will appear here.</p>
 	</li>
 
@@ -10,98 +12,186 @@
 		ng-repeat="todolist in usertodolists | orderBy: 'isCompleted' "
 		ng-class="{'isCompleted': todolist.isCompleted}"
 		>
+		
+		<!-- Edit Mode -->
+		<div class="edit-mode"
+		    ng-show="todolist.editMode">
 
+		    <form
+		    	name="editTodolist"
+		    	ng-submit="editTodolistTitle(editTodolist.$valid, todolist)"
+		    	ng-model-options="{ updateOn: 'submit' }"
+		    	novalidate>
+				
+				<!-- CheckBox -->
+		    	<div 
+					class="checkbox-container"
+					type="submit" 
+			    	ng-class="{'disabled-button': editTodolist.$invalid, 'enabled-button': editTodolist.$valid}" 
+			    	ng-disable="editTodolist.$invalid">
+					<div class="center">
+					  <label class="label">
+					    <input  
+				    		class="label__checkbox" 
+				    		type="submit" />
+					    <span class="label__text">
+					      <span class="label__check">
+					        <img 
+					        	class="icon"
+					        	ng-src="public/styles/open-iconic-master/svg/check.svg" 
+					        	alt="Next">
+					      </span>
+					    </span>
+					  </label>
+					</div>
+				</div>
+				
+				<!-- Inputs -->
+				<div class="inputs-container">
+					<span class="input input--isao">
+				    	<input 
+				    		class="input__field input__field--isao"
+				    		type="text"
+				    		autocomplete="off" 
+				    		name="editTitle"
+				    		ng-minlength="2"
+							ng-maxlength="20"
+				    		ng-model="todolist.title"
+				    		ng-model-options="{ updateOn: 'submit keyup' }"
+				    		valid-title
+				    		required
+				    		>
+				    	<label 
+							class="input__label input__label--isao"
+							for="input-home"
+							data-content="Enter a new title"
+							ng-class="{'validInputColor': createUserForm.$valid, 'invalidInputColor': createUserForm.$invalid}">
+							<span class="input__label-content input__label-content--isao">
+								Edit Title
+							</span>
+						</label>
+						<!-- Error Messages -->
+							<!-- Title Errors -->
+						<div 
+						 	ng-messages="editTodolist.editTitle.$error"
+						 	ng-show="editTodolist.editTitle.$invalid && !editTodolist.editTitle.$pristine"
+						 	class="error-messages">
+						    <p 
+						    	ng-message="required || minlength || maxlength">
+						    		Your title must be between 2 and 20 characters</p>
+						    <p 
+						    	ng-message="validTitle">
+						    		Your title can only contain letters and numbers, no special characters</p>
+						</div>
+							<!-- Description Errors -->
+						<div 
+							ng-messages="editTodolist.description.$error" 
+							ng-show="editTodolist.description.$invalid && !editTodolist.description.$pristine"
+							class="error-messages"
+							>
+							<p ng-message="maxlength || minlength">	
+								Your Description must be less then 50 characters
+								</p>
+							<p ng-message="validDescription">	
+								You Description may only include letters and numbers
+								</p>
+						</div>
+		    		</span>
+	    		</div>
+
+		    	<div 
+					class="checkbox-container delete-button">
+					<div class="center">
+					  <label class="label">
+					  	<input 
+							type="button" 
+				    		class="label__checkbox" 
+		    				ng-click="editMode(todolist, true)">
+					    <span class="label__text">
+					      <span class="label__check label__delete">
+					        <img 
+					        	class="icon"
+					        	ng-src="public/styles/open-iconic-master/svg/circle-x.svg" 
+					        	alt="X">
+					      </span>
+					    </span>
+					  </label>
+					</div>
+				</div>
+			</form>
+		</div>
+		
 		<!-- Checkbox -->
-	    <input 
-	    	type="checkbox" 
-	    	ng-model="todolist.isCompleted"
-	    	ng-click="toggleCompleted(todolist)"
-	    	style="display:inline-block;"
-	    	>
+		<div class="display-mode"
+		ng-show="!todolist.editMode">
+			<div 
+				class="checkbox-container">
 
-	    <!-- Edit Mode -->
-	    <form
-	    	ng-show="todolist.editMode"
-	    	name="editTodolist"
-	    	ng-submit="editTodolistTitle(editTodolist.$valid, todolist)"
-	    	ng-model-options="{ updateOn: 'submit' }"
-	    	class="input-container"
-	    	novalidate>
-		    <button 
-		    	type="submit" 
-		    	ng-class="{'disabled-button': editTodolist.$invalid, 'enabled-button': editTodolist.$valid}" 
-		    	style="display:inline-block"
-		    	ng-disable="editTodolist.$invalid">
-		    		Update
-		    	</button>
-	    	<input 
-	    		type="text"
-	    		autocomplete="off" 
-	    		name="editTitle"
-	    		ng-minlength="2"
-				ng-maxlength="20"
-	    		ng-model="todolist.title"
-	    		ng-model-options="{ updateOn: 'submit keyup' }"
-	    		valid-title
-	    		required
-	    		>
-	    	<button
-	    		ng-click="editMode(todolist, true)"
-	    		type="button">
-	    			Cancel
-	    		</button>
-		</form>
+				<div class="center">
+				  <label class="label">
+				    <input  
+				    	ng-model="todolist.isCompleted"
+			    		ng-click="toggleCompleted(todolist)"
+			    		class="label__checkbox" 
+			    		type="checkbox" />
+				    <span class="label__text">
+				      <span class="label__check">
+				        <img 
+				        	class="icon"
+				        	ng-src="public/styles/open-iconic-master/svg/check.svg" 
+				        	alt="Next">
+				      </span>
+				    </span>
+				  </label>
+				</div>
+			</div>
+
+		    <div 
+		    	ng-show="!todolist.editMode"
+				ng-class="{'isCompleted': todolist.isCompleted}"
+				class="text-container">
+		    
+		    	<!-- Display Mode -->
+			    <span
+			    	class="todolist-edit"
+		    		ng-show="!todolist.editMode"
+			    	ng-click="editMode(todolist)">
+			    		Edit
+			    	</span>
+			    <h2 
+			    	ng-class="{'todo-strikethrough': todolist.isCompleted}"
+		    		ng-show="!todolist.editMode"
+			    	ui-sref="todolist({userId: username, todolistTitle: todolist.title})"
+			    	class="todolist-title">
+			    		{{todolist.title}}
+			    	</h2>
+
+			</div>
 
 
-	    <!-- !Edit Mode -->
-	    <div
-	    	ng-show="!todolist.editMode"
-	    	style="display:inline-block;">
-		    <button
-		    	ng-click="editMode(todolist)"
-		    	style="display:inline-block">
-		    		Edit name
-		    	</button>
-		    <button 
-		    	ui-sref="todolist({userId: username, todolistTitle: todolist.title})" 
-		    	style="display:inline-block">
-		    		{{todolist.title}}
-		    	</button>
+		    <!-- Delete Button -->	    
+			<div 
+				class="checkbox-container delete-button"
+			    ng-show="!todolist.editMode">
+				<div class="center">
+				  <label class="label">
+				  	<input 
+						type="button" 
+			    		class="label__checkbox" 
+			    		ng-click="deleteTodolist(todolist)">
+				    <span class="label__text">
+				      <span class="label__check label__delete">
+				        <img 
+				        	class="icon"
+				        	ng-src="public/styles/open-iconic-master/svg/circle-x.svg" 
+				        	alt="X">
+				      </span>
+				    </span>
+				  </label>
+				</div>
+			</div>
 		</div>
 
-	    <!-- Delete Button -->
-	    <input 
-		    type="button" 
-		    value="X" 
-		    ng-click="deleteTodolist(todolist)" 
-		    style="display:inline-block;"
-		    >
 
-		<!-- Error Messages -->
-		<!-- Title Errors -->
-		<div 
-		 	ng-messages="editTodolist.editTitle.$error"
-		 	ng-show="editTodolist.editTitle.$invalid && !editTodolist.editTitle.$pristine"
-		 	class="error-messages">
-		    <p 
-		    	ng-message="required || minlength || maxlength">
-		    		Your title must be between 2 and 20 characters</p>
-		    <p 
-		    	ng-message="validTitle">
-		    		Your title can only contain letters and numbers, no special characters</p>
-		</div>
-		<!-- Description Errors -->
-		<div 
-			ng-messages="editTodolist.description.$error" 
-			ng-show="editTodolist.description.$invalid && !editTodolist.description.$pristine"
-			class="error-messages"
-			>
-			<p ng-message="maxlength || minlength">	
-				Your Description must be less then 50 characters
-				</p>
-			<p ng-message="validDescription">	
-				You Description may only include letters and numbers
-				</p>
-		</div>
 	</li>
 </ul>
