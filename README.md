@@ -1,6 +1,6 @@
 #S2DO.me
 
-[Speedy To Do](www.s2do.me)
+[Speedy To Do](http://www.s2do.me)
 
 ## Intro:
 Speedy to do is a super intuitive todo list application that allows users to bypass having to sign up and/or login to yet another web application.
