@@ -1,4 +1,4 @@
-#S2DO.me
+# S2DO.me
 
 [Speedy To Do](http://www.s2do.me)
 
@@ -30,7 +30,7 @@ s2do.me/<username>/<todolist>/<todo>
 
 The website itself also has a UI for interfacing with your lists and items for convenient updates after you have created your items.
 
-###To run:
+### To run:
 ```
 npm install
 bower install
