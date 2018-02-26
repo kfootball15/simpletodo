@@ -95,7 +95,7 @@
 // -- DEFECTS -- \\
 // -- ------- -- \\
 	Fix Before Release:
-	[] DEFINITELY FIX THE blank /'' Bug where a todolist with no name is created!!!
+	[x] DEFINITELY FIX THE blank /'' Bug where a todolist with no name is created!!!
 	[] The ordering of Todos after checking them messes with a lot of styling, create a new filter/order method that works more smoothly.
 	[] LOADY GIFS
 		[] Or some kind of response when user clicks...:
@@ -105,11 +105,11 @@
 			[] Save Todolist
 			[] Changing State through tabs
 			[] ANYTHING that makes a backend request should get a loady gif
-	[] Save and Cancel buttons (during edit modes) dont show if the form is enabled or disabled very well (could just be the check button that changes. Right now it disables and enables properly, but there is no visual que)
 
 
 
 	After Release:
+	[] Save and Cancel buttons (during edit modes) dont show if the form is enabled or disabled very well (could just be the check button that changes. Right now it disables and enables properly, but there is no visual que)
 	[] Show/Hide the create todolist and create todo divs on MOBILE
 	[] URLs ending in '/' will create blank users and blank todolists
 	[] No Validation on URL creation (In other words, I can create titles and users with too few characters and special characters from the URL)
