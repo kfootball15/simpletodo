@@ -14,8 +14,18 @@ function createUser (user) {
 	})
 }
 
+
 function createTodolist (todolist) {
 	return Todolist.create(todolist)
+}
+
+function isValidTodolistTitle (title) {
+	const todolistTitleRegex = /^[a-zA-Z0-9_ ]+$/
+	if (title.length >= 2 && title.length <= 20 && todolistTitleRegex.test(title)) {
+		return true;
+	} else {
+		return false;
+	}
 }
 
 function updateUser (userId, todolist) {
@@ -25,6 +35,14 @@ function updateUser (userId, todolist) {
                 	if (err) console.error("Error updated user", err);
                 	else console.log("Successfully updated user", info)
                 })
+}
+
+function invalidTitleErrorHandler (res) {
+	//HTTP Status 422 represents an "Unprocessable Entity", which seems most appropriate for an invalid username
+	res.status(422).send({
+		error: "Please enter a valid Title.", 
+		explanation: "Todolist Titles must be between 2 and 20 characters, and may not contain spaces or special characters."
+	})
 }
 
 router.post('/:owner/:title', function(req, res, next) {
@@ -54,30 +72,35 @@ router.post('/:owner/:title', function(req, res, next) {
 
 });
 
+//Create or fetch Todolist from URL
 router.get('/:owner/:title', function(req, res, next){
 
 	var toSendTodolist;
 
-	Todolist.find({title: req.params.title, owner: req.params.owner})
-	.populate('todos')
-	.exec()
-	.then( todolists => {
-		if(todolists.length){
-			res.status(200).send(todolists[0]);//Since the todolist exists we simply need to send it back to the user
-		} else { 
-			return createTodolist({ owner:req.params.owner, title: req.params.title})//Since we cannot find the requested todolist, lets create a new one and send it back 
-		}
-	})
-	.then( newTodolist => {
-    	if(newTodolist){
-    		toSendTodolist = newTodolist;
-		    return updateUser(req.params.owner, newTodolist)
-    	}
-    })
-	.then( updatedUser => {
-	    if(toSendTodolist) res.status(201).send(toSendTodolist);
-    })
-	.catch(next)
+	if(isValidTodolistTitle(req.params.title)){
+		Todolist.find({title: req.params.title, owner: req.params.owner})
+		.populate('todos')
+		.exec()
+		.then( todolists => {
+			if(todolists.length){
+				res.status(200).send(todolists[0]); //Since the todolist exists we simply need to send it back to the user
+			} else { 
+				return createTodolist({ owner:req.params.owner, title: req.params.title})//Since we cannot find the requested todolist, lets create a new one and send it back 
+			}
+		})
+		.then( newTodolist => {
+	    	if(newTodolist){
+	    		toSendTodolist = newTodolist;
+			    return updateUser(req.params.owner, newTodolist)
+	    	}
+	    })
+		.then( updatedUser => {
+		    if(toSendTodolist) res.status(201).send(toSendTodolist);
+	    })
+		.catch(next)
+	} else {
+		invalidTitleErrorHandler(res);
+	}
 })
 
 router.get('/:userId', function(req, res, next){

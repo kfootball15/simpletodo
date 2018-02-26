@@ -1,9 +1,9 @@
 body {
-  color: #FA787E;
+  color: #5f5d5c;
   margin: 0;
   font-family: 'Nunito', sans-serif;
   font-size: 36px;
-  background-color: #FFD9DA;
+  background-color: #e8e3dd;
   box-sizing: border-box; }
   @media only screen and (min-device-width: 375px) and (max-device-width: 667px) {
     body {
@@ -46,7 +46,7 @@ home, todolists-component, todolist-component {
 header-nav {
   grid-row: 1/2;
   display: flex;
-  background-color: #FA787E; }
+  background-color: #5f5d5c; }
   @media only screen and (min-device-width: 375px) and (max-device-width: 667px) {
     header-nav {
       font-size: .5em; } }
@@ -56,9 +56,24 @@ header-nav {
     align-items: center;
     width: 100%; }
     header-nav #header-nav-container .logo {
-      flex: 1 0 10vw;
+      flex: 1 1 auto;
       display: flex;
-      justify-content: center; }
+      justify-content: center;
+      width: 100px; }
+      header-nav #header-nav-container .logo a {
+        width: 100%;
+        height: 100%;
+        flex: 1 1 auto;
+        display: flex;
+        justify-content: center;
+        align-items: center; }
+        header-nav #header-nav-container .logo a:hover {
+          background-color: #504d47; }
+        header-nav #header-nav-container .logo a img {
+          height: 100%;
+          width: 100%;
+          padding: 5px;
+          box-sizing: border-box; }
     header-nav #header-nav-container ul.header-nav {
       flex: 6 0 90vw;
       display: flex;
@@ -72,15 +87,15 @@ header-nav {
         align-items: center;
         justify-content: center; }
         header-nav #header-nav-container ul.header-nav li a {
-          color: #114b5f;
+          color: #e8e3dd;
           text-align: center;
           flex-grow: 1; }
           header-nav #header-nav-container ul.header-nav li a:hover {
-            background-color: #EA636A; }
+            background-color: #504d47; }
         header-nav #header-nav-container ul.header-nav li:last-child {
-          background-color: #FFD9DA; }
+          background-color: #e8e3dd; }
           header-nav #header-nav-container ul.header-nav li:last-child a {
-            color: #e0c1c2;
+            color: #afb3b8;
             cursor: default;
             pointer-events: none; }
 
@@ -99,7 +114,7 @@ header-nav {
         flex-flow: column wrap;
         margin-top: 25px; } }
     #create-user-container .row-url span.prodUrl, #create-todolist-container .row-url span.prodUrl, #create-todo-container .row-url span.prodUrl {
-      color: #114b5f; }
+      color: #5f5d5c; }
       @media only screen and (min-device-width: 375px) and (max-device-width: 667px) {
         #create-user-container .row-url span.prodUrl, #create-todolist-container .row-url span.prodUrl, #create-todo-container .row-url span.prodUrl {
           display: none; } }
@@ -167,14 +182,14 @@ form {
       position: absolute;
       width: 100%;
       margin-top: 90px;
-      margin-left: 21px; }
+      margin-left: 6px; }
       @media only screen and (min-device-width: 375px) and (max-device-width: 667px) {
         form .inputs-container .error-messages {
           margin-top: 68px;
           margin-left: 0px; } }
       form .inputs-container .error-messages p {
         background-color: #FA787E;
-        color: #114b5f;
+        color: #5f5d5c;
         font-size: .5em;
         padding: 5px 24px;
         max-width: 350px; }
@@ -350,7 +365,7 @@ form {
   grid-row: 3/4;
   display: flex;
   justify-conent: flex-start;
-  color: #114b5f;
+  color: #5f5d5c;
   font-size: .7em; }
   .todolists-container todolists, .todolists-container todos, .todos-container todolists, .todos-container todos, .home-info-container todolists, .home-info-container todos {
     margin: 25px 0 0 0;
@@ -440,8 +455,8 @@ form {
           max-width: 75px;
           width: 75px;
           font-size: .7em;
-          color: #fff;
-          background-color: #114b5f;
+          color: #afb3b8;
+          background-color: #e8e3dd;
           text-align: center;
           border-radius: 5px;
           cursor: pointer;
@@ -463,9 +478,8 @@ form {
               padding: 0px;
               margin: 5px 0px; } }
           .todolists-container ul li.list-item .text-container .todolist-title:hover, .todolists-container ul li.list-item .display-mode .text-container .todolist-title:hover, .todolists-container ul li.list-item .edit-mode .text-container .todolist-title:hover, .todolists-container ul li.list-item .edit-mode form .text-container .todolist-title:hover, .todos-container ul li.list-item .text-container .todolist-title:hover, .todos-container ul li.list-item .display-mode .text-container .todolist-title:hover, .todos-container ul li.list-item .edit-mode .text-container .todolist-title:hover, .todos-container ul li.list-item .edit-mode form .text-container .todolist-title:hover, .home-info-container ul li.list-item .text-container .todolist-title:hover, .home-info-container ul li.list-item .display-mode .text-container .todolist-title:hover, .home-info-container ul li.list-item .edit-mode .text-container .todolist-title:hover, .home-info-container ul li.list-item .edit-mode form .text-container .todolist-title:hover {
-            background-color: #114b5f;
+            background-color: #504d47;
             color: white;
-            padding: 0 10px;
             border-radius: 10px; }
       .todolists-container ul li.list-item .checkbox-container, .todolists-container ul li.list-item .display-mode .checkbox-container, .todolists-container ul li.list-item .edit-mode .checkbox-container, .todolists-container ul li.list-item .edit-mode form .checkbox-container, .todos-container ul li.list-item .checkbox-container, .todos-container ul li.list-item .display-mode .checkbox-container, .todos-container ul li.list-item .edit-mode .checkbox-container, .todos-container ul li.list-item .edit-mode form .checkbox-container, .home-info-container ul li.list-item .checkbox-container, .home-info-container ul li.list-item .display-mode .checkbox-container, .home-info-container ul li.list-item .edit-mode .checkbox-container, .home-info-container ul li.list-item .edit-mode form .checkbox-container {
         position: relative;
@@ -481,7 +495,7 @@ form {
           .todolists-container ul li.list-item .checkbox-container .center .label__check, .todolists-container ul li.list-item .display-mode .checkbox-container .center .label__check, .todolists-container ul li.list-item .edit-mode .checkbox-container .center .label__check, .todolists-container ul li.list-item .edit-mode form .checkbox-container .center .label__check, .todos-container ul li.list-item .checkbox-container .center .label__check, .todos-container ul li.list-item .display-mode .checkbox-container .center .label__check, .todos-container ul li.list-item .edit-mode .checkbox-container .center .label__check, .todos-container ul li.list-item .edit-mode form .checkbox-container .center .label__check, .home-info-container ul li.list-item .checkbox-container .center .label__check, .home-info-container ul li.list-item .display-mode .checkbox-container .center .label__check, .home-info-container ul li.list-item .edit-mode .checkbox-container .center .label__check, .home-info-container ul li.list-item .edit-mode form .checkbox-container .center .label__check {
             display: inline-block;
             border-radius: 50%;
-            border: 5px solid #FFD9DA;
+            border: 5px solid #e8e3dd;
             background: white;
             vertical-align: middle;
             width: 2em;

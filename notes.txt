@@ -95,6 +95,7 @@
 // -- DEFECTS -- \\
 // -- ------- -- \\
 	Fix Before Release:
+	[] DEFINITELY FIX THE blank /'' Bug where a todolist with no name is created!!!
 	[] The ordering of Todos after checking them messes with a lot of styling, create a new filter/order method that works more smoothly.
 	[] LOADY GIFS
 		[] Or some kind of response when user clicks...:

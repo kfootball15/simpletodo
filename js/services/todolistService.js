@@ -5,9 +5,7 @@ simpleToDoApp.service('todolistService', function($http){
 			.then(function(fetchedTodolist){
 				return fetchedTodolist.data
 			})
-			.catch(function(err){
-				console.log("ERROR:", err)
-			})
+			// NO .catch(), we are letting $http service return our errors for us and handling them in our $state Resolve
 		},
 		createTodo (todolistItem) {
 			return $http({
@@ -18,13 +16,14 @@ simpleToDoApp.service('todolistService', function($http){
 	        .then(function(newTodolistItem){
 	            return newTodolistItem.data;
 	        })
+	        // NO .catch(), we are letting $http service return our errors for us and handling them in our $state Resolve
 		},
 		getTodolist (userId, listTitle) {
 			return $http.get('/api/todolists/' + userId + '/' + listTitle)
 			.then(function(todolist){
 				return todolist.data;
 			})
-			.catch(err => {console.log(err);})
+			// .catch(err => {console.log(err);})
 		},
 		getTodolists (userId) {
 			return $http.get('/api/todolists/' + userId)

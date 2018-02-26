@@ -3,7 +3,7 @@ simpleToDoApp.component('todolistsComponent', {
 	controller: function todolistsController($stateParams, userService, PROD_URL) {
 	    this.$onInit = function () { //We can only use our bindings inside of our controllers $onInit  
 	    	//Create Current URL(For display)
-	    	this.prodUrl = PROD_URL;	
+	    	this.prodUrl = PROD_URL;
 	    }
 
 	},

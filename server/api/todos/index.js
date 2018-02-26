@@ -11,34 +11,52 @@ function createTodo (todo) {
 	return Todo.create(todo)
 }
 
+function isValidTodoTitle (title) {
+	const todoTitleRegex = /^[a-zA-Z0-9_ ]+$/
+	if (title.length >= 2 && title.length <= 20 && todoTitleRegex.test(title)) {
+		return true;
+	} else {
+		return false;
+	}
+}
+
 function findTodolist (todolistTitle, todolistUserId) {
 	return Todolist.findOne({title: todolistTitle, owner: todolistUserId})
 }
 
-router.get('/:todoId', function(req, res, next){
-	res.sendFile(path.join(__dirname, 'todolist.json'));
-})
+function invalidTitleErrorHandler (res) {
+	//HTTP Status 422 represents an "Unprocessable Entity", which seems most appropriate for an invalid username
+	res.status(422).send({
+		error: "Please enter a valid Title and Description.", 
+		explanation: "Todo Titles and Descriptions must be between 2 and 20 characters, and may not contain spaces or special characters."
+	})
+}
 
-//createTodolistItem
+// Create or fetch a todo item
 router.post('/:ownerTitle/:userId', function(req, res, next){
+	
 	var newTodo;
 
-	findTodolist(req.params.ownerTitle, req.params.userId)
-	.then( foundTodolist => {
-		if(foundTodolist){
-			req.body.owner = foundTodolist._id;
-			return createTodo(req.body);
-		}
-	})
-	.then( todo => {
-		newTodo = todo;
-		return Todolist.update(	{ _id: todo.owner },
-								{ $push: { 'todos': todo } })
-	})
-	.then( updatedTodolist => {
-		res.status(201).send(newTodo)
-	})
-	.catch(next)
+	if (isValidTodoTitle(req.body.title)){
+		findTodolist(req.params.ownerTitle, req.params.userId)
+		.then( foundTodolist => {
+			if(foundTodolist){
+				req.body.owner = foundTodolist._id;
+				return createTodo(req.body);
+			}
+		})
+		.then( todo => {
+			newTodo = todo;
+			return Todolist.update(	{ _id: todo.owner },
+									{ $push: { 'todos': todo } })
+		})
+		.then( updatedTodolist => {
+			res.status(201).send(newTodo)
+		})
+		.catch(next)
+	} else {
+		invalidTitleErrorHandler(res);
+	}
 })
 
 router.delete('/:todoId', function(req, res, next){

@@ -28,7 +28,7 @@ simpleToDoApp.directive('validTitle', function () {
 		          return true;
 		        }
 
-				const usernameRegex = /^[a-zA-Z0-9_]+$/
+				const usernameRegex = /^[a-zA-Z0-9_ ]+$/
 		        if (usernameRegex.test(viewValue)) {
 		          //valid
 		          return true;
