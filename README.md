@@ -3,7 +3,7 @@
 [Speedy To Do](http://www.s2do.me)
 
 ## Intro:
-Speedy to do is a super intuitive todo list application that allows users to bypass having to sign up and/or login to yet another web application.
+Speedy to do is a super intuitive todo list application that allows users to bypass having to sign up and/or login to yet another web application and let them start using their todolists as quickly as possible
 
 Simply generate new todolists by typing them directly into the url for a fast, efficient way of creating a quick todolist.
 
@@ -27,6 +27,8 @@ To Create a new todo:
 ```
 s2do.me/<username>/<todolist>/<todo>
 ```
+
+The website itself also has a UI for interfacing with your lists and items for convenient updates after you have created your items.
 
 ###To run:
 ```
